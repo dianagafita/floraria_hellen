@@ -538,7 +538,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function CheckoutPage() {
+export default async function CheckoutPage() {
   const [isOrderSummaryOpen, setIsOrderSummaryOpen] = useState(false);
 
   const toggleOrderSummary = () => {

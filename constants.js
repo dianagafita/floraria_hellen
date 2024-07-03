@@ -87,6 +87,10 @@ export const SIDENAV_ITEMS = [
           },
         ],
       },
+      {
+        title: "CONSULTANTA",
+        path: "/consult",
+      },
     ],
   },
   {
@@ -100,8 +104,8 @@ export const SIDENAV_ITEMS = [
     ],
   },
   {
-    title: "CONTACT",
-    path: "/contact",
+    title: "Despre noi",
+    path: "/about",
   },
 ];
 

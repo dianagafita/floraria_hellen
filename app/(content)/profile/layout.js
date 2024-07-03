@@ -2,7 +2,7 @@ import ProfileMenuDrawer from "@/components/profile/profile-menu-drawer";
 import Image from "next/image";
 import React from "react";
 import imgs from "./3.jpeg";
-export default function ProfileLayout({ children }) {
+export default async function ProfileLayout({ children }) {
   return (
     // <div className="md:flex  md:items-start p-5 m-5">
     <>
