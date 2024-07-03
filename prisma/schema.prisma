@@ -1,0 +1,50 @@
+// schema.prisma
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model user {
+    id             Int       @id @default(autoincrement())
+  first_name     String
+  second_name    String
+  email          String    @unique
+  phone          String
+  password       String
+  created_at     DateTime  @default(now())
+  updated_at     DateTime  @updatedAt
+  orders   order[]
+}
+
+model product {
+  id             Int       @id @default(autoincrement())
+  name           String
+  flowers        String[]
+  price          Float
+  product_type   String
+  product_subtype String
+  flowers_type   String
+  images_url     String[]
+  created_at     DateTime   @default(now())
+  updated_at     DateTime   @updatedAt
+  orders      order[]    // Adding the opposite relation here
+}
+
+model order {
+  id             Int       @id @default(autoincrement())
+  total_price    Float
+  order_state    String
+  created_at     DateTime  @default(now())
+  updated_at     DateTime  @updatedAt
+  user       user      @relation(fields: [userId], references: [id])
+  userId     Int
+  products   product[] // This is fine now, as we added the opposite relation in `Product`
+}
+
+
+
