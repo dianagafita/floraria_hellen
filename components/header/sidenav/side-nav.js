@@ -23,14 +23,14 @@ export default function SideNav({ isSearching }) {
   return (
     <>
       <motion.div
-        className="w-full bg-transparent flex pb-3 border-b md:flex hidden flex-col"
+        className="w-full bg-transparent flex pb-3 border-b md:flex hidden flex-col pt-5"
         onMouseEnter={() => setIsSideNavHovered(true)} // Set hover true on SideNav hover
         onMouseLeave={() => setIsSideNavHovered(false)} // Set hover false on SideNav hover out
       >
-        <div className="flex items-center justify-center w-full">
+        <div className="flex items-between justify-center w-full">
           <div className="flex flex-row items-center">
             {SIDENAV_ITEMS.map((item, idx) => (
-              <div key={idx} className="lg:mx-6">
+              <div key={idx} className="lg:mx-5 md:mx-2 ">
                 <MenuItem
                   item={item}
                   setActiveSubMenu={setActiveSubMenu}
@@ -76,7 +76,7 @@ function MenuItem({ item, setActiveSubMenu, activeSubMenu }) {
   };
 
   return (
-    <div className="relative font-[200] text-[14px] mx-2 my-2">
+    <div className="relative font-[200] md:text-[12px] lg:text-[14px]  my-2">
       {item.submenu ? (
         <div
           className={`relative flex flex-row items-center w-full justify-between whitespace-nowrap ${
@@ -90,7 +90,10 @@ function MenuItem({ item, setActiveSubMenu, activeSubMenu }) {
         >
           <div className="flex flex-row space-x-4 items-center">
             {item.icon}
-            <Link href={item.path} className="text-l flex relative">
+            <Link
+              href={item.path}
+              className="text-l flex relative text-transform: uppercase"
+            >
               {item.title}
             </Link>
           </div>
@@ -98,7 +101,7 @@ function MenuItem({ item, setActiveSubMenu, activeSubMenu }) {
       ) : (
         <Link
           href={item.path}
-          className={`flex flex-row space-x-4 items-center ${
+          className={`whitespace-nowrap flex flex-row space-x-1 items-center text-transform: uppercase ${
             item.path === pathname
               ? "underline decoration-[rgb(116,10,10)] underline-offset-4 decoration-[1.4px]"
               : "link-underline link-underline-black"

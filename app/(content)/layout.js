@@ -19,7 +19,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html>
       <head>
         <link rel="icon" href="/icon.png" sizes="any" />
       </head>
@@ -33,6 +33,7 @@ export default function RootLayout({ children }) {
           </CartProvider>
         </div>
         <MobileHeader />
+        <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
       </body>
     </html>
   );

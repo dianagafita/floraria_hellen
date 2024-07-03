@@ -9,19 +9,20 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model user {
-    id             Int       @id @default(autoincrement())
-  first_name     String
+model User {
+  id        Int   @id @default(autoincrement())
+   first_name     String
   second_name    String
   email          String    @unique
   phone          String
   password       String
   created_at     DateTime  @default(now())
   updated_at     DateTime  @updatedAt
-  orders   order[]
+  orders   Order[]
+  sessions Session[]
 }
 
-model product {
+model Product {
   id             Int       @id @default(autoincrement())
   name           String
   flowers        String[]
@@ -32,19 +33,25 @@ model product {
   images_url     String[]
   created_at     DateTime   @default(now())
   updated_at     DateTime   @updatedAt
-  orders      order[]    // Adding the opposite relation here
+  orders      Order[]    // Adding the opposite relation here
 }
 
-model order {
+model Order {
   id             Int       @id @default(autoincrement())
   total_price    Float
   order_state    String
   created_at     DateTime  @default(now())
   updated_at     DateTime  @updatedAt
-  user       user      @relation(fields: [userId], references: [id])
-  userId     Int
-  products   product[] // This is fine now, as we added the opposite relation in `Product`
+  user       User      @relation(fields: [user_id], references: [id])
+  user_id     Int
+  products  Product[] // This is fine now, as we added the opposite relation in `Product`
 }
 
 
 
+model Session {
+  id        String @id
+  userId    Int    @default(autoincrement())
+  expiresAt DateTime
+  user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+}
