@@ -1,5 +1,4 @@
 import Button from "@/components/util/button";
-import { getServerSideProps } from "@/components/util/currDate";
 import Input from "@/components/util/input";
 import Title from "@/components/util/title";
 import React from "react";

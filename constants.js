@@ -165,11 +165,7 @@ export const FOOTER_MENU = [
 
 import img from "@/components/items/BUJORI.jpeg";
 import img1 from "@/components/items/CRIZANTEME.jpg";
-import img2 from "@/components/items/2.jpeg";
-import img3 from "@/components/items/3.jpeg";
-import img4 from "@/components/items/4.jpeg";
 import img5 from "@/components/items/5.jpeg";
-import img6 from "@/components/items/6.jpeg";
 import img7 from "@/components/items/HORTENSII.jpg";
 import img8 from "@/components/items/8.jpeg";
 import img9 from "@/components/items/TRANDAFIRI.jpg";

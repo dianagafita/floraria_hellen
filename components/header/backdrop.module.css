@@ -1,46 +1,3 @@
-/* .backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background-color: rgba(198, 197, 197, 0.5); 
-}
-
-@media screen and (min-width: 767px) {
-  .backdrop {
-    display: none;
-  }
-}
-
-.cartContainer {
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  top: 0;
-  right: 0;
-  width: 80%;
-  max-width: 400px;
-  height: 100vh;
-  overflow: auto;
-  scroll-behavior: smooth;
-  background-color: white;
-  z-index: 100;
-}
-
-.backdrop2 {
-  position: fixed;
-  z-index: 30;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(198, 197, 197, 0.5); 
-  display: flex;
-  justify-content: end;
-} */
 .backdrop {
   position: fixed;
   top: 0;
@@ -56,33 +13,4 @@
   .backdrop {
     display: none; /* Hide backdrop on larger screens */
   }
-}
-
-.cartContainer {
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  top: 0;
-  right: 0;
-  width: 80%;
-  max-width: 400px;
-  height: 100vh;
-  overflow-y: auto; /* Allow modal to scroll vertically if needed */
-  scroll-behavior: smooth;
-  background-color: white;
-  z-index: 100; /* Ensure modal is above backdrop */
-}
-
-.backdrop2 {
-  position: fixed;
-  z-index: 98; /* Ensure backdrop2 is below modal but above original backdrop */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(198, 197, 197, 0.5); /* Semi-transparent background */
-  display: flex;
-  justify-content: flex-end; /* Align items to the end */
-  overflow: hidden;
 }

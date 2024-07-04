@@ -1,6 +1,5 @@
-import { getProductsBySubType } from "@/api/store/products";
+import { getProductsBySubType } from "@/app/api/store/products";
 import ItemCard from "@/components/items/item-card";
-import ShopByCategory from "@/components/main-page/shopbycat/shop-by-category";
 import Categories from "@/components/util/categories";
 import { TitleByPath } from "@/components/util/getPathTitle";
 import SortItems from "@/components/util/sort-items";

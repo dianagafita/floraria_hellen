@@ -1,7 +1,5 @@
-import PageInfo from "@/components/main-page/page-info";
 import React from "react";
 import Input from "@/components/util/input";
-import Title from "@/components/util/title";
 import Button from "@/components/util/button";
 import { FeaturedImageGallery } from "@/components/pages/photoGallery";
 import img from "./IMG_6947.jpeg";
@@ -9,7 +7,7 @@ import img1 from "./IMG_6957.jpeg";
 import img2 from "./IMG_6991.jpeg";
 import img3 from "./IMG_6944.jpeg";
 import { TitleByPath } from "@/components/util/getPathTitle";
-import { getProductById } from "@/api/store/products";
+import { getProductById } from "@/app/api/store/products";
 
 const data = [img, img1, img2, img3];
 export default async function ProductPage({ params }) {

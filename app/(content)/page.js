@@ -1,24 +1,10 @@
 import EmblaCarousel from "@/components/main-page/carousel";
 import PageInfo from "@/components/main-page/page-info";
-import img1 from "@/components/items/images/1.jpg";
-import img2 from "@/components/items/images/2.jpg";
-import img3 from "@/components/items/images/3.jpg";
-import img4 from "@/components/items/images/4.jpg";
-import img5 from "@/components/items/images/5.jpg";
-import img6 from "@/components/items/images/6.jpg";
+
 import Recommended from "@/components/main-page/recommended/recommended";
 import ShopByCategory from "@/components/main-page/shopbycat/shop-by-category";
-import prisma from "@/lib/prisma";
 import { logout } from "@/actions/auth-actions";
 
-const images = [
-  { t: img1, t2: img6 },
-  { t: img2, t2: img5 },
-  { t: img3, t2: img4 },
-  { t: img4, t2: img3 },
-  { t: img5, t2: img2 },
-  { t: img6, t2: img1 },
-];
 const OPTIONS = {};
 const SLIDE_COUNT = 3;
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
@@ -46,19 +32,9 @@ export default async function Home() {
             florale care să inspire și să emoționeze.
           </span>
         </span>{" "}
-        {/* <Image
-          className="object-cover w-full h-full"
-          alt=""
-          src={i}
-          layout="fill"
-        /> */}
       </div>{" "}
       <ShopByCategory />
-      {/* <SideToSideInfo position /> */}
-      {/* <SideToSideInfo position="left" /> */}
-      {/* <MapCard /> */}
       <Recommended />
-      {/* <ItemCard images={images} /> */}
     </div>
   );
 }

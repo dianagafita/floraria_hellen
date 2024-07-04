@@ -1,4 +1,4 @@
-import { getProductsByType } from "@/api/store/products";
+import { getProductsByType } from "@/app/api/store/products";
 import ItemCard from "@/components/items/item-card";
 import Categories from "@/components/util/categories";
 import { TitleByPath } from "@/components/util/getPathTitle";

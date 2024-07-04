@@ -1,4 +1,3 @@
-import { variants_menu_item } from "@/styles/motion-variants";
 import { motion } from "framer-motion";
 const menuItemVariants = {
   open: {

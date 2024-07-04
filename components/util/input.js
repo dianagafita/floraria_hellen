@@ -106,7 +106,14 @@
 import React from "react";
 import { getCurrentDate, getDateForOffer, getNextDay } from "./currDate";
 
-export default function Input({ name, label, type, options = [], dateType }) {
+export default function Input({
+  name,
+  label,
+  type,
+  options = [],
+  dateType,
+  ...props
+}) {
   const { today, time } = getCurrentDate();
   const offerDate = getDateForOffer();
   const nextDay = getNextDay();
@@ -125,6 +132,7 @@ export default function Input({ name, label, type, options = [], dateType }) {
       </label>
       {type === "select" ? (
         <select
+          {...props}
           id={name}
           name={name}
           className="font-thin border border-black p-2 rounded-sm h-[3rem] text-[#555555]"
@@ -141,6 +149,7 @@ export default function Input({ name, label, type, options = [], dateType }) {
         </select>
       ) : type === "textarea" ? (
         <textarea
+          {...props}
           id={name}
           name={name}
           placeholder={label}
@@ -149,6 +158,7 @@ export default function Input({ name, label, type, options = [], dateType }) {
         />
       ) : (
         <input
+          {...props}
           type={type}
           min={minDate}
           placeholder={label}

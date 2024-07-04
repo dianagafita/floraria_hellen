@@ -1,13 +1,9 @@
 import Header from "@/components/header/header";
-import { Inter } from "next/font/google";
 import MobileHeader from "@/components/header/header-mobile";
 import { CartProvider } from "@/context/cart-context";
 import CartModal from "@/components/cart/cart-modal";
 import "@/app/globals.css";
 import MainFooter from "@/components/footer/main-footer";
-import { Currency } from "lucide-react";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Next.js App",
@@ -22,6 +18,11 @@ export default function RootLayout({ children }) {
     <html>
       <head>
         <link rel="icon" href="/icon.png" sizes="any" />
+        <script
+          async
+          defer
+          src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"
+        ></script>
       </head>
       <body className="relative">
         <div className="flex flex-col min-h-screen">
@@ -33,7 +34,6 @@ export default function RootLayout({ children }) {
           </CartProvider>
         </div>
         <MobileHeader />
-        <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
       </body>
     </html>
   );

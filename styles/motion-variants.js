@@ -175,3 +175,69 @@ export const variants_sub_menu_item = {
     },
   },
 };
+
+export const sidebarVariants = {
+  open: {
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 300,
+      damping: 30,
+      staggerChildren: 0.1,
+    },
+  },
+  closed: {
+    x: "-100%",
+    transition: {
+      type: "spring",
+      stiffness: 300,
+      damping: 30,
+    },
+  },
+};
+
+export const menuItemVariants = {
+  open: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 500,
+      damping: 50,
+      staggerChildren: 0.1,
+    },
+  },
+  closed: {
+    opacity: 0,
+    y: -20,
+    transition: {
+      type: "spring",
+      stiffness: 500,
+      damping: 50,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+export const variants_nested_sub_menu_item = {
+  open: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 50,
+      damping: 20,
+      staggerChildren: 0.1,
+    },
+  },
+  closed: {
+    opacity: 0,
+    y: -10,
+    transition: {
+      type: "spring",
+      stiffness: 50,
+      damping: 20,
+      staggerChildren: 0.1,
+    },
+  },
+};

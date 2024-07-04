@@ -1,17 +1,21 @@
+import { getUserById } from "@/app/api/store/user";
 import Button from "@/components/util/button";
 import { verifyAuth } from "@/lib/auth";
 import Link from "next/link";
 
-export default function ProfilePage() {
-  const response = verifyAuth();
-  const user = response.user;
+export default async function ProfilePage() {
+  const response = await verifyAuth();
+  console.log("rs", response);
+  const userdata = await getUserById(response.user.id);
 
   return (
     <>
-      {user ? (
+      {response.user ? (
         <div className="flex flex-col md:flex-row p-5 w-full">
           <div className="mb-9 md:mb-0 flex flex-col w-full p-5 mx-2 text-center">
-            <span className="font-[400] text-4xl mb-10">BUNA, DIANA</span>
+            <span className="font-[400] text-4xl mb-10 text-transform: uppercase">
+              BUNA, {userdata["second_name"]}
+            </span>
             <div className="flex border-b items-center p-2">
               <span className="mr-2">COMENZI RECENTE</span>
               <span className="mx-2 text-lg font-[200]">|</span>
@@ -27,21 +31,25 @@ export default function ProfilePage() {
               <span className="text-start mb-5">INFORMATIILE MELE</span>
               <div className="flex">
                 <span>
-                  NUME: <span> Gafita Diana</span>
+                  NUME:{" "}
+                  <span>
+                    {userdata.second_name}
+                    <span>{userdata.first_name}</span>
+                  </span>
                 </span>
               </div>
               <div className="flex">
                 <span>
-                  EMAIL: <span> gafita.diana12@gmail.com</span>
+                  EMAIL: <span> {userdata.email}</span>
                 </span>
               </div>
             </div>
           </div>
         </div>
       ) : (
-        <div className="h-[200px] text-center mt-20">
-          <span className="font-[400] text-4xl mb-10 mt-10">
-            VA RUGAM SA VA LOGATI PENTRU A
+        <div className="h-[200px] text-center my-20 flex flex-col">
+          <span className="font-[300] text-3xl mb-10 mt-10">
+            VA RUGAM SA VA LOGATI PENTRU A VEDEA DETALII
           </span>
           <Link href="/authentification">
             <Button>LOGARE</Button>

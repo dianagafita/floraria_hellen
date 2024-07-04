@@ -1,16 +1,12 @@
 import Image from "next/image";
-import img from "./IMG_3509.jpeg";
 import QuantitySelector from "./quantity-selector";
 import { useState } from "react";
-import { Trash2 } from "lucide-react";
-import { ImBin } from "react-icons/im";
 
 export default function CartCard({ imgage }) {
   const [quantity, setQuantity] = useState(1);
 
   const handleQuantityChange = (newQuantity) => {
     setQuantity(newQuantity);
-    // Update the cart with the new quantity
   };
 
   return (
@@ -20,7 +16,6 @@ export default function CartCard({ imgage }) {
       </div>
       <div className="flex w-full flex-col ml-4 ">
         <span className="text-sm font-[300] mb-1 ">BUCHET TRANDAFIRI</span>
-        {/* <Trash2 strokeWidth={1} size={18} /> */}
         <button className="xxsFont mb-4 text-start">STERGE</button>
         <div className="flex items-end "></div>{" "}
         <div className="flex w-full justify-between items-center ">

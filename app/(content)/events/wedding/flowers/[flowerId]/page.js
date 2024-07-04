@@ -1,8 +1,5 @@
-import PageInfo from "@/components/main-page/page-info";
 import React from "react";
-import Input from "@/components/util/input";
 import Title from "@/components/util/title";
-import Button from "@/components/util/button";
 import { FeaturedImageGallery } from "@/components/pages/photoGallery";
 import img from "../../flowers/1.jpeg";
 import img2 from "../../flowers/2.jpeg";
@@ -32,7 +29,6 @@ export default function FlowerPage({ params }) {
       <TitleByPath paths={paths} />
       <div className="md:flex py-4 px-10 w-full mt-10 ">
         <div className="md:w-1/2  mb-10">
-          {/* <Image src={img} alt="" className="object-contain" /> */}
           <FeaturedImageGallery images={data} />{" "}
         </div>
         <div className="flex flex-col md:ml-10 md:w-1/2  h-[460px]  justify-between ">

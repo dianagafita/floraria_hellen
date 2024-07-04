@@ -1,9 +1,8 @@
-import LanguageSwitcher from "./lang";
 import classes from "./header.module.css";
 import { Facebook, Instagram, PhoneCall } from "lucide-react";
 import Link from "next/link";
 import GoogleTranslate from "@/app/(content)/GoogleTranslate";
-import { languagesLong, languagesShort } from "@/constants";
+import { languagesLong } from "@/constants";
 
 export default function MiniHeaderSection() {
   return (

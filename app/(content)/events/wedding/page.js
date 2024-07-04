@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./a.module.css";
-import imgs from "./smoke.jpeg"; // Assuming this is your main image for the flower page
+import imgs from "./smoke.jpeg";
 import Image from "next/image";
 import { TitleByPath } from "@/components/util/getPathTitle";
 import Link from "next/link";
