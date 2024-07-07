@@ -1,9 +1,7 @@
 import EmblaCarousel from "@/components/main-page/carousel";
 import PageInfo from "@/components/main-page/page-info";
-
 import Recommended from "@/components/main-page/recommended/recommended";
 import ShopByCategory from "@/components/main-page/shopbycat/shop-by-category";
-import { logout } from "@/actions/auth-actions";
 
 const OPTIONS = {};
 const SLIDE_COUNT = 3;
@@ -16,9 +14,6 @@ export default async function Home() {
         <EmblaCarousel slides={SLIDES} options={OPTIONS} />
       </div>
       <PageInfo />
-      <form action={logout}>
-        <button>Logout</button>
-      </form>
       <div className="relative w-full md:h-[120px] h-[220px] my-10 ">
         <span className=" flex flex-col absolute top-2 mx-4 z-10 text-black  px-2 py-1 ">
           <span className="text-2xl text-center font-[300] mb-3">

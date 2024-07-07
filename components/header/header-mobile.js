@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, useCycle } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, X } from "lucide-react";
 import MobileHeaderFooter from "../footer/mobile-header-footer";
 import classes from "./backdrop.module.css";
 import MenuToggle from "./menu-toogle";
@@ -14,22 +14,24 @@ import {
   variants_nested_sub_menu_item,
 } from "@/styles/motion-variants";
 
-export default function MobileHeader() {
+export default function MobileHeader({ isOpen, toggleOpen }) {
   const pathname = usePathname();
-  const [isOpen, toggleOpen] = useCycle(false, true);
+  // const [isOpen, toggleOpen] = useCycle(false, true);
 
   return (
     <>
-      {isOpen && <div className={classes.backdrop} onClick={toggleOpen}></div>}
-      <div className=" md:hidden fixed top-[1.6rem] left-0 z-[70] p-4">
-        <MenuToggle toggle={toggleOpen} isOpen={isOpen} />
-      </div>
       <motion.nav
         initial={false}
         animate={isOpen ? "open" : "closed"}
         variants={sidebarVariants}
         className={`fixed z-[60] inset-0 w-[70%] md:hidden bg-white`}
       >
+        <X
+          className="mt-9  absolute right-4"
+          size={32}
+          strokeWidth={0.4}
+          onClick={toggleOpen}
+        />
         <motion.ul className="grid mt-10 w-full px-3 py-16 max-h-screen overflow-y-auto ">
           {SIDENAV_ITEMS.map((item, idx) => (
             <MenuItemWithSubMenu

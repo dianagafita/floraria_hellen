@@ -7,6 +7,7 @@ export default function CartCard({ imgage }) {
 
   const handleQuantityChange = (newQuantity) => {
     setQuantity(newQuantity);
+    // Update the cart with the new quantity
   };
 
   return (
@@ -16,6 +17,7 @@ export default function CartCard({ imgage }) {
       </div>
       <div className="flex w-full flex-col ml-4 ">
         <span className="text-sm font-[300] mb-1 ">BUCHET TRANDAFIRI</span>
+        {/* <Trash2 strokeWidth={1} size={18} /> */}
         <button className="xxsFont mb-4 text-start">STERGE</button>
         <div className="flex items-end "></div>{" "}
         <div className="flex w-full justify-between items-center ">

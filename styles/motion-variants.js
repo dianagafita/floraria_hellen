@@ -179,6 +179,7 @@ export const variants_sub_menu_item = {
 export const sidebarVariants = {
   open: {
     x: 0,
+    opacity: 1,
     transition: {
       type: "spring",
       stiffness: 300,
@@ -188,10 +189,35 @@ export const sidebarVariants = {
   },
   closed: {
     x: "-100%",
+    opacity: 0, // Add opacity transition here
+    transition: {
+      opacity: { duration: 0.5 }, // Specify duration for opacity transition
+      type: "spring",
+      stiffness: 500,
+      damping: 20,
+    },
+  },
+};
+
+export const cartModalVariants = {
+  open: {
+    x: "0", // The modal is fully visible at this position
+    opacity: 1,
     transition: {
       type: "spring",
       stiffness: 300,
       damping: 30,
+      staggerChildren: 0.1,
+    },
+  },
+  closed: {
+    x: "100%", // Move the modal off-screen to the right
+    opacity: 0, // Add opacity transition here
+    transition: {
+      opacity: { duration: 0.5 }, // Specify duration for opacity transition
+      type: "spring",
+      stiffness: 500,
+      damping: 20,
     },
   },
 };

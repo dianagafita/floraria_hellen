@@ -1,19 +1,22 @@
 import React from "react";
 import Button from "../util/button";
+import Link from "next/link";
 
 export default function OrderItem() {
   return (
-    <div className="border rounded flex w-full p-5 ">
-      <div className="flex flex-col w-full">
-        <span className="text-xl">Comanda nr.456789</span>
-        <span className=" text-sm text-gray-500 font-[100] mb-5">
+    <div className="border rounded-sm flex w-full p-4 flex flex-col">
+      <div className=" flex flex-col items-start w-full">
+        <span className="text-xl whitespace-nowrap">Comanda nr.456789</span>
+        <span className="text-sm  text-[rgba(0,0,0,0.5)] font-[100] mb-5">
           Plasata pe 12 Iun 2024 la 21:30
         </span>
-        <span className="">Comanda Livrata</span>
       </div>
-      <div className="flex w-full h-full justify-end self-center">
+      <div className="flex w-full h-full justify-between items-center">
+        <span className="">Comanda Livrata</span>
         <span className="mr-5 self-center">200 lei</span>
-        <Button moreStyle="px-3 py-1">Detalii</Button>
+        <Link href="/profile/orders/a">
+          <Button moreStyle=" font-[100] px-5 py-1">Detalii</Button>
+        </Link>
       </div>
     </div>
   );

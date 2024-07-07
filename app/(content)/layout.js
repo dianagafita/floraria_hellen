@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
           <CartProvider>
             <CartModal />
             <Header />
-            <main className="relative z-1  ">{children}</main>
+            <main className="relative z-1 min-h-[600px]">{children}</main>
             <MainFooter />
           </CartProvider>
         </div>

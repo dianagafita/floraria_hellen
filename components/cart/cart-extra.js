@@ -2,7 +2,7 @@ import React from "react";
 
 export default function CartExtra() {
   return (
-    <div className="flex flex-col text-sm font-[100] text-gray-500">
+    <div className="flex flex-col text-sm font-[100] text-[rgba(0,0,0,0.8)]">
       <span>
         Locatie:<span> Gura Humorului</span>
       </span>

@@ -110,7 +110,7 @@ const EmblaCarousel = (props) => {
                     height={200}
                   />
                   <div
-                    className={`absolute inset-0 flex items-center justify-center text-white text-center bg-black bg-opacity-30 text-5xl font-[100] ${
+                    className={`absolute inset-0 rounded-[10px] flex items-center justify-center text-white text-center bg-black bg-opacity-30 text-5xl font-[100] ${
                       hoveredIndex === image.id ? "opacity-0" : "opacity-100"
                     }`}
                   ></div>

@@ -121,7 +121,7 @@ export default function Input({
 
   return (
     <p
-      className={`px-5 my-2 w-full ${
+      className={`px-2 my-2 w-full ${
         type === "checkbox"
           ? "flex flex-row-reverse items-center justify-center "
           : "flex flex-col"
@@ -135,7 +135,7 @@ export default function Input({
           {...props}
           id={name}
           name={name}
-          className="font-thin border border-black p-2 rounded-sm h-[3rem] text-[#555555]"
+          className="font-thin border border-black p-2 rounded-sm h-[2.5rem] text-[#555555]"
         >
           {options
             .filter((option) =>
@@ -164,7 +164,7 @@ export default function Input({
           placeholder={label}
           className={`${
             type === "checkbox" ? "w-6 h-6 mx-3" : ""
-          } font-thin border border-black p-2 rounded-sm h-[3rem] text-[#555555] text-sm md:text-base `}
+          } font-thin border border-black p-2 rounded-sm h-[2.5rem] text-[#555555] text-sm md:text-base `}
           id={name}
           name={name}
         />

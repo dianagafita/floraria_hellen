@@ -101,7 +101,7 @@ select {
 }
 
 .embla-thumbs {
-  --thumbs-slide-spacing: 0.8rem;
+  --thumbs-slide-spacing: 0.2rem;
   --thumbs-slide-height: 0.2rem;
 
   position: absolute;
@@ -126,7 +126,7 @@ select {
 }
 
 .embla-thumbs__slide {
-  flex: 0 0 5%;
+  flex: 0 0 8%;
   min-width: 0;
 }
 

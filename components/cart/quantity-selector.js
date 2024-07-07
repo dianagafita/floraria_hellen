@@ -25,7 +25,7 @@ export default function QuantitySelector({
   };
 
   return (
-    <div className="flex items-center space-x-2 border border-gray-300 rounded-full font-[100] px-1 text-sm">
+    <div className="flex items-center space-x-2 border border-gray-300 rounded-sm font-[100] px-1 text-sm">
       <button
         onClick={handleDecrement}
         className="p-1 "
