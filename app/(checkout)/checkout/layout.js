@@ -1,11 +1,8 @@
-import Header from "@/components/header/header";
 import { Inter } from "next/font/google";
-import MobileHeader from "@/components/header/header-mobile";
 import { CartProvider } from "@/context/cart-context";
-import CartModal from "@/components/cart/cart-modal";
+
 import "@/app/globals.css";
 import MainFooter from "@/components/footer/main-footer";
-import { Currency } from "lucide-react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,10 +22,12 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <div>
+          {/* <AuthProvider> */}
           <CartProvider>
             <main>{children}</main>
             <MainFooter />
           </CartProvider>
+          {/* </AuthProvider> */}
         </div>
       </body>
     </html>

@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { useContext } from "react";
-import { CartContext } from "@/context/cart-context";
+import { useCart } from "@/context/cart-context";
 import classes from "./cart.module.css"; // Ensure you create this CSS module
 import { X } from "lucide-react";
 import CartCard from "./cart-card";
@@ -10,10 +9,11 @@ import img2 from "./IMG_3509.jpeg";
 import img from "./a.jpeg";
 import { PiBagThin } from "react-icons/pi";
 import { cartModalVariants, sidebarVariants } from "@/styles/motion-variants";
+import { useEffect } from "react";
 
 export default function CartModal() {
-  const { isCartOpen, toogleOpenCart } = useContext(CartContext);
-
+  const { cartItems, isCartOpen, toogleOpenCart, cartTotal } = useCart();
+  console.log(cartItems);
   return (
     <>
       <div
@@ -35,10 +35,18 @@ export default function CartModal() {
             </button>
           </div>
 
-          <CartCard imgage={img} />
-          <CartCard imgage={img2} />
+          {/* {cartItems.length === 0 ? (
+            <span>Cosul e gol</span>
+          ) : ( */}
+          {cartItems.map((item) => (
+            <CartCard key={item.product.id} item={item} />
+          ))}
         </div>
-        <CartSummary toogleOpenCart={toogleOpenCart} />
+        <CartSummary
+          toogleOpenCart={toogleOpenCart}
+          cartTotal={cartTotal}
+          cartItems={cartItems.length}
+        />
       </motion.div>
       {/* </div> */}
     </>

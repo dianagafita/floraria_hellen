@@ -26,9 +26,9 @@ export async function getProductsBySubType({ type, subtype }) {
 }
 
 export async function getProductById(id) {
-  const products = await prisma.product.findMany({
+  const products = await prisma.product.findUnique({
     where: {
-      id: 5,
+      id: id,
     },
   });
   return products;

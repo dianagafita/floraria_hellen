@@ -1,5 +1,6 @@
 import Image from "next/image";
-
+import imgs from "./IMG_6947.jpeg";
+import { CartProvider } from "@/context/cart-context";
 export default async function FlowerPageLayout({ children }) {
   return (
     <div className="relative w-full">
@@ -14,7 +15,6 @@ export default async function FlowerPageLayout({ children }) {
           </span>{" "}
         </div>
       </div>
-
       <div className="flex flex-col ">{children}</div>
     </div>
   );

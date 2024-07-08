@@ -6,6 +6,14 @@ const withAutoCert = autoCert({
   enabledEnv: "development",
 });
 
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    domains: [
+      "orchidrepublic.com",
+      "reminiscentblooms.com",
+      "fakestoreapi.com",
+    ],
+  },
+};
 
 export default withAutoCert(nextConfig);

@@ -3,6 +3,7 @@ import ItemCard from "@/components/items/item-card";
 import Categories from "@/components/util/categories";
 import { TitleByPath } from "@/components/util/getPathTitle";
 import SortItems from "@/components/util/sort-items";
+// import { CartProvider, useCart } from "@/context/cart-context";
 const paths = [
   {
     href: "/flower-bouquets",

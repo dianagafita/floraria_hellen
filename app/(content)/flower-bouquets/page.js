@@ -16,7 +16,8 @@ export default async function FlowerBouquetsPage() {
   const flowerBouquets = await getProductsByType({
     type: "buchet",
   });
-  console.log(flowerBouquets);
+  // console.log(flowerBouquets);
+
   return (
     <div className="flex flex-col">
       <TitleByPath paths={paths} />
@@ -24,6 +25,7 @@ export default async function FlowerBouquetsPage() {
       <Categories />
       <SortItems />
       <ItemCard images={flowerBouquets} />
+      {/* <ProductList products={products} /> */}
     </div>
   );
 }

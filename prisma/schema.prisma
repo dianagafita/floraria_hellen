@@ -1,5 +1,3 @@
-// schema.prisma
-
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -10,48 +8,56 @@ generator client {
 }
 
 model User {
-  id        Int   @id @default(autoincrement())
-  first_name     String
-  second_name    String
-  email          String    @unique
-  phone          String
-  password       String
-  created_at     DateTime  @default(now())
-  updated_at     DateTime  @updatedAt
-  orders   Order[]
-  sessions Session[]
+  id          Int      @id @default(autoincrement())
+  first_name  String
+  second_name String
+  email       String   @unique
+  phone       String
+  password    String
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  orders      Order[]
+  sessions    Session[]
+  cart        Cart[]
+}
+
+model Cart {
+  id         String   @id @default(cuid())
+  userId     Int
+  user       User     @relation(fields: [userId], references: [id])
+  items      Json     // Assuming items is a JSON array containing cart items
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
 model Product {
-  id             Int       @id @default(autoincrement())
-  name           String
-  flowers        String[]
-  price          Float
-  product_type   String
+  id              Int       @id @default(autoincrement())
+  name            String
+  flowers         String[]
+  price           Float
+  product_type    String
   product_subtype String
-  flowers_type   String
-  images_url     String[]
-  created_at     DateTime   @default(now())
-  updated_at     DateTime   @updatedAt
-  orders      Order[]    // Adding the opposite relation here
+  flowers_type    String
+  images_url      String[]
+  created_at      DateTime  @default(now())
+  updated_at      DateTime  @updatedAt
+  orders          Order[]   // Adding the opposite relation here
 }
 
 model Order {
-  id             Int       @id @default(autoincrement())
-  total_price    Float
-  order_state    String
-  created_at     DateTime  @default(now())
-  updated_at     DateTime  @updatedAt
-  user       User      @relation(fields: [user_id], references: [id])
+  id          Int       @id @default(autoincrement())
+  total_price Float
+  order_state String
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  user        User      @relation(fields: [user_id], references: [id])
   user_id     Int
-  products  Product[] // This is fine now, as we added the opposite relation in `Product`
+  products    Product[] // This is fine now, as we added the opposite relation in `Product`
 }
 
-
-
 model Session {
-  id        String @id
-  userId    Int    @default(autoincrement())
+  id        String   @id
+  userId    Int
   expiresAt DateTime
-  user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

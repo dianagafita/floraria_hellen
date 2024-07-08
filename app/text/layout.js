@@ -26,17 +26,12 @@ export default function RootLayout({ children }) {
         ></script>
       </head>
       <body className="relative">
-        <div className="flex flex-col min-h-screen">
-          {/* <AuthProvider> */}
-          <CartProvider>
-            <CartModal />
-            <Header />{" "}
-            <main className="relative z-1 min-h-[600px]">{children}</main>
-          </CartProvider>
-          <MainFooter />
-          {/* </AuthProvider> */}
-        </div>
-        <MobileHeader />
+        <CartProvider>
+          <CartModal />
+
+          <Header />
+          <main className="relative z-1 min-h-[600px]">{children}</main>
+        </CartProvider>
       </body>
     </html>
   );

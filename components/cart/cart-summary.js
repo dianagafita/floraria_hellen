@@ -1,16 +1,16 @@
 import Link from "next/link";
 import Button from "../util/button";
 
-export default function CartSummary({ toogleOpenCart }) {
+export default function CartSummary({ toogleOpenCart, cartTotal, cartItems }) {
   return (
     <div className="flex flex-col p-4  shadow-top mb-2">
       <div className="flex justify-between mb-1">
         <span className="font-[300] text-[11px]">SUMAR COS</span>
-        <span className=" font-[300] text-[11px]">1 articol</span>
+        <span className=" font-[300] text-[11px]">{cartItems} articol</span>
       </div>
       <div className="flex justify-between text-sm">
         <span>SUBTOTAL:</span>
-        <span className="mb-4">100,00 lei</span>
+        <span className="mb-4">{cartTotal} lei</span>
       </div>
       <Link
         href="/checkout"
