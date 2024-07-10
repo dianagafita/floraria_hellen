@@ -28,7 +28,7 @@
 import { TitleByPath } from "@/components/util/getPathTitle";
 
 import { getProducts } from "@/lib/gggg";
-import { ProductList } from "../(content)/flower-bouquets/roses/page";
+import { ProductList } from "../(content)/flower-bouquets/[flowerSubType]/page";
 
 const paths = [
   {

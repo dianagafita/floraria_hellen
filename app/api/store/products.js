@@ -33,3 +33,14 @@ export async function getProductById(id) {
   });
   return products;
 }
+
+export async function getSearchedProducts(searchParam) {
+  const products = await prisma.product.findUnique({
+    where: {
+      title: {
+        contains: searchParam,
+      },
+    },
+  });
+  return products;
+}

@@ -40,12 +40,13 @@ export default function Header() {
               <MenuToggle toggle={toggleOpen} isOpen={isOpen} />
             </span>
             <span
+              onClick={openSearchMobile}
               className="hidden md:flex cursor-pointer items-center"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
+              // onMouseEnter={() => setIsHovered(true)}
+              // onMouseLeave={() => setIsHovered(false)}
             >
               <Search strokeWidth={0.7} size={27} />
-              <Searchbar isVisible={isHovering} />
+              {/* <Searchbar isVisible={isHovering} /> */}
             </span>{" "}
             <Link href="/">
               <Image src={logo} alt="icon" priority />
@@ -76,9 +77,10 @@ export default function Header() {
             </div>
           </div>
         </div>
-        <SideNav isSearching={isSearching} />
+        <SideNav />
       </div>
       <MobileHeader isOpen={isOpen} toggleOpen={toggleOpen} />
+      <Searchbar isVisible={isSearching} />
     </>
   );
 }

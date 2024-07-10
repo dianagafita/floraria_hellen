@@ -6,7 +6,9 @@ export default function CartSummary({ toogleOpenCart, cartTotal, cartItems }) {
     <div className="flex flex-col p-4  shadow-top mb-2">
       <div className="flex justify-between mb-1">
         <span className="font-[300] text-[11px]">SUMAR COS</span>
-        <span className=" font-[300] text-[11px]">{cartItems} articol</span>
+        <span className=" font-[300] text-[11px]">
+          {cartItems} {cartItems === 1 ? "articol" : "articole"}
+        </span>
       </div>
       <div className="flex justify-between text-sm">
         <span>SUBTOTAL:</span>

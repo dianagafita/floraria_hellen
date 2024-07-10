@@ -3,13 +3,23 @@ import React from "react";
 import Link from "next/link";
 import { IoMdHeart } from "react-icons/io";
 
-export default function ItemCard({ images }) {
+export default function ItemCard({ images, moreStyle }) {
   return (
-    <ul className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4  m-5 gap-2 justify-center ">
+    <ul
+      className={`${
+        moreStyle === "searchItem"
+          ? "flex"
+          : "gap-2 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4"
+      }   m-5  justify-center `}
+    >
       {images.map((img) => (
         <li
           key={img.id}
-          className=" flex flex-col  bg-white  w-[44vw] h-[60vw] md:w-[23vw] md:h-[30vw]   mb-5"
+          className={` flex flex-col  bg-white ${
+            moreStyle === "searchItem"
+              ? "w-[20vw] h-[30vw] m-5 md:w-[15vw] md:h-[20vw]"
+              : "w-[44vw] h-[60vw] md:w-[23vw] md:h-[30vw]"
+          }    mb-5`}
         >
           <div className="relative w-full h-full">
             <Link href={`/flower-bouquets/roses/${img.id}`}>

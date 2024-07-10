@@ -43,7 +43,7 @@ export default function SideNav({ isSearching }) {
         transition={{ type: "spring", stiffness: 1000, damping: 100 }}
         className="overflow-hidden w-full md:hidden flex flex-col"
       >
-        <MobileSearch />
+        {/* <MobileSearch /> */}
       </motion.div>
       {activeSubMenu && (
         <FullWidthSubMenu

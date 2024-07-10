@@ -1,11 +1,10 @@
 import Image from "next/image";
-import imgs from "./IMG_6947.jpeg";
-import { CartProvider } from "@/context/cart-context";
-export default async function FlowerPageLayout({ children }) {
+
+export default async function FlowerPageLayout({ mainImage }) {
   return (
     <div className="relative w-full">
       <div className="relative h-[335px] w-full">
-        <Image src={imgs} alt="" layout="fill" objectFit="cover" />
+        <Image src={mainImage} alt="" layout="fill" objectFit="cover" />
         <div className="absolute inset-0 flex items-center justify-end text-black text-center bg-black bg-opacity-50 px-5">
           <span className="tracking-widest  bg-white  py-10 px-10 md:px-20 md:mr-20 flex flex-col  text-sm md:text-2xl">
             BUCHETE DE FLORI{" "}
@@ -15,7 +14,6 @@ export default async function FlowerPageLayout({ children }) {
           </span>{" "}
         </div>
       </div>
-      <div className="flex flex-col ">{children}</div>
     </div>
   );
 }

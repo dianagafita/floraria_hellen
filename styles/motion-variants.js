@@ -205,8 +205,8 @@ export const cartModalVariants = {
     opacity: 1,
     transition: {
       type: "spring",
-      stiffness: 300,
-      damping: 30,
+      stiffness: 500,
+      damping: 50,
       staggerChildren: 0.1,
     },
   },
@@ -214,10 +214,10 @@ export const cartModalVariants = {
     x: "100%", // Move the modal off-screen to the right
     opacity: 0, // Add opacity transition here
     transition: {
-      opacity: { duration: 0.5 }, // Specify duration for opacity transition
+      opacity: { duration: 0.01 }, // Specify duration for opacity transition
       type: "spring",
       stiffness: 500,
-      damping: 20,
+      damping: 40,
     },
   },
 };
