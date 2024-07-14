@@ -25,7 +25,7 @@ export default function MobileHeaderFooter({ toggleOpen }) {
         <div className="flex  items-center  ">
           <User strokeWidth={0.9} size={27} />
           <Link
-            href={`${verify.user ? "/profile" : "/profile/authentification"}`}
+            href={`${verify.user ? "/profile" : "/authentification"}`}
             className="ml-2 font-[200]"
             onClick={toggleOpen}
           >

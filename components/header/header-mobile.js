@@ -28,8 +28,8 @@ export default function MobileHeader({ isOpen, toggleOpen }) {
       >
         <X
           className="mt-9  absolute right-4"
-          size={32}
-          strokeWidth={0.4}
+          size={30}
+          strokeWidth={0.3}
           onClick={toggleOpen}
         />
         <motion.ul className="grid mt-10 w-full px-3 py-16 max-h-screen overflow-y-auto ">

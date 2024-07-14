@@ -6,19 +6,20 @@ import Input from "@/components/util/input";
 import { auth } from "@/actions/auth-actions";
 
 export default function AuthForm({ mode }) {
-  const [formState, formAction] = useFormState(auth.bind(null, mode), {}); // Ensure `auth` and `signup` functions are properly imported and used
-
+  const [formState, formAction] = useFormState(auth.bind(null, mode), {});
+  console.log(formState);
+  console.log(mode);
   return (
-    <div className="flex flex-col pt-10  mx-20 my-10 items-center  bg-white border  shadow-lg">
-      <span className="text-3xl font-[200]">
-        {mode === "login" ? "LOGARE" : "Creaza cont"}
+    <div className="flex flex-col pt-10  mx-5 md:mx-20 my-2 items-center  bg-white   shaow-lg">
+      <span className="text-2xl font-[200]">
+        {mode === "login" ? "LOGARE" : "CREEAZA CONT"}
       </span>
       <form
         className="flex flex-col justify-center items-center w-full "
-        onSubmit={formAction}
+        action={formAction}
       >
         {mode === "login" && (
-          <div className="grid grid-cols-2 w-[80%] items-end m-[35px]">
+          <div className="grid grid-cols-2 w-full px-5 md:px-20 items-end m-[35px]">
             <Input name="email" label="E-mail" />
             <Input name="password" label="Parola" type="password" />
           </div>

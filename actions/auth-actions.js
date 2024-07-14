@@ -10,7 +10,7 @@ export async function signup(prevState, formData) {
   const password = formData.get("password");
   const firstName = formData.get("firstName");
   const secondName = formData.get("secondName");
-  const phoneNumber = formData.get("phone");
+  const phone = formData.get("phone");
 
   let errors = {};
   if (!email.includes("@")) {
@@ -31,7 +31,7 @@ export async function signup(prevState, formData) {
       hashedPassword,
       firstName,
       secondName,
-      phoneNumber
+      phone
     );
     console.log("BBBBBBBBBBBBBBBBBBBBB", userId);
     await createAuthSession(userId);
@@ -71,6 +71,7 @@ export async function login(prevState, formData) {
 }
 
 export async function auth(mode, prevState, formData) {
+  console.log("AAAA");
   if (mode === "login") {
     return login(prevState, formData);
   }

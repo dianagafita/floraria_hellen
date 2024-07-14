@@ -1,14 +1,14 @@
-import { verifyAuth } from "@/lib/auth";
-import { createContext } from "react";
+// import { verifyAuth } from "@/lib/auth";
+// import { createContext } from "react";
 
-export const AuthContext = createContext();
+// export const AuthContext = createContext();
 
-export function AuthProvider({ children }) {
-  const response = verifyAuth();
+// export function AuthProvider({ children }) {
+//   const response = verifyAuth();
 
-  return (
-    <AuthProvider.Provider value={{ response }}>
-      {children}
-    </AuthProvider.Provider>
-  );
-}
+//   return (
+//     <AuthProvider.Provider value={{ response }}>
+//       {children}
+//     </AuthProvider.Provider>
+//   );
+// }

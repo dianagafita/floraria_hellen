@@ -24,12 +24,13 @@ export default function CheckoutForm({
   handleCalculateDistance,
   isCalculating,
   shippingFee,
+  cartTotal,
 }) {
-  const amount = 49.99;
+  const amount = cartTotal + shippingFee;
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full h-[600px] overflow-auto">
       <form className="w-full">
-        <div className="h-full md:h-[700px] w-full">
+        <div className="h-full w-full ">
           <div className="flex flex-col  bg-white drop-shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-sm  p-10 my-10 mx-5">
             <h2 className="text-lg font-[600]">
               <span className="border border-[rgb(155,47,14)] rounded-full px-2 py-1.5">

@@ -1,5 +1,4 @@
 import { Inter } from "next/font/google";
-import { CartProvider } from "@/context/cart-context";
 
 import "@/app/globals.css";
 import MainFooter from "@/components/footer/main-footer";
@@ -23,10 +22,8 @@ export default function RootLayout({ children }) {
       <body>
         <div>
           {/* <AuthProvider> */}
-          <CartProvider>
-            <main>{children}</main>
-            <MainFooter />
-          </CartProvider>
+          <main>{children}</main>
+          <MainFooter />
           {/* </AuthProvider> */}
         </div>
       </body>

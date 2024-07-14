@@ -2,14 +2,14 @@
   display: grid;
   grid-template-areas: "search img sec";
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 3rem;
+  grid-template-rows: 2.5rem;
   align-items: center;
   align-content: center;
   padding: 1rem;
   margin-top: 1.5rem;
   position: sticky;
-  top: 4rem;
-  padding-bottom: 2.5rem;
+  top: 2rem;
+  padding-bottom: 1.5rem;
 }
 
 .mini_header {
@@ -18,7 +18,7 @@
   display: flex;
   justify-content: end;
   align-items: center;
-  padding: 0.1rem 1.5rem;
+  padding: 0.1rem 1.2rem;
 }
 
 .firstsearchIcon {
@@ -78,6 +78,7 @@
 @media screen and (max-width: 767px) {
   .main-header-section {
     grid-template-rows: 2rem;
+    padding-bottom: 2.5rem;
   }
 
   .space {

@@ -26,7 +26,7 @@ export default function SideNav({ isSearching }) {
         <div className="flex items-between justify-center w-full">
           <div className="flex flex-row items-center">
             {SIDENAV_ITEMS.map((item, idx) => (
-              <div key={idx} className="lg:mx-5 md:mx-2 ">
+              <div key={idx} className="lg:mx-4 md:mx-2 ">
                 <MenuItem
                   item={item}
                   setActiveSubMenu={setActiveSubMenu}
@@ -72,7 +72,7 @@ function MenuItem({ item, setActiveSubMenu, activeSubMenu }) {
   };
 
   return (
-    <div className="relative font-[200] md:text-[12px] lg:text-[14px]  my-2">
+    <div className="relative font-[200] md:text-[11.5px] lg:text-[14px]  my-2">
       {item.submenu ? (
         <div
           className={`relative flex flex-row items-center w-full justify-between whitespace-nowrap ${
@@ -145,7 +145,7 @@ function SubMenu({ subItem, onClose }) {
 
   return (
     <div className="hidden md:flex items-center ">
-      <div className="text-center mb-2 mx-8">
+      <div className="text-center mb-2 mx-10">
         <Link
           href={subItem.path}
           className={`text-[14px] font-[300] ${
@@ -164,7 +164,7 @@ function SubMenu({ subItem, onClose }) {
             <Link
               key={index}
               href={menuItem.path}
-              className={` text-sm font-[100] mx-5   my-1  text-[#404040] hover:text-[#202020]${
+              className={` text-sm font-[100] mx-4   my-1  text-[#404040] hover:text-[#202020]${
                 menuItem.path === pathname
                   ? "font-semibold underline decoration-[rgb(116,10,10)] underline-offset-4 decoration-[1.5px]"
                   : ""

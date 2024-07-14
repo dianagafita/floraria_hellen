@@ -6,9 +6,10 @@ export const SIDENAV_ITEMS = [
 
   {
     title: "BUCHETE FLORI",
-    path: "/flower-bouquets",
+    path: "/buchete",
     submenu: true,
     subMenuItems: [
+      { title: "Buchet de flori uscate", path: "/flower-bouquets/roses" },
       { title: "Buchet de trandafiri", path: "/flower-bouquets/roses" },
       { title: "Buchet de lalele", path: "/flower-bouquets/tulips" },
       { title: "Buchet de hortensii", path: "/flower-bouquets/hortensia" },
@@ -17,12 +18,17 @@ export const SIDENAV_ITEMS = [
   },
   {
     title: "ARANJAMENTE FLORALE",
-    path: "/floral-arrangements",
+    path: "/aranjamente",
     submenu: true,
     subMenuItems: [
+      { title: "Cutie cu flori uscate", path: "/floral-arrangements/roses" },
       { title: "Cutie cu trandafiri", path: "/floral-arrangements/roses" },
       { title: "Cutie cu lisianthus", path: "/floral-arrangements/lisianthus" },
     ],
+  },
+  {
+    title: "FLORI CRIOGENATE",
+    path: "/plants",
   },
   {
     title: "OCAZII SPECIALE",
@@ -103,10 +109,6 @@ export const SIDENAV_ITEMS = [
       { title: "Graphic Design", path: "/projects/graphic-design" },
     ],
   },
-  {
-    title: "Despre noi",
-    path: "/about",
-  },
 ];
 
 export const languagesLong = [
@@ -133,7 +135,7 @@ export const PROFILE_MENU = [
   },
   // {
   //   href: "/profile/adresses",
-  //   title: "Adrese ",
+  //   title: "DECONECTARE ",
   // },
   // {
   //   href: "/profile/cards",
@@ -158,9 +160,9 @@ export const FOOTER_MENU = [
   { title: "Contact", href: "contact" },
   { title: "Livrare", href: "delivery" },
 
-  { title: "Despre noi", href: "about" },
-  { title: "Termeni si conditii", href: "terms-conditions" },
-  { title: "Politica de confidentialitate", href: "politics" },
+  { title: "Despre noi", href: "/about" },
+  { title: "Termeni si conditii", href: "/terms-conditions" },
+  { title: "Politica de confidentialitate", href: "/politics" },
 ];
 
 import img from "@/components/items/BUJORI.jpeg";

@@ -68,7 +68,7 @@ const MenuToggle = ({ toggle, isOpen }) => (
           open: { d: "M 3 16.5 L 17 2.5" },
         }}
         initial={isOpen ? "open" : "closed"}
-        animate={isOpen ? "open" : "closed"}
+        // animate={isOpen ? "open" : "closed"}
         strokeWidth="0.6"
       />
       <Path
@@ -78,7 +78,7 @@ const MenuToggle = ({ toggle, isOpen }) => (
           open: { opacity: 0 },
         }}
         initial={isOpen ? "open" : "closed"}
-        animate={isOpen ? "open" : "closed"}
+        // animate={isOpen ? "open" : "closed"}
         transition={{ duration: 0.1 }}
         strokeWidth="0.6"
       />
@@ -88,7 +88,7 @@ const MenuToggle = ({ toggle, isOpen }) => (
           open: { d: "M 3 2.5 L 17 16.346" },
         }}
         initial={isOpen ? "open" : "closed"}
-        animate={isOpen ? "open" : "closed"}
+        // animate={isOpen ? "open" : "closed"}
         strokeWidth="0.6"
       />
     </svg>

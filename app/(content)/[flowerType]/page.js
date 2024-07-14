@@ -4,9 +4,9 @@ import Categories from "@/components/util/categories";
 import FlowerPageLayout from "@/components/util/customFlowersLayout";
 import { TitleByPath } from "@/components/util/getPathTitle";
 import SortItems from "@/components/util/sort-items";
-import img from "./IMG_6947.jpeg";
-import { notFound, redirect } from "next/navigation";
-import NotFoundLayout from "../not-found-layout";
+import img from "./flowers.jpeg";
+import { redirect } from "next/navigation";
+import Loading from "@/lib/loading";
 
 const paths = [
   {
@@ -15,7 +15,7 @@ const paths = [
     style: "text-black-300/75",
   },
 ];
-const validFlowerTypes = ["buchet", "aranjament", "lilies"]; // Add all valid flower types here
+const validFlowerTypes = ["buchete", "aranjamente", "lilies"]; // Add all valid flower types here
 
 export default async function FlowerBouquetsPage({ params }) {
   const { flowerType } = params;
@@ -34,7 +34,7 @@ export default async function FlowerBouquetsPage({ params }) {
 
       <Categories />
       <SortItems />
-      <ItemCard images={flowerBouquets} />
+      {!flowerBouquets ? <Loading /> : <ItemCard images={flowerBouquets} />}
       {/* <ProductList products={products} /> */}
     </div>
   );

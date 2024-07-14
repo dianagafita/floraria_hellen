@@ -129,6 +129,11 @@ select {
   flex: 0 0 8%;
   min-width: 0;
 }
+@media screen and (min-width: 767px) {
+  .embla-thumbs__slide {
+    flex: 0 0 4%;
+  }
+}
 
 .embla-thumbs__slide__number {
   border-radius: 3px;

@@ -5,8 +5,11 @@ import { verifyAuth } from "@/lib/auth";
 import Link from "next/link";
 
 export default async function ProfilePage() {
+  let userdata;
   const response = await verifyAuth();
-  const userdata = await getUserById(response.user.id);
+  if (response.user) {
+    userdata = await getUserById(response.user.id);
+  }
 
   return (
     <>

@@ -36,7 +36,7 @@ export default function Header() {
             {isOpen && (
               <div className={classes2.backdrop} onClick={toggleOpen}></div>
             )}
-            <span className="md:hidden">
+            <span className=" md:hidden">
               <MenuToggle toggle={toggleOpen} isOpen={isOpen} />
             </span>
             <span
@@ -64,10 +64,13 @@ export default function Header() {
                   <User strokeWidth={0.9} size={27} />
                 </Link>
               </span>
-              <div className="flex my-[0.7rem]" onClick={toogleOpenCart}>
+              <div
+                className="flex relative top-[0.5rem]  md:top-[0.7rem] cursor-pointer"
+                onClick={toogleOpenCart}
+              >
                 <PiBagThin size={27} className=" " />
                 {cartCount > 0 ? (
-                  <h className="absolute top-7 right-2 bg-[rgb(116,10,10)] text-white rounded-full px-[5.5px] text-[10px] font-[100]">
+                  <h className="absolute left-4 bg-[rgb(116,10,10)] text-white rounded-full px-[5.5px] text-[10px] font-[100]">
                     {cartCount}
                   </h>
                 ) : (
@@ -80,7 +83,7 @@ export default function Header() {
         <SideNav />
       </div>
       <MobileHeader isOpen={isOpen} toggleOpen={toggleOpen} />
-      <Searchbar isVisible={isSearching} />
+      <Searchbar isVisible={isSearching} openSearch={openSearchMobile} />
     </>
   );
 }

@@ -4,6 +4,7 @@ import Categories from "@/components/util/categories";
 import FlowerPageLayout from "@/components/util/customFlowersLayout";
 import { TitleByPath } from "@/components/util/getPathTitle";
 import SortItems from "@/components/util/sort-items";
+import Loading from "@/lib/loading";
 // import { CartProvider, useCart } from "@/context/cart-context";
 const paths = [
   {
@@ -22,9 +23,9 @@ const validFlowerTypes = ["trandafiri", "tulips", "lilies"]; // Add all valid fl
 export default async function RosesBouquetsPage({ params }) {
   const { flowerSubType, flowerType } = params;
 
-  if (!validFlowerTypes.includes(flowerSubType)) {
-    redirect("/");
-  }
+  // if (!validFlowerTypes.includes(flowerSubType)) {
+  //   redirect("/");
+  // }
 
   const flowerBouquets = await getProductsBySubType({
     type: `${flowerType}`,
@@ -40,6 +41,8 @@ export default async function RosesBouquetsPage({ params }) {
 
       <Categories />
       <SortItems />
+      {!flowerBouquets ? <Loading /> : <ItemCard images={flowerBouquets} />}
+
       <ItemCard images={flowerBouquets} />
     </div>
   );

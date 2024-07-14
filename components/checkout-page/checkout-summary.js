@@ -1,12 +1,16 @@
+"use client";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import React from "react";
 import { motion } from "framer-motion";
 import OrderSummary from "../orders/orderSummary";
+import { useCart } from "@/context/cart-context";
 
 export default function CheckoutSummary({
   toggleOrderSummary,
   isOrderSummaryOpen,
   shippingFee,
+  cartItems,
+  cartTotal,
 }) {
   return (
     <div className="lg:hidden w-full shadow-lg">
@@ -34,7 +38,11 @@ export default function CheckoutSummary({
           className="overflow-hidden"
         >
           <div className="px-2 m-6">
-            <OrderSummary shippingFee={shippingFee} />
+            <OrderSummary
+              shippingFee={shippingFee}
+              cartItems={cartItems}
+              cartTotal={cartTotal}
+            />
           </div>
         </motion.div>
       </div>

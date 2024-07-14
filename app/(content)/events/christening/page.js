@@ -1,6 +1,6 @@
 import { TitleByPath } from "@/components/util/getPathTitle";
 import classes from "./a.module.css";
-import imgs from "./2.jpeg";
+import imgs from "./3.jpeg";
 
 import Image from "next/image";
 import Link from "next/link";

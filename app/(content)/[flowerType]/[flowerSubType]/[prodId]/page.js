@@ -494,6 +494,7 @@ import { FeaturedImageGallery } from "@/components/pages/photoGallery";
 import { TitleByPath } from "@/components/util/getPathTitle";
 import { useCart } from "@/context/cart-context";
 import Button from "@/components/util/button";
+import Loading from "@/lib/loading";
 
 export default function ProductPage({ params }) {
   const { addToCart } = useCart();
@@ -575,7 +576,9 @@ export default function ProductPage({ params }) {
       style: "text-black-300/75",
     },
   ];
-
+  if (!flowers) {
+    return <Loading />;
+  }
   return (
     <div className="flex flex-col">
       <TitleByPath paths={paths} />
