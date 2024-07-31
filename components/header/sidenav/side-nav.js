@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SIDENAV_ITEMS } from "@/constants";
 import { motion } from "framer-motion";
-import MobileSearch from "../searchbar/mobile-search";
 
 export default function SideNav({ isSearching }) {
   const [activeSubMenu, setActiveSubMenu] = useState(null);
-  const [isSideNavHovered, setIsSideNavHovered] = useState(false); // State to track SideNav hover
-  const [isSubMenuHovered, setIsSubMenuHovered] = useState(false); // State to track FullWidthSubMenu hover
+  const [isSideNavHovered, setIsSideNavHovered] = useState(false);
+  const [isSubMenuHovered, setIsSubMenuHovered] = useState(false);
+  const [submenuPosition, setSubmenuPosition] = useState({ top: 0, left: 0 });
 
   useEffect(() => {
     if (!isSideNavHovered && !isSubMenuHovered) {
@@ -16,73 +16,89 @@ export default function SideNav({ isSearching }) {
     }
   }, [isSideNavHovered, isSubMenuHovered]);
 
+  const updateSubmenuPosition = (rect) => {
+    setSubmenuPosition({ top: rect.bottom, left: rect.left });
+  };
+
   return (
     <>
-      <motion.div
-        className="w-full bg-transparent flex pb-3 border-b md:flex hidden flex-col pt-5"
-        onMouseEnter={() => setIsSideNavHovered(true)} // Set hover true on SideNav hover
-        onMouseLeave={() => setIsSideNavHovered(false)} // Set hover false on SideNav hover out
+      <div
+        className="w-full bg-transparent flex pb-3 borde-b md:flex hidden flex-col pt-5"
+        onMouseEnter={() => setIsSideNavHovered(true)}
+        onMouseLeave={() => setIsSideNavHovered(false)}
       >
         <div className="flex items-between justify-center w-full">
           <div className="flex flex-row items-center">
             {SIDENAV_ITEMS.map((item, idx) => (
-              <div key={idx} className="lg:mx-4 md:mx-2 ">
+              <div key={idx} className="lg:mx-3 md:mx-2">
                 <MenuItem
                   item={item}
                   setActiveSubMenu={setActiveSubMenu}
                   activeSubMenu={activeSubMenu}
+                  updateSubmenuPosition={updateSubmenuPosition}
                 />
               </div>
             ))}
           </div>
         </div>
-      </motion.div>
+      </div>
       <motion.div
         initial={{ height: 0 }}
         animate={{ height: isSearching ? "auto" : 0 }}
-        transition={{ type: "spring", stiffness: 1000, damping: 100 }}
+        transition={{ type: "spring", stiffness: 500, damping: 100 }}
         className="overflow-hidden w-full md:hidden flex flex-col"
       >
         {/* <MobileSearch /> */}
       </motion.div>
       {activeSubMenu && (
         <FullWidthSubMenu
+          activeSubMenu={activeSubMenu}
           subMenuItems={activeSubMenu.subMenuItems}
           onClose={() => setActiveSubMenu(null)}
-          onMouseEnter={() => setIsSubMenuHovered(true)} // Set hover true on FullWidthSubMenu hover
-          onMouseLeave={() => setIsSubMenuHovered(false)} // Set hover false on FullWidthSubMenu hover out
+          onMouseEnter={() => setIsSubMenuHovered(true)}
+          onMouseLeave={() => setIsSubMenuHovered(false)}
+          submenuPosition={submenuPosition}
         />
       )}
     </>
   );
 }
 
-function MenuItem({ item, setActiveSubMenu, activeSubMenu }) {
-  const [isHovered, setIsHovered] = useState(false);
-
+function MenuItem({
+  item,
+  setActiveSubMenu,
+  activeSubMenu,
+  updateSubmenuPosition,
+}) {
+  const itemRef = useRef(null);
   const pathname = usePathname();
 
   const handleMouseEnter = () => {
-    setActiveSubMenu(item);
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
+    if (item.submenu) {
+      setActiveSubMenu(item);
+      if (itemRef.current) {
+        const rect = itemRef.current.getBoundingClientRect();
+        updateSubmenuPosition(rect);
+      }
+    } else {
+      setActiveSubMenu(null);
+    }
   };
 
   return (
-    <div className="relative font-[200] md:text-[11.5px] lg:text-[14px]  my-2">
+    <div
+      ref={itemRef}
+      className="relative font-[200] md:text-[11.5px] lg:text-[14px] my-2"
+      onMouseEnter={handleMouseEnter}
+    >
       {item.submenu ? (
         <div
-          className={`relative flex flex-row items-center w-full justify-between whitespace-nowrap ${
+          className={`relative link-underline flex flex-row items-center w-full justify-between whitespace-nowrap ${
             pathname === item.path
-              ? "underline decoration-[rgb(116,10,10)] underline-offset-4 decoration-[1.4px]"
-              : "link-underline link-underline-black"
+              ? "underline decoration-[rgb(160,21,21)] underline-offset-4 decoration-[1.5px]"
+              : " link-underline-black"
           }`}
           style={{ overflow: "hidden" }}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
         >
           <div className="flex flex-row space-x-4 items-center">
             {item.icon}
@@ -99,12 +115,12 @@ function MenuItem({ item, setActiveSubMenu, activeSubMenu }) {
           href={item.path}
           className={`whitespace-nowrap flex flex-row space-x-1 items-center text-transform: uppercase ${
             item.path === pathname
-              ? "underline decoration-[rgb(116,10,10)] underline-offset-4 decoration-[1.4px]"
+              ? "font-800 underline decoration-[rgb(16,10,10)] underline-offset-4 decoration-[1.5px]"
               : "link-underline link-underline-black"
           }`}
         >
           {item.icon}
-          <span className="text-l flex">{item.title}</span>
+          <span className="flex">{item.title}</span>
         </Link>
       )}
     </div>
@@ -114,24 +130,41 @@ function MenuItem({ item, setActiveSubMenu, activeSubMenu }) {
 export function FullWidthSubMenu({
   subMenuItems,
   onClose,
+  activeSubMenu,
   onMouseEnter,
   onMouseLeave,
+  submenuPosition,
 }) {
   return (
     <motion.div
-      initial={{ y: "-10%" }} // start offscreen at the top
-      animate={{ y: "0%" }} // slide down to its final position
-      exit={{ y: "10%" }} // slide back up when exiting
+      initial={{ y: "0%" }}
+      animate={{ y: "5%" }}
+      exit={{ y: "5%" }}
       transition={{ type: "spring", stiffness: 500, damping: 50 }}
-      className="absolute top-full left-0 w-full bg-white z-50 p-2 overflow-y-auto shadow-lg"
-      onMouseEnter={onMouseEnter} // Propagate hover events to parent component
-      onMouseLeave={onMouseLeave} // Propagate hover events to parent component
+      className={`absolute bg-white z-50 shadow-lg ${
+        activeSubMenu.title === "EVENIMENTE" ? "w-screen left-0" : "w-fit"
+      }`}
+      style={
+        activeSubMenu.title === "EVENIMENTE"
+          ? { top: submenuPosition.top }
+          : { left: submenuPosition.left - 15, top: submenuPosition.top }
+      }
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
-      <div className="flex justify-center">
-        {subMenuItems?.map((subItem, idx) => (
-          <SubMenu key={idx} subItem={subItem} onClose={onClose} />
-        ))}
-      </div>
+      {activeSubMenu.title === "EVENIMENTE" ? (
+        <div className="flex justify-between px-[2vw] w-[100vw]">
+          {subMenuItems?.map((subItem, idx) => (
+            <SubMenu key={idx} subItem={subItem} onClose={onClose} />
+          ))}
+        </div>
+      ) : (
+        <div className="flex-col justify-between px-2 py-3 max-w-[300px]">
+          {subMenuItems?.map((subItem, idx) => (
+            <SubMenu key={idx} subItem={subItem} onClose={onClose} />
+          ))}
+        </div>
+      )}
     </motion.div>
   );
 }
@@ -140,36 +173,36 @@ function SubMenu({ subItem, onClose }) {
   const pathname = usePathname();
 
   const handleClick = () => {
-    onClose(); // Close the FullWidthSubMenu on click
+    onClose();
   };
 
   return (
-    <div className="hidden md:flex items-center ">
-      <div className="text-center mb-2 mx-10">
+    <div className="hidden md:flex items-center whitespace-nowrap">
+      <div className="text-center mb-2 mx-2">
         <Link
           href={subItem.path}
           className={`text-[14px] font-[300] ${
             subItem.path === pathname
-              ? "underline decoration-[rgb(116,10,10)] underline-offset-4 decoration-[1.4px]"
+              ? "font-800 underline decoration-[rgb(16,10,10)] underline-offset-4 decoration-[1.5px]"
               : "link-underline link-underline-black"
           }`}
-          onClick={handleClick} // Close submenu when clicking on the link
+          onClick={handleClick}
         >
           {subItem.title}
         </Link>
       </div>
       {subItem.subMenuItemsMenu && (
-        <div className="border-l  flex flex-col my-5  ">
+        <div className="border-l flex flex-col my-5">
           {subItem.subMenuItemsMenu.map((menuItem, index) => (
             <Link
               key={index}
               href={menuItem.path}
-              className={` text-sm font-[100] mx-4   my-1  text-[#404040] hover:text-[#202020]${
+              className={`text-sm font-[100] mx-2 my-1 text-[#404040] hover:text-[#202020] ${
                 menuItem.path === pathname
-                  ? "font-semibold underline decoration-[rgb(116,10,10)] underline-offset-4 decoration-[1.5px]"
+                  ? "font-500 underline decoration-[rgb(16,10,10)] underline-offset-4 decoration-[1.5px]"
                   : ""
               }`}
-              onClick={handleClick} // Close submenu when clicking on the link
+              onClick={handleClick}
             >
               {menuItem.title}
             </Link>

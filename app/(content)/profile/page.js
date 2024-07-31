@@ -19,45 +19,49 @@ export default async function ProfilePage() {
             <span className="font-[400] text-4xl mb-10 text-transform: uppercase">
               BUNA, {userdata["second_name"]}
             </span>
-            <div className="flex flex-col items-center p-2 mb-10 w-full">
-              <div className="flex items-center mb-5 w-full">
-                <span className="mr-2">COMENZI RECENTE</span>
-                <span className="mx-2 text-lg text-[rgb(0,0,0,0.4)] font-[100]">
-                  |
-                </span>
-                <Link
-                  href="/orders"
-                  className="text-[12px] font-[100] text-[rgb(0,0,0,0.4)]"
-                >
-                  VEZI TOATE COMENZILE
-                </Link>
+            <div className="lg:flex lg:flex-row">
+              <div className="flex flex-col items-center p-2 sm:mb-10 md:mb-0  w-full lg:w-1/2">
+                <div className="flex items-center mb-5 w-full">
+                  <span className="mr-2">COMENZI RECENTE</span>
+                  <span className="mx-2 text-lg text-[rgb(0,0,0,0.4)] font-[100]">
+                    |
+                  </span>
+                  <Link
+                    href="/orders"
+                    className="text-[12px] font-[100] text-[rgb(0,0,0,0.4)]"
+                  >
+                    VEZI TOATE COMENZILE
+                  </Link>
+                </div>
+                <OrderItem />
               </div>
-              <OrderItem />
-            </div>
 
-            <div className="flex flex-col  border rounded-sm p-4">
-              <span className="text-start mb-5">INFORMATIILE MELE</span>
-              <div className="flex">
-                <span>
-                  NUME:{" "}
-                  <span className="text-[rgb(0,0,0,0.4)] mx-1">
-                    {userdata.second_name}
-                    <span className="text-[rgb(0,0,0,0.4)] ml-1">
-                      {userdata.first_name}
+              <div className="flex flex-col mt-[3.5rem]  border rounded-sm h-fit p-5 lg:w-1/2">
+                <span className="text-start mb-[1.4rem]">
+                  INFORMATIILE MELE
+                </span>
+                <div className="flex">
+                  <span>
+                    NUME:{" "}
+                    <span className="text-[rgb(0,0,0,0.4)] mx-1">
+                      {userdata.second_name}
+                      <span className="text-[rgb(0,0,0,0.4)] ml-1">
+                        {userdata.first_name}
+                      </span>
                     </span>
                   </span>
-                </span>
-              </div>
-              <div className="flex">
-                <span>
-                  EMAIL:{" "}
-                  <span className="ml-1 text-[rgb(0,0,0,0.4)]">
-                    {" "}
-                    {userdata.email}
+                </div>
+                <div className="flex">
+                  <span>
+                    EMAIL:{" "}
+                    <span className="ml-1 text-[rgb(0,0,0,0.4)]">
+                      {" "}
+                      {userdata.email}
+                    </span>
                   </span>
-                </span>
+                </div>
               </div>
-            </div>
+            </div>{" "}
           </div>
         </div>
       ) : (

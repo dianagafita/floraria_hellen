@@ -674,6 +674,10 @@ export default function ProductPage({ params }) {
               Anumite flori din aranjamente pot fi disponibile doar in anumite
               perioade din an.
             </span>
+            <span className="text-sm font-[100] mb-10">
+              Anumite flori din buchet/aranjament pot fi imbobocite dar se vor
+              deschide.
+            </span>
           </span>
         </span>
       </div>

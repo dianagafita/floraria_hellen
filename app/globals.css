@@ -205,3 +205,61 @@ select {
 .scrollbar::-webkit-scrollbar-corner {
   background-color: transparent; /* Color of the scrollbar corner */
 }
+
+.toast-success-message,
+.toast-error-message {
+  background-color: #fff !important; /* White background */
+  border: 1px solid #ccc; /* Optional: Border color */
+  font-weight: 300;
+  color: rgb(104, 103, 103) !important;
+}
+
+.toast-success-message .Toastify__progress-bar {
+  background: rgb(0, 102, 0) !important; /* Green progress bar */
+}
+
+.toast-success-message .Toastify__progress-bar--controlled {
+  background: rgb(0, 102, 0) !important;
+}
+
+.toast-success-message .Toastify__progress-bar--default {
+  background: rgb(0, 102, 0) !important;
+}
+
+.toast-success-message .Toastify__toast-body,
+.toast-error-message .Toastify__toast-body {
+  background-color: #fff; /* Ensure the background under the progress bar is white */
+}
+
+.toast-success-message .Toastify__close-button,
+.toast-error-message .Toastify__close-button {
+  color: rgb(104, 103, 103) !important;
+}
+
+.toast-success-message .Toastify__toast-icon {
+  color: rgb(0, 102, 0) !important;
+  background-color: whi !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toast-error-message .Toastify__progress-bar {
+  background: rgb(112, 3, 3) !important; /* Green progress bar */
+}
+
+.toast-error-message .Toastify__progress-bar--controlled {
+  background: rgb(112, 3, 3) !important;
+}
+
+.toast-error-message .Toastify__progress-bar--default {
+  background: rgb(112, 3, 3) !important;
+}
+
+.toast-error-message .Toastify__toast-icon {
+  color: rgb(112, 3, 3) !important;
+  background-color: white !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

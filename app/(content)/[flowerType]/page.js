@@ -32,7 +32,7 @@ export default async function FlowerBouquetsPage({ params }) {
       <FlowerPageLayout mainImage={img} />
       <TitleByPath paths={paths} />
 
-      <Categories />
+      <Categories type={flowerType} />
       <SortItems />
       {!flowerBouquets ? <Loading /> : <ItemCard images={flowerBouquets} />}
       {/* <ProductList products={products} /> */}

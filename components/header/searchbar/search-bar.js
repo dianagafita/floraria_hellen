@@ -21,21 +21,14 @@ import { X } from "lucide-react";
 export default function Searchbar({ isVisible, openSearch }) {
   return (
     <motion.div
-      className={`border- border-[rgba(0,0,0,0.05)] fixed top-[7rem] md:top-[10.1rem] left-0 w-full bg-white shadow-lg z-[100] ${
+      className={`fixed top-[7rem] md:top-[10.1rem] left-0 w-full bg-white shadow-lg z-[100] ${
         isVisible ? "h-auto" : "h-0"
       } overflow-hidden`}
       initial={{ height: 0 }}
       animate={{ height: isVisible ? "auto" : 0 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="flex justify-between items-center px-5 py-3">
-        <Search pChanges="w-[100%]" />
-        <X
-          strokeWidth={0.6}
-          onClick={openSearch}
-          className="cursor-pointer"
-        />{" "}
-      </div>
+      <Search pChanges="w-[100%]" openSearch={openSearch} />
     </motion.div>
   );
 }

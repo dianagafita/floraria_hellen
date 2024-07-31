@@ -11,9 +11,9 @@ export const SIDENAV_ITEMS = [
     subMenuItems: [
       { title: "Buchet de flori uscate", path: "/flower-bouquets/roses" },
       { title: "Buchet de trandafiri", path: "/flower-bouquets/roses" },
-      { title: "Buchet de lalele", path: "/flower-bouquets/tulips" },
-      { title: "Buchet de hortensii", path: "/flower-bouquets/hortensia" },
-      { title: "Buchet de bujori", path: "/flower-bouquets/privacy" },
+      { title: "Buchet flori de primavara", path: "/flower-bouquets/tulips" },
+      { title: "Buchet flori de vara", path: "/flower-bouquets/tulips" },
+      { title: "Buchet flori de toamna", path: "/flower-bouquets/tulips" },
     ],
   },
   {
@@ -21,9 +21,24 @@ export const SIDENAV_ITEMS = [
     path: "/aranjamente",
     submenu: true,
     subMenuItems: [
-      { title: "Cutie cu flori uscate", path: "/floral-arrangements/roses" },
-      { title: "Cutie cu trandafiri", path: "/floral-arrangements/roses" },
-      { title: "Cutie cu lisianthus", path: "/floral-arrangements/lisianthus" },
+      { title: "Aranjament nou-nascut", path: "/floral-arrangements/roses" },
+      {
+        title: "Aranjament cu flori uscate",
+        path: "/floral-arrangements/roses",
+      },
+      { title: "Aranjament cu trandafiri", path: "/floral-arrangements/roses" },
+      {
+        title: "Aranjament cu flori de primavara",
+        path: "/floral-arrangements/lisianthus",
+      },
+      {
+        title: "Aranjament cu flori de vara",
+        path: "/floral-arrangements/lisianthus",
+      },
+      {
+        title: "Aranjament cu flori de toamna",
+        path: "/floral-arrangements/lisianthus",
+      },
     ],
   },
   {
@@ -56,9 +71,16 @@ export const SIDENAV_ITEMS = [
         subMenuItemsMenu: [
           { title: "Aranjamente florale", path: "/christening/flowers" },
           { title: "Aranjamente cristelnita", path: "/christening/cr" },
+
           {
             title: "Lumanari de botez cu flori naturale ",
             path: "/christening/candles",
+          },
+          { title: "Photo corner", path: "/events/wedding/graphic-design" },
+
+          {
+            title: "Fantana de ciocolata",
+            path: "/events/wedding/graphic-design",
           },
         ],
       },
@@ -72,12 +94,25 @@ export const SIDENAV_ITEMS = [
             title: "Buchet de mireasa",
             path: "/events/wedding/graphic-design",
           },
+
+          {
+            title: "Intrare in sala si covor rosu",
+            path: "/events/wedding/graphic-design",
+          },
+          {
+            title: "Corsaj, cocarede, bratari si coronite",
+            path: "/events/wedding/graphic-design",
+          },
+          {
+            title: "Biserica",
+            path: "/events/wedding/graphic-design",
+          },
           {
             title: "Lumanari de biserica cu flori naturale",
             path: "/events/wedding/graphic-design",
           },
           {
-            title: "Corsaj, cocarede, bratari si coronite",
+            title: "Cununie civila",
             path: "/events/wedding/graphic-design",
           },
           {
@@ -89,6 +124,10 @@ export const SIDENAV_ITEMS = [
           { title: "Photo corner", path: "/events/wedding/graphic-design" },
           {
             title: "Fantana de ciocolata",
+            path: "/events/wedding/graphic-design",
+          },
+          {
+            title: "Masina de fum valsul mirilor",
             path: "/events/wedding/graphic-design",
           },
         ],

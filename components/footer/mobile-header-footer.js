@@ -23,7 +23,7 @@ export default function MobileHeaderFooter({ toggleOpen }) {
     <MenuItem className="absolute bottom-0 w-full p-4 bg-white text-center text-sm list-none">
       <div className="flex justify-between items-center h-[2rem] ">
         <div className="flex  items-center  ">
-          <User strokeWidth={0.9} size={27} />
+          <User strokeWidth={0.9} size={23} />
           <Link
             href={`${verify.user ? "/profile" : "/authentification"}`}
             className="ml-2 font-[200]"
