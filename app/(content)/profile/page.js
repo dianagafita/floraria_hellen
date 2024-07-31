@@ -33,7 +33,7 @@ export default async function ProfilePage() {
                     VEZI TOATE COMENZILE
                   </Link>
                 </div>
-                <OrderItem />
+                <OrderItem userId={response.user.id} mode="first" />
               </div>
 
               <div className="flex flex-col mt-[3.5rem]  border rounded-sm h-fit p-5 lg:w-1/2">

@@ -621,6 +621,7 @@ export default function ProductPage({ params }) {
                   name="deliveryDate"
                   label="Data livrarii:"
                   type="date"
+                  dateType="order"
                   value={formData.deliveryDate}
                   onChange={handleChange}
                 />

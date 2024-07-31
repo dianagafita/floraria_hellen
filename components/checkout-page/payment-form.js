@@ -8,13 +8,15 @@ import {
 import React, { useEffect, useState } from "react";
 import Button from "../util/button";
 
-export default function PaymentForm({ amount }) {
+export default function PaymentForm({ amount, cartItems }) {
   const stripe = useStripe();
+
   const elements = useElements();
   const [errorMessage, setErrorMessage] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [loading, setLoading] = useState(false);
 
+  console.log("FORM", amount, cartItems);
   useEffect(() => {
     fetch("/api/payment", {
       method: "POST",
@@ -45,7 +47,7 @@ export default function PaymentForm({ amount }) {
       elements,
       clientSecret,
       confirmParams: {
-        return_url: `http://localhost:3000/payment-success?amount=${amount}`,
+        return_url: `http://localhost:3000/payment-success?amount=${amount}&cartItems=${cartItems}`,
       },
     });
 

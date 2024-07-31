@@ -60,7 +60,8 @@ export default function CheckoutPage() {
         />
         <CheckoutForm
           address={address}
-          cartTotal={cartItems}
+          cartTotal={cartTotal}
+          cartItems={cartItems}
           setAddress={setAddress}
           handleCalculateDistance={handleCalculateDistance}
           isCalculating={isCalculating}

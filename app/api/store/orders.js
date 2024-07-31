@@ -14,25 +14,6 @@ export async function getAllOrders(userId) {
   return orders;
 }
 
-// export async function createOrder(userId, productIds, totalPrice, orderState) {
-//   try {
-//     const newOrder = await prisma.order.create({
-//       data: {
-//         user: { connect: { id: userId } },
-//         products: { connect: productIds.map((id) => ({ id })) },
-//         total_price: totalPrice,
-//         order_state: orderState,
-//       },
-//     });
-
-//     console.log("Order created successfully", newOrder);
-//     return newOrder;
-//   } catch (error) {
-//     console.error("Error creating order:", error);
-//     throw error;
-//   }
-// }
-
 export async function createOrder(userId, products, totalPrice, orderState) {
   try {
     const newOrder = await prisma.order.create({

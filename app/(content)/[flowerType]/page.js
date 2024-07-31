@@ -19,9 +19,9 @@ const validFlowerTypes = ["buchete", "aranjamente", "lilies"]; // Add all valid 
 
 export default async function FlowerBouquetsPage({ params }) {
   const { flowerType } = params;
-  if (!validFlowerTypes.includes(flowerType)) {
-    redirect("/");
-  }
+  // if (!validFlowerTypes.includes(flowerType)) {
+  //   redirect("/");
+  // }
 
   const flowerBouquets = await getProductsByType({
     type: `${flowerType}`,

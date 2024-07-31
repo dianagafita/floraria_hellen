@@ -25,6 +25,7 @@ export default function CheckoutForm({
   isCalculating,
   shippingFee,
   cartTotal,
+  cartItems,
 }) {
   const amount = cartTotal + shippingFee;
   return (
@@ -138,20 +139,6 @@ export default function CheckoutForm({
               </p>
             </div>
           </div>
-
-          <div className="flex justify-between m-5 pb-7">
-            <Link
-              className="font-[300] text-[12px] flex items-center"
-              href="/cart"
-            >
-              <ChevronLeft className="ml-2 mr-1" strokeWidth={1} size={15} />
-              Reveniti la cos
-            </Link>
-            <Link className="font-[300] text-[12px] flex items-center" href="/">
-              Mergeti la plata{" "}
-              <ChevronRight className="ml-2 mr-2" strokeWidth={1} size={15} />
-            </Link>{" "}
-          </div>
         </div>
       </form>
       <div className="h-auto  p-10 m-5 bg-white drop-shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-sm">
@@ -163,8 +150,14 @@ export default function CheckoutForm({
             currency: "ron",
           }}
         >
-          <PaymentForm amount={amount} />
+          <PaymentForm amount={amount} cartItems={cartItems} />
         </Elements>
+      </div>
+      <div className="flex justify-between pb-7">
+        <Link className="font-[300] text-[12px] flex items-center" href="/cart">
+          <ChevronLeft className="ml-2 mr-1" strokeWidth={1} size={15} />
+          Reveniti la cos
+        </Link>
       </div>
     </div>
   );

@@ -38,7 +38,7 @@ export default function OrderDetailsPage({ params }) {
       <section className="bg-white py-8 px-5 antialiased md:py-16">
         <div className="mx-auto max-w-screen-xl 2xl:px-0">
           <h2 className="text-xl font-[600] sm:text-2xl ">
-            Track the delivery of order #{order.id}
+            Urmareste comanda #{order.id}
           </h2>
 
           <div className="mt-6 sm:mt-8 lg:flex lg:gap-8">
@@ -167,28 +167,23 @@ export default function OrderDetailsPage({ params }) {
                     </ol>
                   </div>
 
-                  <div className="gap-4 sm:flex sm:items-center">
-                    <button
-                      type="button"
-                      className="w-full rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100"
-                    >
-                      Cancel the order
-                    </button>
-
-                    <Link
-                      href="/"
-                      className="mt-4 flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 sm:mt-0"
-                    >
-                      Order details
-                    </Link>
+                  <div className="gap-4 sm:flex sm:items-center mb-10">
+                    {order.order_state === "pending" && (
+                      <button
+                        type="button"
+                        className="w-full rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100"
+                      >
+                        Cancel the order
+                      </button>
+                    )}
                   </div>
-                  <div className="mt-5">
+                  <div className="mt-5 ">
                     <h3 className="text-xl font-semibold text-gray-900">
                       Factura
                     </h3>
                     <button
                       type="button"
-                      className="my-10 w-full rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100"
+                      className=" my-5 w-1/2 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100"
                     >
                       Descarca factura
                     </button>

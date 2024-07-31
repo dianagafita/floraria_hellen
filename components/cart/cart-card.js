@@ -58,7 +58,7 @@ export default function CartCard({ item }) {
             </button>
           </div>
           <span className="text-m font-[300] ml-5">
-            {(item.product.price * item.quantity).toFixed(2)}
+            {item.product.price * item.quantity}
             <sup>.00</sup>
             <sup> LEI</sup>
           </span>

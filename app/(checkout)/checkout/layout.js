@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 
 import "@/app/globals.css";
 import MainFooter from "@/components/footer/main-footer";
+import { PaymentProvider } from "@/context/payment-context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,12 +21,8 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/icon.png" sizes="any" />
       </head>
       <body>
-        <div>
-          {/* <AuthProvider> */}
-          <main>{children}</main>
-          <MainFooter />
-          {/* </AuthProvider> */}
-        </div>
+        <main>{children}</main>
+        <MainFooter />
       </body>
     </html>
   );

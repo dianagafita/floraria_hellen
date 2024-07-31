@@ -16,7 +16,7 @@ export default function Input({
   const offerDate = getDateForOffer();
   const nextDay = getNextDay();
   const minDate = dateType === "order" ? nextDay : offerDate;
-
+  console.log(nextDay);
   // Determine the default selected value for select input
   let defaultSelectedValue = "";
   if (type === "select") {
@@ -45,7 +45,6 @@ export default function Input({
           id={name}
           required
           name={name}
-          {...(name === "phone" ? { minLength: 8 } : {})}
           value={value}
           onChange={onChange}
           className="font-thin border border-black p-2 rounded-sm h-[2.5rem] text-[#555555]"
@@ -79,7 +78,6 @@ export default function Input({
           min={minDate}
           placeholder={placeholder}
           value={value}
-          required
           onChange={onChange}
           className={`${
             type === "checkbox" ? "w-6 h-6 mx-3" : ""
