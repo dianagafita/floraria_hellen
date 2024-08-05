@@ -19,6 +19,7 @@ model User {
   orders      Order[]
   sessions    Session[]
   cart        Cart[]
+  
 }
 
 model Cart {

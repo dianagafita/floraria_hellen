@@ -27,6 +27,7 @@ export default function CheckoutForm({
   cartTotal,
   cartItems,
 }) {
+  console.log("CHECKFORM", cartItems);
   const amount = cartTotal + shippingFee;
   return (
     <div className="flex flex-col w-full h-[600px] overflow-auto">

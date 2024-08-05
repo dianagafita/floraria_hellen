@@ -46,7 +46,7 @@ export default function CheckoutPage() {
       setShippingFee(fee);
     }
   }, [distance]);
-  console.log(cartTotal);
+  console.log("CHECKOUTP", cartItems);
   return (
     <div className="flex flex-col md:flex-row h-full ">
       <div className="w-full lg:w-1/2 flex flex-col overflow-y-auto items-center border-r border-[#cdcdcb]">

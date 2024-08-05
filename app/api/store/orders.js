@@ -16,6 +16,10 @@ export async function getAllOrders(userId) {
 
 export async function createOrder(userId, products, totalPrice, orderState) {
   try {
+    if (!userId || !products || !totalPrice || !orderState) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+
     const newOrder = await prisma.order.create({
       data: {
         user: { connect: { id: userId } },
