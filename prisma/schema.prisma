@@ -19,7 +19,8 @@ model User {
   orders      Order[]
   sessions    Session[]
   cart        Cart[]
-  
+  resetPasswordToken String? @unique
+  resetPasswordTokenExpiry DateTime?
 }
 
 model Cart {
