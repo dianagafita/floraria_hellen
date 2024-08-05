@@ -21,6 +21,8 @@ model User {
   cart        Cart[]
   resetPasswordToken String? @unique
   resetPasswordTokenExpiry DateTime?
+  emailVerified Boolean @default(false)
+  emailVerificationToken String? @unique
 }
 
 model Cart {

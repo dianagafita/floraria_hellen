@@ -1,10 +1,12 @@
 "use server";
 
+import { VerEmailTemp } from "@/components/verEmail";
 import { createAuthSession, destroySession } from "@/lib/auth";
 import { hashUserPassword, verifyPassword } from "@/lib/hash";
 import { createUser, getUserByEmail } from "@/lib/user";
 import { redirect } from "next/navigation";
-
+import { Resend } from "resend";
+import crypto from "crypto";
 export async function signup(prevState, formData) {
   const email = formData.get("email");
   const password = formData.get("password");
@@ -35,6 +37,22 @@ export async function signup(prevState, formData) {
     );
     console.log("BBBBBBBBBBBBBBBBBBBBB", userId);
     await createAuthSession(userId);
+    const emailVerificationToken = crypto.randomBytes(32).toString("base64url");
+    await prisma.user.update({
+      where: { email },
+      data: {
+        emailVerificationToken,
+      },
+    });
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    const { data } = await resend.emails.send({
+      from: "Acme <onboarding@resend.dev>",
+      to: [email],
+      subject: "ver you email ",
+      react: VerEmailTemp({ email, emailVerificationToken }),
+    });
+
+    console.log(data);
     redirect("/");
   } catch (error) {
     if (error.code === "P2002") {
