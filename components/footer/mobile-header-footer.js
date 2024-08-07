@@ -18,7 +18,6 @@ export default function MobileHeaderFooter({ toggleOpen }) {
 
     fetchAuthStatus();
   }, []);
-  console.log(verify);
   return (
     <MenuItem className="absolute bottom-0 w-full p-4 bg-white text-center text-sm list-none">
       <div className="flex justify-between items-center h-[2rem] ">
@@ -29,7 +28,7 @@ export default function MobileHeaderFooter({ toggleOpen }) {
             className="ml-2 font-[200]"
             onClick={toggleOpen}
           >
-            {verify.user ? "Contul meu" : "Logare"}
+            {verify.user?.emailVerified ? "Contul meu" : "Logare"}
           </Link>
         </div>
         <div className="flex items-center  ">

@@ -15,7 +15,7 @@ export default function ShortcutItemCard() {
             src={image.image}
             alt={image.title}
             className="object-cover w-full h-full "
-            layout="fill"
+            fill
           />
           <div className="absolute inset-0 bg-black  opacity-40 from-black to-transparent  hover:opacity-0 transition-opacity duration-300"></div>
           <div className="absolute shadow-lg right-[-20px] bottom-[-20px] p-3 bg-white text-center text-[13px] font-[200]  whitespace-nowrap">

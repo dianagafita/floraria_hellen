@@ -2,12 +2,14 @@ import EmblaCarousel from "@/components/main-page/carousel";
 import PageInfo from "@/components/main-page/page-info";
 import Recommended from "@/components/main-page/recommended/recommended";
 import ShopByCategory from "@/components/main-page/shopbycat/shop-by-category";
+import { redirect } from "next/navigation";
 
 const OPTIONS = {};
 const SLIDE_COUNT = 3;
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
+const validFlowerTypes = ["trandafiri", "tulips", "lilies"];
 
-export default async function Home() {
+export default async function Home({ params }) {
   return (
     <div>
       <div className="z-1 absolut top-0 ">

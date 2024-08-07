@@ -26,12 +26,10 @@ export default function RootLayout({ children }) {
         ></script>
       </head>
       <body className="relative">
-        <div className="flex flex-col min-h-screen">
-          <CartModal />
-          <Header /> <ToastContainer />
-          <main className="relative z-1 min-h-[400px]"> {children}</main>
-          <MainFooter />
-        </div>
+        <CartModal />
+        <Header /> <ToastContainer />
+        <main className="relative z-1 "> {children}</main>
+        <MainFooter />
         <MobileHeader />
       </body>
     </html>

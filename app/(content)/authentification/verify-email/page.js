@@ -1,4 +1,5 @@
 import prisma from "@/lib/prisma";
+import { redirect } from "next/navigation";
 
 const VerifyEmailPage = async ({ searchParams }) => {
   if (searchParams.token) {
@@ -8,7 +9,7 @@ const VerifyEmailPage = async ({ searchParams }) => {
       },
     });
     if (!user) {
-      return <div>Invalid token</div>;
+      redirect("/authentification/verify-email");
     }
 
     await prisma.user.update({
@@ -20,13 +21,17 @@ const VerifyEmailPage = async ({ searchParams }) => {
     });
     return (
       <div>
-        <h1>Email verified</h1>
+        <p className="text-center text-2xl font-[200] my-20">
+          Adresa de E-mail confirmata cu succes!
+        </p>
       </div>
     );
   } else {
     return (
       <div>
-        <p>No token found</p>
+        <p className="text-center text-2xl font-[200] my-20">
+          Nu s-a gasit token-ul. Reincercati!
+        </p>
       </div>
     );
   }

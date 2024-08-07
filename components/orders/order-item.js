@@ -27,7 +27,11 @@ export default function OrderItem({ userId, mode }) {
   }, [userId]);
 
   if (orders.length === 0) {
-    return <div>No orders found.</div>;
+    return (
+      <div className="flex justify-start my-5">
+        Nu ati plasat nicio comanda!
+      </div>
+    );
   }
 
   const renderOrder = (order) => (

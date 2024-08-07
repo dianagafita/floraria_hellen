@@ -21,7 +21,7 @@ export default function Recommended() {
             <Image
               src={img}
               className="object-cover transition-transform duration-300 transform hover:scale-110"
-              layout="fill"
+              fill
               alt=""
             />
             <Link

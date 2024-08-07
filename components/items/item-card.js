@@ -3,7 +3,13 @@ import React from "react";
 import Link from "next/link";
 import { IoMdHeart } from "react-icons/io";
 
-export default function ItemCard({ images, moreStyle }) {
+export default function ItemCard({
+  images,
+  moreStyle,
+  type,
+  flowerType,
+  subtype,
+}) {
   return (
     <ul
       className={`${
@@ -22,7 +28,17 @@ export default function ItemCard({ images, moreStyle }) {
           }    mb-5`}
         >
           <div className="relative w-full h-full">
-            <Link href={`/flower-bouquets/roses/${img.id}`}>
+            <Link
+              href={
+                type === "speciale"
+                  ? `/speciale/${flowerType}/${img.id}`
+                  : type === "search"
+                  ? `/products/${img.name}/${img.id}`
+                  : subtype
+                  ? `/${flowerType}/${subtype}/${img.id}`
+                  : `/${flowerType}/${img.name}/${img.id}`
+              }
+            >
               <div className="absolute top-0 right-0 p-2 text-white  hover:text-blue-100 z-10">
                 <IoMdHeart size={25} />
               </div>
@@ -30,13 +46,13 @@ export default function ItemCard({ images, moreStyle }) {
                 className="object-cover  h-full transition-opacity duration-300 opacity-100 hover:opacity-0"
                 src={img.images_url[0]}
                 alt="Original Image"
-                layout="fill"
+                fill
               />
               <Image
                 className="object-cover w-full h-full transition-opacity duration-300 opacity-0 hover:opacity-100"
                 src={img.images_url[1]}
                 alt="Hover Image"
-                layout="fill"
+                fill
               />
             </Link>
           </div>

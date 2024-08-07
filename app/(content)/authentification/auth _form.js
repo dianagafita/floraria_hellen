@@ -10,7 +10,7 @@ export default function AuthForm({ mode }) {
   console.log(formState);
   console.log(mode);
   return (
-    <div className="flex flex-col pt-10  mx-5 md:mx-20 my-2 items-center  bg-white   shaow-lg">
+    <div className="flex flex-col pt-10 pb-5  mx-5 md:mx-20 mt-5 items-center  bg-white   shaow-lg">
       <span className="text-2xl font-[200]">
         {mode === "login" ? "LOGARE" : "CREEAZA CONT"}
       </span>
@@ -30,27 +30,17 @@ export default function AuthForm({ mode }) {
               <Input name="firstName" label="Prenume" />
               <Input name="secondName" label=" Nume" />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full justify-center mb-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full justify-center mb-10">
               <Input name="email" label="E-mail" />
               <Input name="password" label="Parola" type="password" />
               <Input name="phone" label="Telefon" />
             </div>
           </div>
         )}
-
-        {formState.errors && (
-          <ul>
-            {Object.keys(formState.errors).map((error) => (
-              <li key={error}>
-                <p>{formState.errors[error]}</p>
-              </li>
-            ))}
-          </ul>
-        )}
-        <Button moreStyle="w-[200px] mb-3 ">
+        <Button moreStyle="w-[200px] my-3 ">
           {mode === "login" ? "Intra in cont" : "Creaza cont"}
         </Button>
-        <p className="text-[13px] font-[100] underline underline-offset-2 text-[#707070] hover:text-[#404040] mb-20">
+        <p className="text-[13px] font-[100] underline underline-offset-2 text-[#707070] hover:text-[#404040]">
           {mode === "login" ? (
             <Link href="/authentification/?mode=signup">
               Nu ti-ai facut inca cont? Creeaza acum.{" "}
@@ -59,6 +49,23 @@ export default function AuthForm({ mode }) {
             <Link href="/authentification/?mode=login">Intra in cont</Link>
           )}
         </p>
+        {formState.errors && (
+          <ul className="text-red-900 mb-5 my-1 text-[13px] font-[100] ">
+            {Object.keys(formState.errors).map((error) => (
+              <li className="my-1 flex" key={error}>
+                <p>{formState.errors[error]}</p>
+                {formState.errors[error] === "Parola incorecta." && (
+                  <Link
+                    href="/authentification/reset-password"
+                    className="text-[#707070]  ml-1 underline underline-offset-4 underline-text-red-900 hover:text-[#404040] "
+                  >
+                    Ati uitat parola?
+                  </Link>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
       </form>
     </div>
   );

@@ -30,7 +30,7 @@ export default function CartPageItems({ items }) {
             height={100}
             alt={items.title}
             layout="responsive"
-            objectFit="contain"
+            className="object-contain"
           />
         </div>
       </Link>

@@ -41,6 +41,15 @@ export default function Search({ inputChanges, pChanges, openSearch }) {
     }
   };
 
+  const handleClearSearch = () => {
+    setQuery("");
+    setResults([]);
+    setHasSearched(false);
+    if (openSearch) {
+      openSearch();
+    }
+  };
+
   return (
     <>
       <div className="flex justify-between items-center px-5 py-3">
@@ -60,12 +69,16 @@ export default function Search({ inputChanges, pChanges, openSearch }) {
             />
           </p>
         </form>
-        <X strokeWidth={0.6} className="cursor-pointer" onClick={openSearch} />
+        <X
+          strokeWidth={0.6}
+          className="cursor-pointer"
+          onClick={handleClearSearch}
+        />
       </div>{" "}
       <div>
         {!results && <Loading />}
         {results.length > 0 ? (
-          <ItemCard images={results} moreStyle="searchItem" />
+          <ItemCard images={results} moreStyle="searchItem" type="search" />
         ) : (
           hasSearched && (
             <p className="font-[100] text-[14px]">

@@ -1,0 +1,45 @@
+.flower {
+  position: relative;
+  width: 100px; /* Adjusted size */
+  height: 100px; /* Adjusted size */
+  transform: translate3d(0, 0, 0);
+}
+
+.flower__center {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: #ffbb00;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  will-change: transform;
+}
+
+.flower__leaves {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.flower__leaf {
+  width: 25%; /* Adjusted width for better fit */
+  transform-origin: center bottom;
+  position: absolute;
+  will-change: transform;
+}
+
+.flower__leaf-inner {
+  transform-origin: center bottom;
+  transform: scale(0);
+  will-change: transform;
+}
+
+.flower__leaf svg path {
+  fill: black;
+}

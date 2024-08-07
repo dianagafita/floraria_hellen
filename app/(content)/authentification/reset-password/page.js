@@ -1,6 +1,7 @@
-import ResetPasswordForm from "./form";
-import ChangePasswordForm from "./changepass";
+import ChangePasswordForm from "@/components/reset-password/change-password-form";
+import ResetPasswordForm from "@/components/reset-password/reset-password-form";
 import prisma from "@/lib/prisma";
+import { redirect } from "next/navigation";
 
 const ResetPasswordPage = async ({ searchParams }) => {
   if (searchParams.token) {
@@ -10,7 +11,7 @@ const ResetPasswordPage = async ({ searchParams }) => {
       },
     });
     if (!user) {
-      return <div>Invalid token</div>;
+      redirect("/authentification/reset-password");
     }
 
     return <ChangePasswordForm resetPasswordToken={searchParams.token} />;

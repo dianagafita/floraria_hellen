@@ -1,31 +1,3 @@
-// "use server";
-
-// import { updateUserData } from "@/app/api/store/user";
-
-// export async function updateUser(prevState, formData) {
-//   const firstName = formData.get("firstName");
-//   const secondName = formData.get("secondName");
-//   const email = formData.get("email");
-//   const phone = formData.get("phone");
-//   //   const newPassword = formData.get("newPassword");
-
-//   try {
-//     await updateUserData(firstName, secondName, email, phone);
-
-//     // if (newPassword) {
-//     //   await prisma.user.update({
-//     //     where: { id: parseInt(id) },
-//     //     data: { password: newPassword },
-//     //   });
-//     // }
-
-//     // redirect("/profile");
-//     return  { success: true };
-//   } catch (error) {
-//     console.error("Error updating user:", error);
-//     return { error: "Failed to update user" };
-//   }
-// }
 "use server";
 
 import { updateUserData, updateUserPassword } from "@/app/api/store/user";

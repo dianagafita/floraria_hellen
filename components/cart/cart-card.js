@@ -26,7 +26,7 @@ export default function CartCard({ item }) {
           height={100}
           alt={item.product.title}
           layout="responsive"
-          objectFit="contain"
+          className="object-cover"
         />
       </div>
       <div className="flex w-full flex-col ml-4">

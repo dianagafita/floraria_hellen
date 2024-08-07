@@ -80,7 +80,7 @@ const ShopByCategory = () => {
         </div>
 
         <div className="hidden md:grid grid-cols-1 gap-4 w-screen p-5">
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             <motion.div
               key={selectedCategory}
               initial={{ opacity: 0, x: 10 }}
@@ -112,9 +112,8 @@ const ShopByCategory = () => {
                   <Image
                     src={image.src}
                     alt={image.alt}
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-lg transition-opacity duration-300"
+                    fill
+                    className="object-cover rounded-lg transition-opacity duration-300"
                   />
                   <div
                     className={`absolute inset-0 flex items-center justify-center text-white text-center bg-black bg-opacity-30 text-5xl font-[100] ${
@@ -146,9 +145,8 @@ const ShopByCategory = () => {
                   <Image
                     src={image.src}
                     alt={image.alt}
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-lg transition-opacity duration-300"
+                    fill
+                    className="object-cover rounded-lg transition-opacity duration-300"
                   />
                   <div
                     className={`absolute inset-0 flex items-center justify-center text-white text-center bg-black bg-opacity-30 text-5xl font-[100] ${

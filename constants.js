@@ -1,7 +1,7 @@
 export const SIDENAV_ITEMS = [
   {
     title: "PLANTE",
-    path: "/plants",
+    path: "/speciale/plante",
   },
 
   {
@@ -43,11 +43,11 @@ export const SIDENAV_ITEMS = [
   },
   {
     title: "FLORI CRIOGENATE",
-    path: "/plants",
+    path: "/speciale/flori-criogenate",
   },
   {
     title: "OCAZII SPECIALE",
-    path: "/special-ocasions",
+    path: "/ocazii-speciale",
     submenu: true,
     subMenuItems: [
       { title: "Flori de Craciun", path: "/special-ocasions/christman" },
@@ -140,7 +140,7 @@ export const SIDENAV_ITEMS = [
   },
   {
     title: "COROANE FUNERARE",
-    path: "/funeral-wreaths",
+    path: "/speciale/coroane-funerare",
     submenu: true,
     subMenuItems: [
       { title: "All", path: "/projects" },

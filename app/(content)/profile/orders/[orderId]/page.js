@@ -6,6 +6,7 @@ import { CiCreditCard1 } from "react-icons/ci";
 import { BsHouse } from "react-icons/bs";
 import { FaCheck } from "react-icons/fa6";
 import Image from "next/image";
+import Loading from "@/lib/loading";
 
 export default function OrderDetailsPage({ params }) {
   const orderId = params.orderId;
@@ -29,7 +30,11 @@ export default function OrderDetailsPage({ params }) {
   }, [orderId]);
 
   if (!order) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
   }
 
   console.log(order);

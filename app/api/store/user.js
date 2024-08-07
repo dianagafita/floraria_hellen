@@ -28,18 +28,6 @@ export async function updateUserData(firstName, secondName, email, phone) {
   return updatedUser;
 }
 
-// export async function updateUserPassword(newPassword, email, currentPassword) {
-//   const newPasswordHashed = hashUserPassword(newPassword);
-
-//   const updatedUser = await prisma.user.update({
-//     where: { email, password: currentPassword },
-//     data: {
-//       password: newPasswordHashed,
-//     },
-//   });
-//   return updatedUser;
-// }
-
 export async function updateUserPassword(newPassword, email, currentPassword) {
   const user = await prisma.user.findUnique({
     where: { email },

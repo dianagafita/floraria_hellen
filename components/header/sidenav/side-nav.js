@@ -102,12 +102,18 @@ function MenuItem({
         >
           <div className="flex flex-row space-x-4 items-center">
             {item.icon}
-            <Link
-              href={item.path}
-              className="text-l flex relative text-transform: uppercase"
-            >
-              {item.title}
-            </Link>
+            {item.title === "EVENIMENTE" ? (
+              <span className="cursor-default text-l flex relative text-transform: uppercase">
+                {item.title}
+              </span>
+            ) : (
+              <Link
+                href={item.path}
+                className="text-l flex relative text-transform: uppercase"
+              >
+                {item.title}
+              </Link>
+            )}
           </div>
         </div>
       ) : (
@@ -115,7 +121,7 @@ function MenuItem({
           href={item.path}
           className={`whitespace-nowrap flex flex-row space-x-1 items-center text-transform: uppercase ${
             item.path === pathname
-              ? "font-800 underline decoration-[rgb(16,10,10)] underline-offset-4 decoration-[1.5px]"
+              ? "font-800 underline decoration-[rgb(160,21,21)] underline-offset-4 decoration-[1.5px]"
               : "link-underline link-underline-black"
           }`}
         >
@@ -183,7 +189,7 @@ function SubMenu({ subItem, onClose }) {
           href={subItem.path}
           className={`text-[14px] font-[300] ${
             subItem.path === pathname
-              ? "font-800 underline decoration-[rgb(16,10,10)] underline-offset-4 decoration-[1.5px]"
+              ? "font-800 underline decoration-[rgb(160,21,21)] underline-offset-4 decoration-[1.5px]"
               : "link-underline link-underline-black"
           }`}
           onClick={handleClick}
@@ -199,7 +205,7 @@ function SubMenu({ subItem, onClose }) {
               href={menuItem.path}
               className={`text-sm font-[100] mx-2 my-1 text-[#404040] hover:text-[#202020] ${
                 menuItem.path === pathname
-                  ? "font-500 underline decoration-[rgb(16,10,10)] underline-offset-4 decoration-[1.5px]"
+                  ? "font-500 underline decoration-[rgb(160,21,21)] underline-offset-4 decoration-[1.5px]"
                   : ""
               }`}
               onClick={handleClick}

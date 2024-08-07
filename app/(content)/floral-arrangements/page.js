@@ -33,7 +33,7 @@ export default function page({ data }) {
     <div className="relative w-full">
       {/* Main Image Section */}
       <div className="relative h-[335px] w-full">
-        <Image src={img1} alt="" layout="fill" objectFit="cover" />
+        <Image src={img1} alt="" fill className="object-cover" />
         <div className="absolute inset-0 flex items-center justify-end text-black text-center bg-black bg-opacity-50">
           <span className="bg-white  p-10 mr-20 flex flex-col text-2xl">
             BUCHETE DE FLORI
@@ -52,7 +52,7 @@ export default function page({ data }) {
         <ShortcutItemCard />
 
         <SortItems />
-        <ItemCard images={images} />
+        <ItemCard images={images} type="flori" />
       </div>
     </div>
   );

@@ -17,7 +17,6 @@ import MobileHeader from "./header-mobile";
 import { useCart } from "@/context/cart-context";
 
 export default function Header() {
-  const [isHovering, setIsHovered] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
 
   function openSearchMobile() {
@@ -29,7 +28,7 @@ export default function Header() {
 
   return (
     <>
-      <div className="sticky top-0 bg-white z-[50] shadow-md">
+      <div className="sticky top-0 bg-white z-[50] shadow-sm">
         <div className="flex flex-col">
           <MiniHeaderSection />
           <div className={classes["main-header-section"]}>
@@ -42,11 +41,8 @@ export default function Header() {
             <span
               onClick={openSearchMobile}
               className="hidden md:flex cursor-pointer items-center"
-              // onMouseEnter={() => setIsHovered(true)}
-              // onMouseLeave={() => setIsHovered(false)}
             >
               <Search strokeWidth={0.7} size={27} />
-              {/* <Searchbar isVisible={isHovering} /> */}
             </span>{" "}
             <Link href="/">
               <Image src={logo} alt="icon" priority />
@@ -87,112 +83,3 @@ export default function Header() {
     </>
   );
 }
-// "use client";
-// import * as React from "react";
-// import AppBar from "@mui/material/AppBar";
-// import Box from "@mui/material/Box";
-// import Toolbar from "@mui/material/Toolbar";
-// import IconButton from "@mui/material/IconButton";
-// import Typography from "@mui/material/Typography";
-// import Menu from "@mui/material/Menu";
-// import Container from "@mui/material/Container";
-// import Badge from "@mui/material/Badge";
-// import Button from "@mui/material/Button";
-// import Tooltip from "@mui/material/Tooltip";
-// import MenuItem from "@mui/material/MenuItem";
-// import Link from "next/link";
-// import { useRouter } from "next/navigation";
-// import { useCart } from "@/context/cart-context";
-
-// const pages = ["Products", "Collections", "Blog", "About us"];
-
-// function ResponsiveAppBar() {
-//   const router = useRouter();
-//   const { cartCount } = useCart();
-
-//   return (
-//     <AppBar>
-//       <Container>
-//         <Toolbar>
-//           <Typography
-//             variant="h6"
-//             noWrap
-//             component="a"
-//             sx={{
-//               mr: 2,
-//               display: { xs: "none", md: "flex" },
-//               fontWeight: 500,
-//               color: "inherit",
-//               textDecoration: "none",
-//             }}
-//             onClick={() => {
-//               router.push("/");
-//             }}
-//             style={{ cursor: "pointer" }}
-//           >
-//             My Ecommerce Site
-//           </Typography>
-
-//           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-//             <IconButton
-//               size="large"
-//               aria-label="account of current user"
-//               aria-controls="menu-appbar"
-//               aria-haspopup="true"
-//               color="inherit"
-//             >
-//               Menu{" "}
-//             </IconButton>
-//             <Menu
-//               id="menu-appbar"
-//               anchorOrigin={{
-//                 vertical: "bottom",
-//                 horizontal: "left",
-//               }}
-//               keepMounted
-//               transformOrigin={{
-//                 vertical: "top",
-//                 horizontal: "left",
-//               }}
-//               sx={{
-//                 display: { xs: "block", md: "none" },
-//               }}
-//             >
-//               {pages.map((page) => (
-//                 <MenuItem key={page}>
-//                   <Typography textAlign="center">{page}</Typography>
-//                 </MenuItem>
-//               ))}
-//             </Menu>
-//           </Box>
-
-//           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-//             {pages.map((page) => (
-//               <Link
-//                 key={page}
-//                 style={{ textDecoration: "none", color: "#fff" }}
-//                 href="/"
-//               >
-//                 <Button sx={{ my: 2, color: "white", display: "block" }}>
-//                   {page}
-//                 </Button>
-//               </Link>
-//             ))}
-//           </Box>
-
-//           <Box
-//             sx={{ flexGrow: 0 }}
-//             onClick={() => {
-//               router.push("/cart");
-//             }}
-//           >
-//             <Tooltip title="Shopping Cart">
-//               <IconButton sx={{ p: 0 }}>Cart{cartCount}</IconButton>
-//             </Tooltip>
-//           </Box>
-//         </Toolbar>
-//       </Container>
-//     </AppBar>
-//   );
-// }
-// export default ResponsiveAppBar;

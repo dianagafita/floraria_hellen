@@ -14,7 +14,7 @@ export default function Page() {
   return (
     <div>
       <div className="relative h-[335px] w-full">
-        <Image src={imgs} alt="" layout="fill" objectFit="cover" />
+        <Image src={imgs} alt="" fill className="object-cover" />
         <div className="absolute inset-0 flex items-center justify-end text-black text-center bg-black bg-opacity-50">
           <span className="bg-white py-10 px-20 mr-20 flex flex-col text-2xl">
             NUNTA{" "}

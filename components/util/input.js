@@ -80,8 +80,10 @@ export default function Input({
           value={value}
           onChange={onChange}
           className={`${
-            type === "checkbox" ? "w-6 h-6 mx-3" : ""
-          } focus:outline-none focus:border-[rgb(164,21,21)] focus:ring-1 focus:ring-[rgb(164,21,21)]   font-thin border border-black p-2 rounded-sm h-[2.5rem] text-[#555555] text-sm md:text-base `}
+            type === "checkbox"
+              ? "w-6 h-6 mx-3 accent-black"
+              : "focus:outline-none focus:border-[rgb(164,21,21)] focus:ring-1 focus:ring-[rgb(164,21,21)]"
+          }    font-thin border border-black p-2 rounded-sm h-[2.5rem] text-[#555555] text-sm md:text-base `}
           id={name}
           name={name}
         />

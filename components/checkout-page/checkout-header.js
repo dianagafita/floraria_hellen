@@ -13,7 +13,7 @@ export default function CheckoutHeader() {
           src={icon}
           alt="Image"
           className="object-contain w-full"
-          layout="fill"
+          fill
           priority
         />
       </Link>

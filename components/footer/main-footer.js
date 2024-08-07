@@ -25,8 +25,8 @@ export default function MainFooter() {
             <Image
               src={firmaIncredereLogo}
               alt="Firma Incredere Logo"
-              layout="fill"
-              objectFit="cover"
+              fill
+              className="object-cover"
             />
           </div>
         </Link>

@@ -71,7 +71,7 @@ export default function SearchResults() {
   return (
     <div>
       {results.length > 0 ? (
-        <ItemCard images={results} moreStyle="searchItem" />
+        <ItemCard images={results} moreStyle="searchItem" type="search" />
       ) : (
         <p>No items found</p>
       )}
