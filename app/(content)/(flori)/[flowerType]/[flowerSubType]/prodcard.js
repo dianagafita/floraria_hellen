@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Box, Button, Typography } from "@mui/material";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/cart-context";
 

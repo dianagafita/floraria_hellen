@@ -1,5 +1,5 @@
 import ProfileMenuDrawer from "@/components/profile/profile-menu-drawer";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import React from "react";
 import imgs from "./flowers.jpeg";
 export default async function ProfileLayout({ children }) {

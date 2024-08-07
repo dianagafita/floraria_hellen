@@ -1,6 +1,6 @@
 import ShortcutItemCard from "@/components/items/shortcut-item-card";
 import ItemCard from "@/components/items/item-card";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import SortItems from "@/components/util/sort-items";
 
 import img1 from "@/components/items/images/1.jpg";

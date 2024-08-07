@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import CartExtra from "./cart-extra";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { Minus, Plus } from "lucide-react";
 import { useCart } from "@/context/cart-context";
 import Link from "next/link";

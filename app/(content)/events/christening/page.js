@@ -2,7 +2,7 @@ import { TitleByPath } from "@/components/util/getPathTitle";
 import classes from "./a.module.css";
 import imgs from "./3.jpeg";
 
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 
 const paths = [

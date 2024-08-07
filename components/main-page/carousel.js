@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Thumb } from "./butt";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import img from "./o.jpeg";
 import img2 from "./r.jpeg";
 import img3 from "./i.jpeg";

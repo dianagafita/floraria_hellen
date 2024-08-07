@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import firmaIncredereLogo from "./logo_ro.png";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { FOOTER_MENU } from "@/constants";
 
 export default function MainFooter() {
