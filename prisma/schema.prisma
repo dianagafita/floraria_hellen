@@ -65,6 +65,7 @@ model OrderItem {
   order_id    Int
   product     Product  @relation(fields: [product_id], references: [id])
   product_id  Int
+  productDeliveryInfo String[]
   quantity    Int
 }
 

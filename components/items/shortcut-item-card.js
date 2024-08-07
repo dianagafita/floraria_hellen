@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { BUCHET_MENU } from "@/constants";
 import Title from "../util/title";
 

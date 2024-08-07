@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Thumb } from "./butt";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import img from "./o.jpeg";
 import img2 from "./r.jpeg";
 import img3 from "./i.jpeg";
@@ -48,7 +48,7 @@ const EmblaCarousel = (props) => {
         <div className="embla__container">
           {images.map((img, index) => (
             <div className="embla__slide" key={index}>
-              <div className="embla__slide__number">
+              <div className="embla__slide__number ">
                 <Image src={img} alt="" layout="fill"></Image>
                 <div className="absolute inset-0 flex  justify-center text-white text-center bg-black bg-opacity-50 text-5xl font-[100]"></div>
                 {/* <span className="absolute inset-0 border-4 border-white"></span>

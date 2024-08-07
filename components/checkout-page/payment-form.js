@@ -33,11 +33,18 @@ export default function PaymentForm({ amount, cartItems }) {
     const products = cartItems.map((item) => ({
       productId: item.product.id,
       quantity: item.quantity,
+      productDeliveryInfo: [
+        item.deliveryCity,
+        item.deliveryDate,
+        item.deliveryInterval,
+        String(item.deliveryType),
+      ],
     }));
 
     const orderData = {
       userId: 12,
       products: products,
+
       totalPrice: parseFloat(amount),
       orderState: "placed",
     };

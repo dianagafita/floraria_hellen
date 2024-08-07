@@ -1,4 +1,3 @@
-import React from "react";
 import { getCurrentDate, getDateForOffer, getNextDay } from "./currDate";
 
 export default function Input({
@@ -16,16 +15,16 @@ export default function Input({
   const offerDate = getDateForOffer();
   const nextDay = getNextDay();
   const minDate = dateType === "order" ? nextDay : offerDate;
-  console.log(nextDay);
-  // Determine the default selected value for select input
+
   let defaultSelectedValue = "";
+
   if (type === "select") {
     const filteredOptions = options.filter((option) =>
       time >= "20:00" ? option.value >= "12:00" : true
     );
 
     defaultSelectedValue =
-      filteredOptions.length > 0 ? filteredOptions[0].value : ""; // Set default to the first valid option or empty string
+      filteredOptions.length > 0 ? filteredOptions[0].value : "";
   }
 
   return (

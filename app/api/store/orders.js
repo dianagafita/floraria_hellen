@@ -24,10 +24,13 @@ export async function createOrder(userId, products, totalPrice, orderState) {
       data: {
         user: { connect: { id: userId } },
         order_items: {
-          create: products.map(({ productId, quantity }) => ({
-            product: { connect: { id: productId } },
-            quantity,
-          })),
+          create: products.map(
+            ({ productId, quantity, productDeliveryInfo }) => ({
+              product: { connect: { id: productId } },
+              quantity,
+              productDeliveryInfo,
+            })
+          ),
         },
         total_price: totalPrice,
         order_state: orderState,

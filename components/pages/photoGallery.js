@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 export function FeaturedImageGallery({ images, type }) {
   const [active, setActive] = useState(images[0]);

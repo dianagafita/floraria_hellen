@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import img from "./1.jpeg";
 import img4 from "./2.jpeg";
 import img1 from "./3.jpeg";
@@ -87,7 +87,7 @@ const ShopByCategory = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -10 }}
               transition={{ duration: 0.2 }}
-              className="grid grid-cols-3 gap-4 font-[200]"
+              className="relative grid grid-cols-3 gap-4 font-[200]"
             >
               {displayedImages.slice(0, 2).map((image) => (
                 <div

@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { DotButton, useDotButton } from "./arr";
 import "./a.css";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 const TWEEN_FACTOR_BASE = 0.2;
 

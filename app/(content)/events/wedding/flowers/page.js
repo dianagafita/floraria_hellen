@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import React from "react";
 import img from "./t.jpeg";
 import { TitleByPath } from "@/components/util/getPathTitle";
@@ -36,7 +36,7 @@ export default function page() {
     <div className="min-h-screen h-full">
       {" "}
       <div className="relative h-[335px] w-full">
-        <Image src={img} alt="" layout="fill" className="object-cover" />
+        <Image src={img} alt="" fill className="object-cover" />
         <div className="absolute inset-0 flex items-center justify-end text-black text-center bg-black bg-opacity-50 px-5">
           <span className="tracking-widest  bg-white  py-10 px-5 md:px-20 md:mr-20 flex flex-col  text-sm md:text-2xl">
             ARANJAMENTE FLORALE{" "}

@@ -5,7 +5,7 @@ import { PiBagThin } from "react-icons/pi";
 import { CiCreditCard1 } from "react-icons/ci";
 import { BsHouse } from "react-icons/bs";
 import { FaCheck } from "react-icons/fa6";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Loading from "@/lib/loading";
 
 export default function OrderDetailsPage({ params }) {

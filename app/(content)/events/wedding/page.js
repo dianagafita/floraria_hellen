@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./a.module.css";
 import imgs from "./smoke.jpeg";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { TitleByPath } from "@/components/util/getPathTitle";
 import Link from "next/link";
 

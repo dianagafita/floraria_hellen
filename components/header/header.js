@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/images/header-logo2.jpg";
 import classes from "./header.module.css";
@@ -15,6 +15,7 @@ import MenuToggle from "./menu-toogle";
 import classes2 from "./backdrop.module.css";
 import MobileHeader from "./header-mobile";
 import { useCart } from "@/context/cart-context";
+import { TbH1 } from "react-icons/tb";
 
 export default function Header() {
   const [isSearching, setIsSearching] = useState(false);
@@ -66,9 +67,9 @@ export default function Header() {
               >
                 <PiBagThin size={27} className=" " />
                 {cartCount > 0 ? (
-                  <h className="absolute left-4 bg-[rgb(116,10,10)] text-white rounded-full px-[5.5px] text-[10px] font-[100]">
+                  <h1 className="absolute left-4 bg-[rgb(116,10,10)] text-white rounded-full px-[5.5px] text-[10px] font-[100]">
                     {cartCount}
-                  </h>
+                  </h1>
                 ) : (
                   ""
                 )}

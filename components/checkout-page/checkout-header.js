@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import icon from "@/assets/images/header-logo2.jpg";

@@ -45,7 +45,7 @@
 //   );
 // }
 import ItemCard from "@/components/items/item-card";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import i from "./1.jpeg";
 import Title from "@/components/util/title";
 import SortItems from "@/components/util/sort-items";
