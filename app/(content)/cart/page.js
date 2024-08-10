@@ -21,7 +21,8 @@ export default function CartPage() {
             <div className="w-full">
               {cartItems.map((item) => (
                 // <CartPageItems key={item.product.id} items={item} />
-                <CartWithExtras key={item.product.id} items={item} />
+
+                <CartWithExtras productId={item.product.id} items={item} />
               ))}
             </div>
             <div className="flex flex-col font-[300] w-full self-end lg:self-start  md:w-1/2 mt-10 md:mt-0">
