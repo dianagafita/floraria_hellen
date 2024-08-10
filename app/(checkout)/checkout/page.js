@@ -34,6 +34,8 @@ export default function CheckoutPage() {
   };
 
   const handleCalculateDistance = async () => {
+    console.log("AAAAAA");
+    console.log(address);
     setIsCalculating(true);
     const fullAddress = `${address.street} ${address.number}, ${address.city}, Suceava, ${address.postalCode}`;
     await calculateDistance(fullAddress, setDistance, isLoaded, loadError);
@@ -42,11 +44,11 @@ export default function CheckoutPage() {
 
   useEffect(() => {
     if (distance !== null) {
-      const fee = Math.round((distance / 1000) * 3); // Adjust this calculation based on your actual fee logic
+      const fee = Math.round((distance / 1000) * 3 + 5); // Adjust this calculation based on your actual fee logic
       setShippingFee(fee);
     }
   }, [distance]);
-  console.log("CHECKOUTP", cartItems);
+
   return (
     <div className="flex flex-col md:flex-row h-full ">
       <div className="w-full lg:w-1/2 flex flex-col overflow-y-auto items-center border-r border-[#cdcdcb]">

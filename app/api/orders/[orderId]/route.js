@@ -57,7 +57,9 @@
 //   return NextResponse.json(order, { status: 200 });
 // }
 import { EmailTemplate } from "@/components/emailComp";
+import OrderReceiptEmail from "@/components/order-receipt";
 import NikeReceiptEmail from "@/components/order-receipt";
+import NewOrderReceiptEmail from "@/components/store-new-order";
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
@@ -115,19 +117,35 @@ export async function PUT(req, { params }) {
       include: {
         order_items: {
           include: {
-            product: true,
+            product: {
+              include: {
+                flowers: true, // Include the flowers related to each product
+              },
+            },
           },
         },
       },
     });
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    await resend.emails.send({
+    const resendClient = new Resend(process.env.RESEND_API_KEY);
+
+    // console.log("Sending user confirmation email...");
+    // await resendClient.emails.send({
+    //   from: "Floraria Hellen <onboarding@resend.dev>",
+    //   to: ["gafita.diana12@gmail.com"],
+    //   subject: "Comanda plasata cu succes",
+    //   react: OrderReceiptEmail({ order: orderReceipt, firstName: "Jhon" }),
+    // });
+    // console.log("User confirmation email sent!");
+
+    console.log("Sending store notification email...");
+    await resendClient.emails.send({
       from: "Floraria Hellen <onboarding@resend.dev>",
       to: ["gafita.diana12@gmail.com"],
-      subject: "Comanda plasata cu succes",
-      react: NikeReceiptEmail({ order: orderReceipt, firstName: "Jhon" }),
+      subject: "COMANDA NOUA",
+      react: NewOrderReceiptEmail({ order: orderReceipt, firstName: "ana" }),
     });
+    console.log("Store notification email sent!");
 
     return NextResponse.json(order, { status: 200 });
   } catch (error) {

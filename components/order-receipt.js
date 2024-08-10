@@ -1,20 +1,18 @@
-const NikeReceiptEmail = ({ firstName, order }) => {
-  const subTotal = 100; // Example value, replace with actual calculation
-  const deliveryCost = 10; // Example value, replace with actual calculation
-  const total = subTotal + deliveryCost;
+export default function OrderReceiptEmail({ firstName, order }) {
+  const subTotal = order.cart_total;
+  const deliveryCost = order.shipping_fee;
+  const total = order.total_price;
+  const recipientInfo = order.recipient_info;
+  const senderInfo = order.sender_info;
 
   const formatDate = (createdAt) => {
-    // Create a new Date object from the created_at string
     const date = new Date(createdAt);
-
-    // Extract the year, month, and day
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-based, so add 1
+    const month = String(date.getMonth() + 1).padStart(2, "0");
     const day = String(date.getDate()).padStart(2, "0");
-
-    // Format the date as YYYY-MM-DD
     return `${day}.${month}.${year}`;
   };
+
   const formattedDate = formatDate(order.created_at);
 
   return (
@@ -263,20 +261,62 @@ const NikeReceiptEmail = ({ firstName, order }) => {
                     textAlign: "center",
                   }}
                 >
-                  {order.totalPrice} LEI
+                  {total} LEI
                 </td>
               </tr>
             </tbody>
           </table>
 
-          <div>
-            <span>Adresa de livrare</span>
+          <div style={{ margin: "1rem 0" }}>
+            <span
+              style={{
+                fontSize: "18px",
+                fontWeight: "bold",
+                marginBottom: "1rem ",
+                color: "rgba(86, 12, 6, 0.9)",
+              }}
+            >
+              Informatii despre livrare
+            </span>
+            <div style={{ margin: "0.6rem 0", color: "black" }}>
+              <strong>Oraș:</strong> {recipientInfo.deliveryCity}
+              <br />
+              <strong>Nume:</strong> {recipientInfo.personReceivingFullName}
+              <br />
+              <strong>Telefon:</strong> {recipientInfo.personReceivingPhone}
+              <br />
+              <strong>Cod poștal:</strong>{" "}
+              {recipientInfo.personReceivingPostalCode}
+              <br />
+              <strong>Stradă:</strong> {recipientInfo.personReceivingStreetName}
+              <br />
+              <strong>Număr:</strong>{" "}
+              {recipientInfo.personReceivingStreetNumber}
+            </div>
           </div>
-          <p>Vă mulțumim pentru cumpărături!</p>
+          <div style={{ margin: "0.6rem 0" }}>
+            <span
+              style={{
+                fontSize: "18px",
+                fontWeight: "bold",
+                marginBottom: "1rem ",
+                color: "rgba(86, 12, 6, 0.9)",
+              }}
+            >
+              Informatiile de contact
+            </span>
+            <div style={{ margin: "0.6rem 0", color: "black" }}>
+              <strong>Email:</strong> {senderInfo.personSendingEmail}
+              <br />
+              <strong>Telefon:</strong> {senderInfo.personSendingPhone}
+              <br />
+              <strong>Nume:</strong> {senderInfo.personSendingFirstName}{" "}
+              {senderInfo.personSendingSecondName}
+            </div>
+          </div>
+          <p style={{ color: "black" }}>Vă mulțumim pentru cumpărături!</p>
         </div>
       </body>
     </html>
   );
-};
-
-export default NikeReceiptEmail;
+}

@@ -14,9 +14,27 @@ export async function getAllOrders(userId) {
   return orders;
 }
 
-export async function createOrder(userId, products, totalPrice, orderState) {
+export async function createOrder(
+  userId,
+  products,
+  shippingFee,
+  cartTotal,
+  senderInfo,
+  recipientInfo,
+  totalPrice,
+  orderState
+) {
   try {
-    if (!userId || !products || !totalPrice || !orderState) {
+    if (
+      !userId ||
+      !products ||
+      !totalPrice ||
+      !orderState ||
+      !shippingFee ||
+      !cartTotal ||
+      !senderInfo ||
+      !recipientInfo
+    ) {
       return res.status(400).json({ error: "Missing required fields" });
     }
 
@@ -32,6 +50,10 @@ export async function createOrder(userId, products, totalPrice, orderState) {
             })
           ),
         },
+        shipping_fee: shippingFee,
+        cart_total: cartTotal,
+        sender_info: senderInfo,
+        recipient_info: recipientInfo,
         total_price: totalPrice,
         order_state: orderState,
       },

@@ -11,6 +11,7 @@ export async function getProductsByType({ type }) {
     where: {
       product_type: type,
     },
+    include: { flowers: true },
   });
   return products;
 }
@@ -21,6 +22,7 @@ export async function getProductsBySubType({ type, subtype }) {
       product_type: type,
       product_subtype: subtype,
     },
+    include: { flowers: true },
   });
   return products;
 }
@@ -30,6 +32,7 @@ export async function getProductById(id) {
     where: {
       id: id,
     },
+    include: { flowers: true },
   });
   return products;
 }

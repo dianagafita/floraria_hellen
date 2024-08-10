@@ -1,16 +1,17 @@
-import React from "react";
-import Input from "../util/input";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ChevronLeft } from "lucide-react";
 import Button from "../util/button";
 import Link from "next/link";
 import { Elements } from "@stripe/react-stripe-js";
 import PaymentForm from "./payment-form";
 import { loadStripe } from "@stripe/stripe-js";
 import { convertToSubcurrency } from "@/lib/convertToSubcurrency";
+import PersonSendingForm from "./person-sending-form";
+import PersonRecivingForm from "./person-reciving-form";
 
 if (process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY === undefined) {
   throw new Error(
-    "process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY nu e definit!"
+    "process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY is not defined!"
   );
 }
 
@@ -19,145 +20,150 @@ const stripePromise = loadStripe(
 );
 
 export default function CheckoutForm({
-  address,
-  setAddress,
   handleCalculateDistance,
+  setAddress,
+  address,
   isCalculating,
   shippingFee,
   cartTotal,
   cartItems,
 }) {
-  console.log("CHECKFORM", cartItems);
+  const [isFormComplete, setIsFormComplete] = useState(false);
+  const [isDeliveryCalculated, setIsDeliveryCalculated] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const [senderInfo, setSenderInfo] = useState({
+    personSendingEmail: "",
+    personSendingFirstName: "",
+    personSendingSecondName: "",
+    personSendingPhone: "",
+  });
+
+  const [recipientInfo, setRecipientInfo] = useState({
+    personReceivingFullName: "",
+    personReceivingPhone: "",
+    deliveryCity: "Gura Humorului",
+    personReceivingStreetName: "",
+    personReceivingStreetNumber: "",
+    personReceivingPostalCode: "",
+    personReceivingOther: "",
+  });
+
+  useEffect(() => {
+    if (shippingFee > 5) {
+      setIsDeliveryCalculated(true);
+    }
+  }, [shippingFee]);
+
+  useEffect(() => {
+    setAddress({
+      city: recipientInfo.deliveryCity,
+      street: recipientInfo.personReceivingStreetName,
+      number: recipientInfo.personReceivingStreetNumber,
+      postalCode: recipientInfo.personReceivingPostalCode,
+    });
+  }, [recipientInfo, setAddress]);
+
+  const handleSenderChange = (e) => {
+    setSenderInfo({
+      ...senderInfo,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleRecipientChange = (e) => {
+    setRecipientInfo({
+      ...recipientInfo,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Validate sender info (all fields are required)
+    const senderComplete = Object.values(senderInfo).every(
+      (value) => value !== ""
+    );
+
+    // Validate recipient info, excluding `personReceivingOther`
+    const recipientComplete = Object.keys(recipientInfo).every(
+      (key) => key === "personReceivingOther" || recipientInfo[key] !== ""
+    );
+
+    if (!isDeliveryCalculated) {
+      setErrorMessage("Calculează livrarea înainte de a trece la plată!");
+      return;
+    }
+
+    if (senderComplete && recipientComplete && isDeliveryCalculated) {
+      setIsFormComplete(true);
+      setErrorMessage("");
+    } else {
+      setErrorMessage(
+        "Completați toate câmpurile obligatorii înainte de a merge la plată!"
+      );
+    }
+  };
+
   const amount = cartTotal + shippingFee;
+  console.log(address);
   return (
     <div className="flex flex-col w-full h-[600px] overflow-auto">
-      <form className="w-full">
-        <div className="h-full w-full ">
-          <div className="flex flex-col  bg-white drop-shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-sm  p-10 my-10 mx-5">
-            <h2 className="text-lg font-[600]">
-              <span className="border border-[rgb(155,47,14)] rounded-full px-2 py-1.5">
-                1.
-              </span>{" "}
-              Cine trimite cadoul?
-            </h2>
-            <Input type="text" name="personSendingEmail" label="E-mail" />
-            <Input type="text" name="personSendingFirstName" label="Nume" />
-            <Input type="text" name="personSendingSecondName" label="Prenume" />
-            <Input type="text" name="personSendingPhone" label="Telefon" />
-            <span className="text-xs ml-5 my-6 pr-5">
-              <span className="border border-[rgb(155,47,14)] rounded-full px-1.5 text-[rgb(155,47,14)] mr-2 font-[600] ">
-                i
-              </span>
-              <span className="font-[100] text-[12px]">
-                Factura se emite exculiv online si pe email. Nicio factura nu
-                ajunge la beneficiarul cadoului.
-              </span>
+      <form className="w-full" onSubmit={handleSubmit}>
+        <div className="h-full w-full">
+          <PersonSendingForm
+            senderInfo={senderInfo}
+            handleSenderChange={handleSenderChange}
+          />
+          <PersonRecivingForm
+            recipientInfo={recipientInfo}
+            handleRecipientChange={handleRecipientChange}
+            handleCalculateDistance={handleCalculateDistance}
+            shippingFee={shippingFee}
+            isCalculating={isCalculating}
+            setErrorMessage={setErrorMessage}
+          />
+          <div className="flex flex-col items-center justify-between pb-7 px-5">
+            <Button
+              type="submit"
+              moreStyle="w-[75vw] md:w-[35vw] mb-2 whitespace-nowrap py-[0.4rem] text-[15px]"
+            >
+              Mergi la plată{" "}
+            </Button>{" "}
+            <span className="text-red-900 my-1 text-[13px] font-[100]">
+              {errorMessage}
             </span>
-          </div>
-          <div className="flex flex-col  bg-white drop-shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-sm  p-10 my-10 mx-5">
-            <h2 className="text-lg font-[600]">
-              <span className="border border-[rgb(155,47,14)] rounded-full px-2 py-1.5">
-                2.
-              </span>{" "}
-              Cine primeste cadoul?
-            </h2>
-            <Input
-              type="text"
-              name="personReceivingFullName"
-              label="Nume Complet"
-            />
-            <Input type="text" name="personReceivingPhone" label="Telefon" />{" "}
-            <div className="flex w-full">
-              <Input
-                name="deliveryCity"
-                label="Alege orasul livrarii:"
-                value={address.city}
-                onChange={(e) => setAddress({ city: e.target.value })}
-                type="select"
-                options={[
-                  { value: "Gura Humorului", label: "Gura Humorului" },
-                  { value: "Frasin", label: "Frasin" },
-                  { value: "Voronet", label: "Voronet" },
-                  { value: "Voronet", label: "Voronet" },
-                  {
-                    value: "Manastrirea Humorului",
-                    label: "Manastrirea Humorului",
-                  },
-                  { value: "Capu Campului", label: "Capu Campului" },
-                  { value: "Capu Codrului", label: "Capu Codrului" },
-                  { value: "Vama", label: "Vama" },
-
-                  // Add more cities as needed
-                ]}
-              />
-            </div>
-            <Input
-              type="text"
-              label="Numele strazii:"
-              name="personReceivingStreetName"
-              value={address.street}
-              onChange={(e) => setAddress({ street: e.target.value })}
-              placeholder="Numele strazii"
-              className="border border-gray-300 rounded-md p-1"
-            />
-            <div className="flex w-full ">
-              <div className="w-1/2">
-                <Input
-                  type="text"
-                  name="personReceivingStreetNumber"
-                  label="Numarul Strazii:"
-                  value={address.number}
-                  onChange={(e) => setAddress({ number: e.target.value })}
-                  placeholder="Numaruk strazii"
-                  className="border border-gray-300 rounded-md p-1"
-                />{" "}
-              </div>
-              <div className="w-1/2">
-                <Input
-                  label="Cod Postal:"
-                  name="personReceivingPostalCode"
-                  type="text"
-                  value={address.postalCode}
-                  onChange={(e) => setAddress({ postalCode: e.target.value })}
-                  placeholder="Codul postal"
-                  className="border border-gray-300 rounded-md p-1"
-                />
-              </div>
-            </div>
-            <div className="flex flex-col items-center justify-between w-full mt-[50px] mb-5 px-5">
-              <Button
-                type="button"
-                moreStyle="w-full mb-5  whitespace-nowrap py-[0.4rem] text-[15px]"
-                onClick={handleCalculateDistance}
-              >
-                {isCalculating ? "Calculating..." : "Calculeaza Livrarea"}
-              </Button>
-              <p>
-                Cost Livrare:{" "}
-                <span className="font-[100] text-[15px]">
-                  {shippingFee.toFixed(2)} lei
-                </span>
-              </p>
-            </div>
-          </div>
+          </div>{" "}
         </div>
       </form>
-      <div className="h-auto  p-10 m-5 bg-white drop-shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-sm">
-        <Elements
-          stripe={stripePromise}
-          options={{
-            mode: "payment",
-            amount: convertToSubcurrency(amount, 100),
-            currency: "ron",
-          }}
-        >
-          <PaymentForm amount={amount} cartItems={cartItems} />
-        </Elements>
-      </div>
+
+      {isFormComplete && (
+        <div className="h-auto p-10 m-5 bg-white drop-shadow-[0_0px_10px_rgba(0,0,0,0.15)] rounded-sm">
+          <Elements
+            stripe={stripePromise}
+            options={{
+              mode: "payment",
+              amount: convertToSubcurrency(amount, 100),
+              currency: "ron",
+            }}
+          >
+            <PaymentForm
+              amount={amount}
+              cartItems={cartItems}
+              recipientInfo={recipientInfo}
+              senderInfo={senderInfo}
+              shippingFee={shippingFee}
+              cartTotal={cartTotal}
+            />
+          </Elements>
+        </div>
+      )}
+
       <div className="flex justify-between pb-7">
         <Link className="font-[300] text-[12px] flex items-center" href="/cart">
           <ChevronLeft className="ml-2 mr-1" strokeWidth={1} size={15} />
-          Reveniti la cos
+          Reveniți la coș
         </Link>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { ResetPasswordTemplate } from "@/components/change-password";
 import prisma from "@/lib/prisma";
 import crypto from "crypto";
 import { Resend } from "resend";
+
 export const resetPassword = async (email) => {
   const user = prisma.user.findUnique({
     where: {

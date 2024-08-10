@@ -9,7 +9,14 @@ import React, { useEffect, useState } from "react";
 import Button from "../util/button";
 import Loading from "@/lib/loading";
 
-export default function PaymentForm({ amount, cartItems }) {
+export default function PaymentForm({
+  amount,
+  cartItems,
+  senderInfo,
+  recipientInfo,
+  shippingFee,
+  cartTotal,
+}) {
   const stripe = useStripe();
   const elements = useElements();
   const [errorMessage, setErrorMessage] = useState("");
@@ -44,7 +51,10 @@ export default function PaymentForm({ amount, cartItems }) {
     const orderData = {
       userId: 12,
       products: products,
-
+      shippingFee: parseInt(shippingFee),
+      cartTotal: parseFloat(cartTotal),
+      senderInfo,
+      recipientInfo,
       totalPrice: parseFloat(amount),
       orderState: "placed",
     };

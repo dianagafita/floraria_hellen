@@ -36,6 +36,10 @@ model Cart {
 
 model Order {
   id          Int       @id @default(autoincrement())
+  shipping_fee Int
+  cart_total  Float
+  sender_info Json
+  recipient_info Json
   total_price Float
   order_state String
   created_at  DateTime  @default(now())
@@ -48,7 +52,7 @@ model Order {
 model Product {
   id              Int       @id @default(autoincrement())
   name            String
-  flowers         String[]
+  flowers         Flower[]
   price           Float
   product_type    String
   product_subtype String
@@ -57,6 +61,15 @@ model Product {
   created_at      DateTime  @default(now())
   updated_at      DateTime  @updatedAt
   order_items     OrderItem[]
+}
+
+
+model Flower {
+  id        Int    @id @default(autoincrement())
+  quantity Int
+  flower    String
+  productId Int
+  product   Product @relation(fields: [productId], references: [id])
 }
 
 model OrderItem {

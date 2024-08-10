@@ -2,9 +2,6 @@ import { Inter } from "next/font/google";
 
 import "@/app/globals.css";
 import MainFooter from "@/components/footer/main-footer";
-import { PaymentProvider } from "@/context/payment-context";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Next.js App",
@@ -16,7 +13,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="ro">
       <head>
         <link rel="icon" href="/icon.png" sizes="any" />
       </head>

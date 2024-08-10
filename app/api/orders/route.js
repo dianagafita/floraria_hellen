@@ -23,10 +23,28 @@ export async function GET(req, { params }) {
 }
 
 export async function POST(req) {
-  const { userId, products, totalPrice, orderState } = await req.json();
+  const {
+    userId,
+    products,
+    shippingFee,
+    cartTotal,
+    senderInfo,
+    recipientInfo,
+    totalPrice,
+    orderState,
+  } = await req.json();
 
   try {
-    const order = await createOrder(userId, products, totalPrice, orderState);
+    const order = await createOrder(
+      userId,
+      products,
+      shippingFee,
+      cartTotal,
+      senderInfo,
+      recipientInfo,
+      totalPrice,
+      orderState
+    );
 
     if (!order) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });

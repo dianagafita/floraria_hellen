@@ -4,6 +4,7 @@ import Title from "@/components/util/title";
 import Link from "next/link";
 import Button from "@/components/util/button";
 import { useCart } from "@/context/cart-context";
+import CartWithExtras from "./cart-with-extras";
 
 export default function CartPage() {
   const { cartItems, cartTotal } = useCart();
@@ -19,7 +20,8 @@ export default function CartPage() {
           <div className="flex flex-col lg:flex-row justify-between w-full h-full mt-10">
             <div className="w-full">
               {cartItems.map((item) => (
-                <CartPageItems key={item.product.id} items={item} />
+                // <CartPageItems key={item.product.id} items={item} />
+                <CartWithExtras key={item.product.id} items={item} />
               ))}
             </div>
             <div className="flex flex-col font-[300] w-full self-end lg:self-start  md:w-1/2 mt-10 md:mt-0">

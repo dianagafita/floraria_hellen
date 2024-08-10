@@ -1,34 +1,33 @@
 "use client";
 import React from "react";
-import CartExtra from "./cart-extra";
 import Image from "next/image";
 import { Minus, Plus } from "lucide-react";
 import { useCart } from "@/context/cart-context";
 import Link from "next/link";
 
-export default function CartPageItems({ items }) {
+export default function CartExtraPageItem({ extraItems }) {
   const { removeFromCart, updateCartItemQuantity } = useCart();
 
   const handleQuantityChange = (qty) => {
     const quantity = Number(qty);
     if (quantity >= 1) {
-      updateCartItemQuantity(items.product.id, quantity);
+      updateCartItemQuantity(extraItems.product.id, quantity);
     }
   };
 
   const handleRemoveClick = () => {
-    removeFromCart(items.product.id);
+    removeFromCart(extraItems.product.id);
   };
-  console.log(items);
+  console.log(extraItems);
   return (
     <div className="flex w-full mb-10 lg:mb-20">
-      <Link href={`/products/${items.product.id}`}>
+      {/* <Link href={`/products/${extraItems.product.id}`}>
         <div className="min-w-[105px] max-w-[120px] mr-8">
           <Image
-            src={items.product.images_url[0]}
+            src={extraItems.product.images_url[0]}
             width={100}
             height={100}
-            alt={items.title}
+            alt={extraItems.name}
             layout="responsive"
             className="object-contain"
           />
@@ -36,29 +35,23 @@ export default function CartPageItems({ items }) {
       </Link>
       <div className="flex flex-col w-full">
         <div className="flex flex-col justify-between w-full h-full">
-          <div>
-            <div className="font-[300] mb-1">{items.product.name}</div>
-            <div>
-              <CartExtra extraInfo={items} />
-            </div>
-          </div>
           <div className="flex flex-col justify-between w-full">
-            <div className="flex items-center justify-between mb-2 w-full">
-              <div className="flex w-full justify-between items-center">
-                <div className="flex items-center space-x-2 border border-gray-300 rounded-sm font-[100] px-1 text-sm">
+            <div className="flex extraItems-center justify-between mb-2 w-full">
+              <div className="flex w-full justify-between extraItems-center">
+                <div className="flex extraItems-center space-x-2 border border-gray-300 rounded-sm font-[100] px-1 text-sm">
                   <button
                     onClick={() => {
-                      handleQuantityChange(items.quantity - 1);
+                      handleQuantityChange(extraItems.quantity - 1);
                     }}
                     className="p-1"
                     aria-label="Decrease quantity"
                   >
                     <Minus size={20} strokeWidth={1} />
                   </button>
-                  <span className="text-m">{items.quantity}</span>
+                  <span className="text-m">{extraItems.quantity}</span>
                   <button
                     onClick={() => {
-                      handleQuantityChange(items.quantity + 1);
+                      handleQuantityChange(extraItems.quantity + 1);
                     }}
                     className="p-1"
                     aria-label="Increase quantity"
@@ -69,7 +62,8 @@ export default function CartPageItems({ items }) {
               </div>
 
               <span className="text-m font-[100] whitespace-nowrap md:w-full">
-                {(items.product.price * items.quantity).toFixed(2)} Lei
+                {(extraItems.product.price * extraItems.quantity).toFixed(2)}{" "}
+                Lei
               </span>
             </div>
             <button
@@ -77,10 +71,11 @@ export default function CartPageItems({ items }) {
               onClick={handleRemoveClick}
             >
               STERGE
-            </button>
-          </div>
-        </div>
-      </div>
+            </button> */}
+      {/* </div>
+            </div>
+        </div> */}
+      a
     </div>
   );
 }

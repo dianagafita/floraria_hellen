@@ -46,7 +46,7 @@ export default function Input({
           name={name}
           value={value}
           onChange={onChange}
-          className="font-thin border border-black p-2 rounded-sm h-[2.5rem] text-[#555555]"
+          className="focus:outline-none focus:border-[rgb(164,21,21)] focus:ring-1 focus:ring-[rgb(164,21,21)] font-thin border border-black p-2 rounded-sm h-[2.5rem] text-[#555555]"
         >
           {options
             .filter((option) =>
@@ -67,7 +67,7 @@ export default function Input({
           rows={4}
           value={value}
           onChange={onChange}
-          className=" focus:outline-none focus:ring focus:ring-violet-300 font-thin border border-black p-2 rounded-sm  text-[#555555] text-sm md:text-base"
+          className="focus:outline-none focus:border-[rgb(164,21,21)] focus:ring-1 focus:ring-[rgb(164,21,21)] font-thin border border-black p-2 rounded-sm  text-[#555555] text-sm md:text-base"
           required
         />
       ) : (
