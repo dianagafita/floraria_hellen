@@ -1,5 +1,6 @@
 import React from "react";
 import CartPageItems from "@/components/cart/cart-page-items";
+import CartWithExtras from "@/app/(content)/cart/cart-with-extras";
 
 export default function OrderSummary({ shippingFee, cartItems, cartTotal }) {
   console.log(cartItems);
@@ -8,7 +9,11 @@ export default function OrderSummary({ shippingFee, cartItems, cartTotal }) {
     <div>
       <div className="mt-5 border-b border-[#cdcdcb] pb-5">
         {cartItems.map((item) => (
-          <CartPageItems key={item.product.id} items={item} />
+          <CartWithExtras
+            productId={item.product.id}
+            key={item.product.id}
+            items={item}
+          />
         ))}
       </div>
 

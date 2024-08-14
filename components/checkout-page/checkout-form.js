@@ -107,7 +107,7 @@ export default function CheckoutForm({
   };
 
   const amount = cartTotal + shippingFee;
-  console.log(address);
+  console.log("CHECK", cartItems);
   return (
     <div className="flex flex-col w-full h-[600px] overflow-auto">
       <form className="w-full" onSubmit={handleSubmit}>

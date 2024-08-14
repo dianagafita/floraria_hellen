@@ -206,8 +206,6 @@ import { TitleByPath } from "@/components/util/getPathTitle";
 import { useCart } from "@/context/cart-context";
 import Button from "@/components/util/button";
 import Loading from "@/lib/loading";
-import img from "./1.png";
-import img2 from "./2.png";
 
 import ExtraItemModal from "./extra-item-modal";
 
@@ -228,7 +226,8 @@ export default function ProductPage({ params }) {
       name: "Cutie Raffaello",
       price: 50,
       description: "A fine bottle of red wine.",
-      image: img2,
+      image:
+        "https://res.cloudinary.com/defo6qykq/image/upload/v1723475366/floraria_hellen/extra/Screenshot_2024-08-10_at_23.54.49_u3thc8.png",
       quantity: 1,
     },
     {
@@ -236,15 +235,17 @@ export default function ProductPage({ params }) {
       name: "Candy",
       price: 30,
       description: "Delicious assorted candies.",
-      image: img,
+      image:
+        "https://res.cloudinary.com/defo6qykq/image/upload/v1723475366/floraria_hellen/extra/Screenshot_2024-08-10_at_23.54.49_u3thc8.png",
       quantity: 1,
     },
     {
       id: 3,
-      name: "Candy",
+      name: "Toffifee",
       price: 30,
       description: "Delicious assorted candies.",
-      image: img,
+      image:
+        "https://res.cloudinary.com/defo6qykq/image/upload/v1723475366/floraria_hellen/extra/Screenshot_2024-08-10_at_23.54.49_u3thc8.png",
       quantity: 1,
     },
     {
@@ -252,7 +253,8 @@ export default function ProductPage({ params }) {
       name: "Candy",
       price: 30,
       description: "Delicious assorted candies.",
-      image: img,
+      image:
+        "https://res.cloudinary.com/defo6qykq/image/upload/v1723475366/floraria_hellen/extra/Screenshot_2024-08-10_at_23.54.49_u3thc8.png",
       quantity: 1,
     },
     {
@@ -260,7 +262,8 @@ export default function ProductPage({ params }) {
       name: "Candy",
       price: 30,
       description: "Delicious assorted candies.",
-      image: img,
+      image:
+        "https://res.cloudinary.com/defo6qykq/image/upload/v1723475366/floraria_hellen/extra/Screenshot_2024-08-10_at_23.54.49_u3thc8.png",
       quantity: 1,
     },
   ]);
@@ -297,7 +300,8 @@ export default function ProductPage({ params }) {
   };
 
   const handleAddToCart = (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Prevent the default form submission behavior
+
     const form = event.currentTarget.form;
 
     if (form.checkValidity()) {
@@ -342,7 +346,7 @@ export default function ProductPage({ params }) {
       style: "text-black-300/75",
     },
   ];
-  console.log(extraItems);
+  console.log(flowers);
   return (
     <div className="flex flex-col">
       <TitleByPath paths={paths} />
@@ -408,6 +412,13 @@ export default function ProductPage({ params }) {
                   onChange={handleChange}
                 />
                 <Input
+                  name="deliveryMessage"
+                  label="Mesaj felicitare"
+                  type="textarea"
+                  checked={formData.deliveryMessage}
+                  onChange={handleChange}
+                />
+                <Input
                   name="deliveryType"
                   label="Livrare anonima"
                   type="checkbox"
@@ -427,11 +438,12 @@ export default function ProductPage({ params }) {
                     className=" p-3 flex flex-col items-center"
                   >
                     <button
+                      type="button"
                       onClick={() => setSelectedItem(item)}
                       moreStyle="mt-2 text-sm"
                     >
                       <img
-                        src={item.image.src}
+                        src={item.image}
                         alt={item.name}
                         className="w-20 h-20 mb-2 border-none"
                       />
@@ -445,7 +457,7 @@ export default function ProductPage({ params }) {
               </div>
             </div>
             <Button
-              moreStyle=" !bg-black text-white hover:!bg-white hover:text-black  active:bg-white active:text-black"
+              moreStyle=" !bg-black text-white hover:!bg-white hover:!text-black  active:bg-white active:text-black"
               type="submit"
               onClick={handleAddToCart}
             >
@@ -458,8 +470,12 @@ export default function ProductPage({ params }) {
         <span className="font-bold">
           Buchetul contine:{" "}
           <span className="font-[100] text-sm">
-            lisianthus, miniroze si trandafiri de inalta calitate, alese in
-            functie de disponibilitate si sezon.
+            {flowers.flowers.map((item, index) => (
+              <span key={item.flower}>
+                <span>{item.flower}</span>
+                {index < flowers.flowers.length - 1 && <span>, </span>}
+              </span>
+            ))}
           </span>
           <span className="my-2 flex flex-col">
             Detalii suplimentare:
@@ -467,7 +483,7 @@ export default function ProductPage({ params }) {
               La produsele cu flori naturale pot exista usoare variatii de
               culoare fata de imaginea prezentata.
             </span>
-            <span className="text-sm font-[100] mb-10">
+            <span className="text-sm font-[100] mb-1">
               Anumite flori din aranjamente pot fi disponibile doar in anumite
               perioade din an.
             </span>

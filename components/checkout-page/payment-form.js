@@ -41,13 +41,16 @@ export default function PaymentForm({
       productId: item.product.id,
       quantity: item.quantity,
       productDeliveryInfo: [
-        item.deliveryCity,
-        item.deliveryDate,
-        item.deliveryInterval,
-        String(item.deliveryType),
+        item.product.formData.deliveryCity,
+        item.product.formData.deliveryDate,
+        item.product.formData.deliveryInterval,
+        item.product.formData.deliveryMessage,
+        String(item.product.formData.deliveryType),
       ],
+      extras: item.product.extras || [], // Ensure extras is always defined
     }));
 
+    console.log("FORM", products);
     const orderData = {
       userId: 12,
       products: products,

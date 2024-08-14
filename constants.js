@@ -196,9 +196,8 @@ export const CAROUSEL_IMAGES = [
 ];
 
 export const FOOTER_MENU = [
-  { title: "Contact", href: "contact" },
-  { title: "Livrare", href: "delivery" },
-
+  { title: "Contact", href: "/contact" },
+  { title: "Livrare", href: "/delivery" },
   { title: "Despre noi", href: "/about" },
   { title: "Termeni si conditii", href: "/terms-conditions" },
   { title: "Politica de confidentialitate", href: "/politics" },

@@ -1,4 +1,4 @@
-export default function NewOrderReceiptEmail({ firstName, order }) {
+export default function NewOrderReceiptEmail({ order }) {
   const subTotal = order.cart_total;
   const deliveryCost = order.shipping_fee;
   const recipientInfo = order.recipient_info;
@@ -61,7 +61,7 @@ export default function NewOrderReceiptEmail({ firstName, order }) {
               {recipientInfo.personReceivingStreetNumber}
             </div>
           </div>
-          <div style={{ marginBottom: "1rem 0" }}>
+          <div style={{ marginBottom: "2rem" }}>
             <span
               style={{
                 fontSize: "18px",
@@ -191,12 +191,14 @@ export default function NewOrderReceiptEmail({ firstName, order }) {
                       {item.productDeliveryInfo.map((info, index) => {
                         if (index === 1) {
                           return <p key={index}>{formatDate(info)}</p>;
-                        } else if (index === 3) {
+                        } else if (index === 4) {
                           return (
                             <p key={index} colSpan="1">
-                              {info === "true" ? "ANONIM" : "NON-ANONOM"}
+                              {info === "true" ? "ANONIM" : "NON-ANONIM"}
                             </p>
                           );
+                        } else if (index === 3) {
+                          return;
                         } else {
                           return (
                             <p key={index} colSpan="1">
@@ -207,7 +209,7 @@ export default function NewOrderReceiptEmail({ firstName, order }) {
                       })}
                     </td>
                   </tr>
-                  <tr style={{ borderBottom: "10px solid #dddddd" }}>
+                  <tr>
                     <td
                       colSpan="1"
                       style={{
@@ -242,9 +244,100 @@ export default function NewOrderReceiptEmail({ firstName, order }) {
                         <p>
                           x{item.quantity} {item.flower}
                         </p>
-                      ))}{" "}
+                      ))}
                     </td>
-                  </tr>{" "}
+                  </tr>
+                  {(item.extras || []).map((extra) => {
+                    console.log(extra);
+                    return (
+                      <tr key={extra.id}>
+                        <td
+                          style={{
+                            border: "1px solid #D0D0D0",
+                            padding: "10px 8px",
+                            fontSize: "11px",
+                            verticalAlign: "middle",
+                            backgroundColor: "#f0f0f0",
+                          }}
+                        >
+                          <img
+                            src={extra.image}
+                            style={{
+                              height: "6rem",
+                              width: "4rem",
+                              margin: "5px",
+                              verticalAlign: "middle",
+                            }}
+                          />
+                        </td>
+                        <td
+                          style={{
+                            border: "1px solid #D0D0D0",
+                            padding: "10px 8px",
+                            fontSize: "11px",
+                            textAlign: "center",
+                          }}
+                        >
+                          x{extra.quantity}
+                        </td>
+                        <td
+                          style={{
+                            border: "1px solid #D0D0D0",
+                            padding: "10px 8px",
+                            fontSize: "12px",
+                            textAlign: "center",
+                          }}
+                        >
+                          {extra.price} RON
+                        </td>
+                        <td
+                          style={{
+                            border: "1px solid #D0D0D0",
+                            padding: "10px 8px",
+                            fontSize: "12px",
+                            textAlign: "center",
+                          }}
+                        >
+                          {extra.name}
+                        </td>
+                      </tr>
+                    );
+                  })}
+
+                  <tr>
+                    <td
+                      colSpan="1"
+                      style={{
+                        border: "1px solid #D0D0D0",
+                        padding: "10px 8px",
+                        fontSize: "11px",
+                        verticalAlign: "middle",
+                        backgroundColor: "#f0f0f0",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Mesaj felicitare
+                    </td>
+                    <td
+                      colSpan="3"
+                      style={{
+                        border: "1px solid #D0D0D0",
+                        padding: "10px 8px",
+                        fontSize: "11px",
+                        textAlign: "center",
+                      }}
+                    >
+                      {item.productDeliveryInfo.map((info, index) => {
+                        if (index === 3) {
+                          return (
+                            <p key={index}>
+                              {info === "" ? "FARA MESAJ" : info}
+                            </p>
+                          );
+                        }
+                      })}
+                    </td>
+                  </tr>
                 </>
               ))}
             </tbody>

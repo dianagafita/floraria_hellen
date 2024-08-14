@@ -16,12 +16,15 @@
 //   );
 // }
 const CartExtra = ({ extraInfo }) => {
+  console.log("EXTRA", extraInfo);
+  const extraData = extraInfo.product.formData;
   return (
     <div className="text-sm font-[100]">
-      <div>Orasul livrarii: {extraInfo.deliveryCity}</div>
-      <div>Data livrarii: {extraInfo.deliveryDate}</div>
-      <div>Intervalul livrarii: {extraInfo.deliveryInterval}</div>
-      <div>Livrare anonima: {extraInfo.deliveryType ? "Da" : "Nu"}</div>
+      <div>Orasul livrarii: {extraData.deliveryCity}</div>
+      <div>Data livrarii: {extraData.deliveryDate}</div>
+      <div>Intervalul livrarii: {extraData.deliveryInterval}</div>
+      <div>Mesaj felicitare: {extraData.deliveryMessage}</div>
+      <div>Livrare anonima: {extraData.deliveryType ? "Da" : "Nu"}</div>
     </div>
   );
 };

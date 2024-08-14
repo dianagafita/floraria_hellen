@@ -171,6 +171,22 @@ export default function ProductPage({ params }) {
                   onChange={handleChange}
                 />
                 <Input
+                  required
+                  name="deliveryDate"
+                  label="Data livrarii:"
+                  type="date"
+                  dateType="order"
+                  value={formData.deliveryDate}
+                  onChange={handleChange}
+                />
+                <Input
+                  name="deliveryMessage"
+                  label="Mesaj felicitare"
+                  type="textarea"
+                  checked={formData.deliveryMessage}
+                  onChange={handleChange}
+                />
+                <Input
                   name="deliveryType"
                   label="Livrare anonima"
                   type="checkbox"

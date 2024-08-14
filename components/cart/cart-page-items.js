@@ -128,6 +128,7 @@ export default function CartPageItems({ items, type, productId }) {
     }
   };
 
+  console.log(items);
   return (
     <div className="flex w-full mb-10 lg:mb-20">
       <div className="min-w-[105px] max-w-[120px] mr-8">

@@ -3,34 +3,55 @@ import Image from "next/image";
 import { useCart } from "@/context/cart-context";
 import { Minus, Plus } from "lucide-react";
 
-export default function CartCard({ item }) {
+export default function CartCard({ item, type, productId }) {
   const { removeFromCart, updateCartItemQuantity } = useCart();
 
   const handleQuantityChange = (qty) => {
     const quantity = Number(qty);
     if (quantity >= 1) {
-      updateCartItemQuantity(item.product.id, quantity);
+      if (type === "extra") {
+        updateCartItemQuantity(productId, quantity, true, item.id);
+      } else {
+        updateCartItemQuantity(item.product.id, quantity);
+      }
     }
   };
 
   const handleRemoveClick = () => {
-    removeFromCart(item.product.id);
+    if (type === "extra") {
+      removeFromCart(productId, true, item.id);
+    } else {
+      removeFromCart(item.product.id);
+    }
   };
 
   return (
     <div className="flex border-b items-start p-3 m-1 h-[140px]">
       <div className="h-[5rem] w-[100px] content-center">
-        <Image
-          src={item.product.images_url[0]}
-          width={100}
-          height={100}
-          alt={item.product.title}
-          layout="responsive"
-          className="object-cover"
-        />
+        {type === "extra" ? (
+          <Image
+            src={item.image}
+            width={100}
+            height={100}
+            alt={item.name}
+            layout="responsive"
+            className="object-contain"
+          />
+        ) : (
+          <Image
+            src={item.product.images_url[0]}
+            width={100}
+            height={100}
+            alt={item.product.name}
+            layout="responsive"
+            className="object-cover"
+          />
+        )}
       </div>
       <div className="flex w-full flex-col ml-4">
-        <span className="text-sm font-[300] mb-1">{item.product.name}</span>
+        <span className="text-sm font-[300] mb-1">
+          {type === "extra" ? item.name : item.product.name}
+        </span>
         <button className="xxsFont mb-4 text-start" onClick={handleRemoveClick}>
           STERGE
         </button>
@@ -58,7 +79,10 @@ export default function CartCard({ item }) {
             </button>
           </div>
           <span className="text-m font-[300] ml-5">
-            {item.product.price * item.quantity}
+            {(type === "extra"
+              ? item.price * item.quantity
+              : item.product.price * item.quantity
+            ).toFixed(2)}{" "}
             <sup>.00</sup>
             <sup> LEI</sup>
           </span>

@@ -4,8 +4,6 @@ import NikeReceiptEmail from "@/components/order-receipt";
 export default async function ContactPage() {
   return (
     <div>
-      {" "}
-      <NikeReceiptEmail />
       <MapCard />
     </div>
   );

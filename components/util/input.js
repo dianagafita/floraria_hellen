@@ -68,7 +68,6 @@ export default function Input({
           value={value}
           onChange={onChange}
           className="focus:outline-none focus:border-[rgb(164,21,21)] focus:ring-1 focus:ring-[rgb(164,21,21)] font-thin border border-black p-2 rounded-sm  text-[#555555] text-sm md:text-base"
-          required
         />
       ) : (
         <input

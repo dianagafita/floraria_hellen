@@ -9,6 +9,10 @@ export default function ExtraItemModal({ item, onClose, onAdd }) {
         <h2 className="text-xl font-bold">{item.name}</h2>
         <img src={item.image} alt={item.name} className="w-40 h-40 my-3" />
         <p>{item.description}</p>
+        <p>
+          Produsul se poate comanda doar impreuna cu un buchet de flori sau un
+          aranajment!
+        </p>
         <p className="font-bold my-2">{item.price} lei</p>
         <div className="flex space-x-3 mt-5">
           <Button onClick={() => onAdd(item)}>Add to Cart</Button>

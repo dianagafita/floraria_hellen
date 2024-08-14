@@ -19,11 +19,6 @@ export default function RootLayout({ children }) {
     <html>
       <head>
         <link rel="icon" href="/icon.png" sizes="any" />
-        <script
-          async
-          defer
-          src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"
-        ></script>
       </head>
       <body className="relative">
         <CartModal />
