@@ -111,20 +111,34 @@ export default function CartPageItems({ items, type, productId }) {
 
   const handleQuantityChange = (qty) => {
     const quantity = Number(qty);
+
     if (quantity >= 1) {
       if (type === "extra") {
+        // Update the quantity of an extra item
+        console.log("QTY", qty);
         updateCartItemQuantity(productId, quantity, true, items.id);
       } else {
-        updateCartItemQuantity(items.product.id, quantity);
+        // Update the quantity of a regular item
+        updateCartItemQuantity(items.product.id, quantity, false, null, {
+          deliveryCity: items.product.formData?.deliveryCity || "",
+          deliveryDate: items.product.formData?.deliveryDate || "",
+          deliveryInterval: items.product.formData?.deliveryInterval || "",
+        });
       }
     }
   };
 
   const handleRemoveClick = () => {
     if (type === "extra") {
-      removeFromCart(productId, true, items.id);
+      // Remove the extra item
+      removeFromCart(productId, {}, true, items.id);
     } else {
-      removeFromCart(items.product.id);
+      // Remove the regular item
+      removeFromCart(items.product.id, {
+        deliveryCity: items.product.formData?.deliveryCity || "",
+        deliveryDate: items.product.formData?.deliveryDate || "",
+        deliveryInterval: items.product.formData?.deliveryInterval || "",
+      });
     }
   };
 

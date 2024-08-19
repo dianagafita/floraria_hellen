@@ -1,15 +1,18 @@
 import React from "react";
 import Title from "@/components/util/title";
 import { FeaturedImageGallery } from "@/components/pages/photoGallery";
-import img from "../../flowers/1.jpeg";
-import img2 from "../../flowers/2.jpeg";
+import img from "./1.jpeg";
+import img2 from "./2.jpeg";
 import { TitleByPath } from "@/components/util/getPathTitle";
 import Link from "next/link";
+import { getComponentById } from "@/app/api/events/products";
 
 const data = [img, img2];
 
-export default function FlowerPage({ params }) {
-  const title = decodeURIComponent(params.flowerId);
+export default async function ComponentPage({ params }) {
+  const title = decodeURIComponent(params.componentId);
+  const componentDetails = await getComponentById(params.componentId);
+
   const paths = [
     { href: "/events", title: "EVENIMENTE", style: "text-black-300/75" },
     { href: "/events/wedding", title: "NUNTA", style: "text-black" },
@@ -19,7 +22,7 @@ export default function FlowerPage({ params }) {
       style: "text-black",
     },
     {
-      href: `/events/wedding/flowers/${params.flowerId}`,
+      href: `/events/wedding/flowers/${params.componentId}`,
       title: title,
       style: "text-black",
     },
@@ -40,8 +43,15 @@ export default function FlowerPage({ params }) {
                 Aranjamentul contine flori proaspete:
               </span>
               <span className="text-sm font-[100]">
-                antirrhinum, trandafiri, anthurium, lisianthus si decoratiuni
-                diverse de inalta calitate.
+                {componentDetails.flowers.map((item, index) => (
+                  <span key={item.flower}>
+                    <span>{item.flower}</span>
+                    {index < componentDetails.flowers.length - 1 && (
+                      <span>, </span>
+                    )}
+                  </span>
+                ))}{" "}
+                si decoratiuni diverse de inalta calitate.
               </span>
             </span>
             <span className="my-2 flex flex-col ">

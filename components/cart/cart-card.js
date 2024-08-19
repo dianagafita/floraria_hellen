@@ -6,27 +6,51 @@ import { Minus, Plus } from "lucide-react";
 export default function CartCard({ item, type, productId }) {
   const { removeFromCart, updateCartItemQuantity } = useCart();
 
+  // const handleQuantityChange = (qty) => {
+  //   const quantity = Number(qty);
+  //   if (quantity >= 1) {
+  //     if (type === "extra") {
+  //       updateCartItemQuantity(productId, quantity, true, item.id);
+  //     } else {
+  //       updateCartItemQuantity(item.product.id, quantity);
+  //     }
+  //   }
+  // };
   const handleQuantityChange = (qty) => {
     const quantity = Number(qty);
+
     if (quantity >= 1) {
       if (type === "extra") {
+        // Update the quantity of an extra item
+        console.log("QTY", qty);
         updateCartItemQuantity(productId, quantity, true, item.id);
       } else {
-        updateCartItemQuantity(item.product.id, quantity);
+        // Update the quantity of a regular item
+        updateCartItemQuantity(item.product.id, quantity, false, null, {
+          deliveryCity: item.product.formData?.deliveryCity || "",
+          deliveryDate: item.product.formData?.deliveryDate || "",
+          deliveryInterval: item.product.formData?.deliveryInterval || "",
+        });
       }
     }
   };
 
   const handleRemoveClick = () => {
     if (type === "extra") {
-      removeFromCart(productId, true, item.id);
+      // Remove the extra item
+      removeFromCart(productId, {}, true, item.id);
     } else {
-      removeFromCart(item.product.id);
+      // Remove the regular item
+      removeFromCart(item.product.id, {
+        deliveryCity: item.product.formData?.deliveryCity || "",
+        deliveryDate: item.product.formData?.deliveryDate || "",
+        deliveryInterval: item.product.formData?.deliveryInterval || "",
+      });
     }
   };
 
   return (
-    <div className="flex border-b items-start p-3 m-1 h-[140px]">
+    <div className="flex border-b items-start p-3 mx-1 h-[140px]">
       <div className="h-[5rem] w-[100px] content-center">
         {type === "extra" ? (
           <Image

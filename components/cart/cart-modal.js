@@ -85,7 +85,7 @@ export default function CartModal() {
         variants={cartModalVariants}
         className={classes.cartContainer}
       >
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full overflow-auto">
           <div className="flex justify-between px-4 py-4 bg-white text-black mb-5 border-b border-[#f5f5f5]">
             <PiBagThin size={20} />{" "}
             <span className="font-[400] text-[15px]">COS DE CUMPARATURI</span>
@@ -99,8 +99,8 @@ export default function CartModal() {
               Cosul de cumparaturi este gol!
             </div>
           ) : (
-            cartItems.map((item) => (
-              <div key={item.product.id}>
+            cartItems.map((item, index) => (
+              <div key={index}>
                 {/* Render CartCard for the main product */}
                 <CartCard item={item} />
 

@@ -9,6 +9,8 @@ import img4 from "./5.jpeg";
 import img5 from "./6.jpeg";
 import img6 from "./7.jpeg";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { getComponentByType } from "@/app/api/events/products";
 
 const imga = [
   {
@@ -21,8 +23,25 @@ const imga = [
   { src: img6, href: `/events/wedding/flowers/1` },
   { src: imgs, href: `/events/wedding/flowers/1` },
 ];
+const validWeddingComponent = [
+  "buchete-mireasa",
+  "aranjamente-masa",
+  "lumanari-biserica",
+  "corsaje-cocarde-coronite-bratari",
+];
 
-export default function page() {
+export default async function WeddingPage({ params }) {
+  const { weddingComponent } = params;
+  if (!validWeddingComponent.includes(weddingComponent)) {
+    redirect("/");
+  }
+  const flowerBouquets = await getComponentByType({
+    type: `${weddingComponent}`,
+    event: "nunta",
+  });
+
+  console.log(flowerBouquets);
+
   const paths = [
     { href: "/events", title: "EVENIMENTE", style: "text-black-300/75" },
     { href: "/events/wedding", title: "NUNTA", style: "text-black" },
@@ -58,13 +77,19 @@ export default function page() {
         ALEGETI DIN MODELE DE MAI JOS
       </h2>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4 m-5">
-        {imga.map((image, index) => (
+        {flowerBouquets.map((image, index) => (
           <Link
-            href={image.href}
+            href={`/events/wedding/${weddingComponent}/${image.id}`}
             key={index}
             className="relative group overflow-hidden"
           >
-            <Image className="max-w-full rounded-md" src={image.src} alt="" />
+            <Image
+              className="max-w-full rounded-sm"
+              src={image.images_url[0]}
+              width={600}
+              height={500}
+              alt=""
+            />
             <span className=" tracking-widest  absolute inset-0 flex items-center justify-center md:bg-gradient-to-r from-[rgba(0,0,0,0.3)] to-white-600  text-white text-center opacity-0 translate-x-[-100%] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-in-out">
               DETALII
             </span>

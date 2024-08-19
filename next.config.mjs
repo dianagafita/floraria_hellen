@@ -14,6 +14,7 @@ const nextConfig = {
       "fakestoreapi.com",
       "res.cloudinary.com",
       "i.pinimg.com",
+      "images.unsplash.com",
       "media.bloom.gallery",
     ],
   },

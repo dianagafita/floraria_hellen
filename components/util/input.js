@@ -1,6 +1,7 @@
 import { getCurrentDate, getDateForOffer, getNextDay } from "./currDate";
 
 export default function Input({
+  more,
   name,
   label,
   type,
@@ -35,7 +36,10 @@ export default function Input({
           : "flex flex-col"
       }`}
     >
-      <label htmlFor={name} className="my-2 text-sm md:text-base">
+      <label
+        htmlFor={name}
+        className="my-2 text-sm md:text-base whitespace-nowrap"
+      >
         {label}
       </label>
       {type === "select" ? (
@@ -46,7 +50,7 @@ export default function Input({
           name={name}
           value={value}
           onChange={onChange}
-          className="focus:outline-none focus:border-[rgb(164,21,21)] focus:ring-1 focus:ring-[rgb(164,21,21)] font-thin border border-black p-2 rounded-sm h-[2.5rem] text-[#555555]"
+          className="focus:outline-none whitespace-nowrap focus:border-[rgb(164,21,21)] focus:ring-1 focus:ring-[rgb(164,21,21)] font-thin border border-black p-2 rounded-sm h-[2.5rem] text-[#555555]"
         >
           {options
             .filter((option) =>
@@ -80,7 +84,7 @@ export default function Input({
           className={`${
             type === "checkbox"
               ? "w-6 h-6 mx-3 accent-black"
-              : "focus:outline-none focus:border-[rgb(164,21,21)] focus:ring-1 focus:ring-[rgb(164,21,21)]"
+              : `${more} focus:outline-none focus:border-[rgb(164,21,21)] focus:ring-1 focus:ring-[rgb(164,21,21)]`
           }    font-thin border border-black p-2 rounded-sm h-[2.5rem] text-[#555555] text-sm md:text-base `}
           id={name}
           name={name}
