@@ -36,11 +36,11 @@ export default function Page() {
       <section className={classes.sections}>
         <h1>CATEGORII</h1>
         <div className={classes.grid}>
-          <Link href="/events/wedding/bride-bouque" className={classes.item}>
+          <Link href="/events/wedding/buchete-mireasa" className={classes.item}>
             <div className={classes["item__details"]}>BUCHETE DE MIREASA</div>
           </Link>
           <Link
-            href="/events/wedding/flowers"
+            href="/events/wedding/aranjamente-masa"
             className={`${classes.item} ${classes["item--large"]}`}
           >
             <div className={classes["item__details"]}>
@@ -48,7 +48,21 @@ export default function Page() {
             </div>
           </Link>
           <Link
-            href="/events/wedding/bride-bouque"
+            href="/events/wedding/lumanari-biserica"
+            className={`${classes.item} ${classes["item--medium"]}`}
+          >
+            <div className={classes["item__details"]}>
+              INTRARE IN SALA SI COVOR ROSU
+            </div>
+          </Link>
+          <Link
+            href="/events/wedding/lumanari-biserica"
+            className={`${classes.item} ${classes["item--medium"]}`}
+          >
+            <div className={classes["item__details"]}>BISERICA</div>
+          </Link>
+          <Link
+            href="/events/wedding/lumanari-biserica"
             className={`${classes.item} ${classes["item--medium"]}`}
           >
             <div className={classes["item__details"]}>
@@ -56,21 +70,13 @@ export default function Page() {
             </div>
           </Link>
           <Link
-            href="/events/wedding/bride-bouque"
-            className={`${classes.item} ${classes["item--large"]}`}
+            href="/events/wedding/lumanari-biserica"
+            className={`${classes.item} ${classes["item--medium"]}`}
           >
-            <div className={classes["item__details"]}>
-              CORSAJE, COCARDE, CORONITE SI BRATARI
-            </div>
-          </Link>
+            <div className={classes["item__details"]}>CUNUNIE CIVILA </div>
+          </Link>{" "}
           <Link
-            href="/events/wedding/bride-bouque"
-            className={`${classes.item} ${classes["item--full"]}`}
-          >
-            <div className={classes["item__details"]}>PHOTO CORNER</div>
-          </Link>
-          <Link
-            href="/events/wedding/bride-bouque"
+            href="/events/wedding/masa-oficiala"
             className={`${classes.item} ${classes["item--medium"]}`}
           >
             <div className={classes["item__details"]}>
@@ -78,16 +84,33 @@ export default function Page() {
             </div>
           </Link>
           <Link
-            href="/events/wedding/bride-bouque"
+            href="/events/wedding/corsaje-cocarde-coronite-bratari"
+            className={`${classes.item} ${classes["item--large"]}`}
+          >
+            <div className={classes["item__details"]}>
+              CORSAJE, COCARDE, CORONITE SI BRATARI
+            </div>
+          </Link>
+          <Link
+            href="/events/wedding/photo-corner"
+            className={`${classes.item} ${classes["item--full"]}`}
+          >
+            <div className={classes["item__details"]}>PHOTO CORNER</div>
+          </Link>
+          <Link
+            href="/events/wedding/ornamente-sali"
             className={`${classes.item} ${classes["item--large"]}`}
           >
             <div className={classes["item__details"]}>SALI</div>
           </Link>
-          <Link href="/events/wedding/bride-bouque" className={classes.item}>
+          <Link
+            href="/events/wedding/fantana-ciocolata"
+            className={classes.item}
+          >
             <div className={classes["item__details"]}>FANTANA DE CIOCOLATA</div>
           </Link>
           <Link
-            href="/events/wedding/bride-bouque"
+            href="/events/wedding/masina-fum"
             className={`${classes.item} ${classes["item--medium"]}`}
           >
             <div className={classes["item__details"]}>MASINA DE FUM</div>

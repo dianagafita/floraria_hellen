@@ -13,22 +13,23 @@ export default function MobileHeaderFooter({ toggleOpen }) {
       const response = await fetch("/api/valid");
       const data = await response.json();
 
-      setVerify(data);
+      setVerify(data.userId);
     };
 
     fetchAuthStatus();
   }, []);
+
   return (
     <MenuItem className="absolute bottom-0 w-full p-4 bg-white text-center text-sm list-none">
       <div className="flex justify-between items-center h-[2rem] ">
         <div className="flex  items-center  ">
           <User strokeWidth={0.9} size={23} />
           <Link
-            href={`${verify.user ? "/profile" : "/authentification"}`}
+            href={`${verify ? "/profile" : "/authentification"}`}
             className="ml-2 font-[200]"
             onClick={toggleOpen}
           >
-            {verify.user?.emailVerified ? "Contul meu" : "Logare"}
+            {verify ? "Contul meu" : "Logare"}
           </Link>
         </div>
         <div className="flex items-center  ">

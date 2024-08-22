@@ -9,11 +9,20 @@ export const SIDENAV_ITEMS = [
     path: "/buchete",
     submenu: true,
     subMenuItems: [
-      { title: "Buchet de flori uscate", path: "/flower-bouquets/roses" },
-      { title: "Buchet de trandafiri", path: "/flower-bouquets/roses" },
-      { title: "Buchet flori de primavara", path: "/flower-bouquets/tulips" },
-      { title: "Buchet flori de vara", path: "/flower-bouquets/tulips" },
-      { title: "Buchet flori de toamna", path: "/flower-bouquets/tulips" },
+      {
+        title: "Buchet de flori uscate",
+        path: "/buchete/buchete-flori-uscate",
+      },
+      { title: "Buchet de trandafiri", path: "/buchete/buchete-trandafiri" },
+      {
+        title: "Buchet flori de primavara",
+        path: "/buchete/buchete-flori-primavara",
+      },
+      { title: "Buchet flori de vara", path: "/buchete/buchete-flori-vara" },
+      {
+        title: "Buchet flori de toamna",
+        path: "/buchete/buchete-flori-toamna",
+      },
     ],
   },
   {
@@ -21,23 +30,29 @@ export const SIDENAV_ITEMS = [
     path: "/aranjamente",
     submenu: true,
     subMenuItems: [
-      { title: "Aranjament nou-nascut", path: "/floral-arrangements/roses" },
+      {
+        title: "Aranjament nou-nascut",
+        path: "/aranjamente/aranjamente-nou-nascut",
+      },
       {
         title: "Aranjament cu flori uscate",
-        path: "/floral-arrangements/roses",
+        path: "/aranjamente/aranjamente-flori-uscate",
       },
-      { title: "Aranjament cu trandafiri", path: "/floral-arrangements/roses" },
+      {
+        title: "Aranjament cu trandafiri",
+        path: "/aranjamente/aranjamente-trandafiri",
+      },
       {
         title: "Aranjament cu flori de primavara",
-        path: "/floral-arrangements/lisianthus",
+        path: "/aranjamente/aranjamente-flori-primavara",
       },
       {
         title: "Aranjament cu flori de vara",
-        path: "/floral-arrangements/lisianthus",
+        path: "/aranjamente/aranjamente-flori-vara",
       },
       {
         title: "Aranjament cu flori de toamna",
-        path: "/floral-arrangements/lisianthus",
+        path: "/aranjamente/aranjamente-flori-toamna",
       },
     ],
   },
@@ -50,91 +65,110 @@ export const SIDENAV_ITEMS = [
     path: "/ocazii-speciale",
     submenu: true,
     subMenuItems: [
-      { title: "Flori de Craciun", path: "/special-ocasions/christman" },
+      { title: "Flori de Craciun", path: "/ocazii-speciale/craciun" },
       {
         title: "Flori de Sf. Valentin",
-        path: "/special-ocasions/sf-valentine",
+        path: "/ocazii-speciale/sf-valentin",
       },
-      { title: "Flori de 1 si 8 Martie", path: "/special-ocasions/march" },
-      { title: "Flori de Paste", path: "/special-ocasions/easter" },
+      { title: "Flori de 1 si 8 Martie", path: "/ocazii-speciale/martie" },
+      { title: "Flori de Paste", path: "/ocazii-speciale/paste" },
     ],
   },
 
   {
     title: "EVENIMENTE",
-    path: "/events",
+    path: "/evenimente",
     submenu: true,
     subMenuItems: [
       {
         title: "BOTEZ",
-        path: "/events/christening",
+        path: "/evenimente/botez",
         subMenuItemsMenu: [
-          { title: "Aranjamente florale", path: "/christening/flowers" },
-          { title: "Aranjamente cristelnita", path: "/christening/cr" },
+          {
+            title: "Aranjamente florale",
+            path: "/evenimente/botez/aranjamente-florale",
+          },
+          {
+            title: "Aranjamente cristelnita",
+            path: "/evenimente/botez/aranjamente-cristelnita",
+          },
 
           {
             title: "Lumanari de botez cu flori naturale ",
-            path: "/christening/candles",
+            path: "/evenimente/botez/lumanari-botez",
           },
-          { title: "Photo corner", path: "/events/wedding/graphic-design" },
+          {
+            title: "Photo corner",
+            path: "/evenimente/botez/photo-corner",
+          },
 
           {
             title: "Fantana de ciocolata",
-            path: "/events/wedding/graphic-design",
+            path: "/evenimente/botez/fantana-ciocolata",
           },
         ],
       },
 
       {
         title: "NUNTA",
-        path: "/events/wedding",
+        path: "/evenimente/nunta",
         subMenuItemsMenu: [
-          { title: "Aranjamente florale", path: "/events/wedding/flowers" },
+          {
+            title: "Aranjamente florale",
+            path: "/evenimente/nunta/aranjamente-masa",
+          },
           {
             title: "Buchet de mireasa",
-            path: "/events/wedding/graphic-design",
+            path: "/evenimente/nunta/buchete-mireasa",
           },
 
           {
             title: "Intrare in sala si covor rosu",
-            path: "/events/wedding/graphic-design",
+            path: "/evenimente/nunta/intrare-sala-covor-rosu",
           },
           {
             title: "Corsaj, cocarede, bratari si coronite",
-            path: "/events/wedding/graphic-design",
+            path: "/evenimente/nunta/corsaj-cocarede-bratari-coronite",
           },
           {
             title: "Biserica",
-            path: "/events/wedding/graphic-design",
+            path: "/evenimente/nunta/biserica",
           },
           {
             title: "Lumanari de biserica cu flori naturale",
-            path: "/events/wedding/graphic-design",
+            path: "/evenimente/nunta/lumanari-biserica",
           },
           {
             title: "Cununie civila",
-            path: "/events/wedding/graphic-design",
+            path: "/evenimente/nunta/cununie-civila",
           },
           {
             title: "Aranjament masa oficiala",
-            path: "/events/wedding/graphic-design",
+            path: "/evenimente/nunta/masa-oficiala",
           },
-          { title: "Aranjamente sala", path: "/events/wedding/graphic-design" },
+          {
+            title: "Aranjamente sala",
+            path: "/evenimente/nunta/decoratiuni-sali",
+          },
 
-          { title: "Photo corner", path: "/events/wedding/graphic-design" },
+          { title: "Photo corner", path: "/evenimente/nunta/photo-corner" },
           {
             title: "Fantana de ciocolata",
-            path: "/events/wedding/graphic-design",
+            path: "/evenimente/nunta/fantana-ciocolata",
           },
           {
             title: "Masina de fum valsul mirilor",
-            path: "/events/wedding/graphic-design",
+            path: "/evenimente/nunta/masina-fum",
+          },
+          {
+            title: "Decoratiuni masini",
+            path: "/evenimente/nunta/decoratiuni-masini",
           },
         ],
       },
       {
-        title: "CONSULTANTA",
-        path: "/consult",
+        title: "CERE OFERTA",
+        path: "/request-offer",
       },
     ],
   },
@@ -143,13 +177,15 @@ export const SIDENAV_ITEMS = [
     path: "/speciale/coroane-funerare",
     submenu: true,
     subMenuItems: [
-      { title: "All", path: "/projects" },
-      { title: "Web Design", path: "/projects/web-design" },
-      { title: "Graphic Design", path: "/projects/graphic-design" },
+      { title: "Coroane funerare", path: "/speciale/coroane-funerare/coroane" },
+      {
+        title: "Aranjamente icoane",
+        path: "/speciale/coroane-funerare/aranjamente-coroane",
+      },
     ],
   },
 ];
-
+//
 export const languagesLong = [
   // { label: `Română`, value: "/auto/ro" },
   { label: `Română`, value: "/auto/ro" },

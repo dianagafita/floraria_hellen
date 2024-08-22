@@ -33,9 +33,14 @@ export default function CartPage() {
               <span className="text-xs mb-2">
                 Taxele de transport sunt calculate la pasul urmator
               </span>
-              <Button type="button" moreStyle="my-5 py-2 border-[0.6px]">
-                <Link href="/checkout">Finalizare Comanda</Link>
-              </Button>
+              <Link href="/checkout" className="text-center">
+                <Button
+                  type="button"
+                  moreStyle="w-[50vh] md:w-full my-5 py-2 border-[0.6px]"
+                >
+                  Finalizare Comanda{" "}
+                </Button>
+              </Link>
             </div>
           </div>
         )}

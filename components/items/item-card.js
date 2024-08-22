@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import { IoMdHeart } from "react-icons/io";
 
 export default function ItemCard({
   images,
@@ -39,9 +38,6 @@ export default function ItemCard({
                   : `/${flowerType}/${img.name}/${img.id}`
               }
             >
-              <div className="absolute top-0 right-0 p-2 text-white  hover:text-blue-100 z-10">
-                <IoMdHeart size={25} />
-              </div>
               <Image
                 className="object-cover  h-full transition-opacity duration-300 opacity-100 hover:opacity-0"
                 src={img.images_url[0]}
@@ -60,7 +56,9 @@ export default function ItemCard({
             <p className="mb-3 text-xs md:text-[1.2vw] font-light mt-3 whitespace-nowrap text-center">
               {img.name}{" "}
             </p>
-            <p className="text-center mb-2 text-sm font-[100]">100,00 lei</p>
+            <p className="text-center mb-2 text-sm font-[100]">
+              {img.price} lei
+            </p>
           </div>
         </li>
       ))}

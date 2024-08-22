@@ -1,13 +1,10 @@
 import React from "react";
 import Title from "@/components/util/title";
 import { FeaturedImageGallery } from "@/components/pages/photoGallery";
-import img from "./1.jpeg";
-import img2 from "./2.jpeg";
 import { TitleByPath } from "@/components/util/getPathTitle";
 import Link from "next/link";
 import { getComponentById } from "@/app/api/events/products";
-
-const data = [img, img2];
+import Loading from "@/lib/loading";
 
 export default async function ComponentPage({ params }) {
   const title = decodeURIComponent(params.componentId);
@@ -17,25 +14,28 @@ export default async function ComponentPage({ params }) {
     { href: "/events", title: "EVENIMENTE", style: "text-black-300/75" },
     { href: "/events/wedding", title: "NUNTA", style: "text-black" },
     {
-      href: "/events/wedding/flowers",
+      href: "/events/wedding/aranjamente-masa",
       title: "ARANJAMENTE FLORALE",
       style: "text-black",
     },
     {
-      href: `/events/wedding/flowers/${params.componentId}`,
+      href: `/events/wedding/aranjamente-masa/${params.componentId}`,
       title: title,
       style: "text-black",
     },
   ];
+  if (!componentDetails) {
+    return <Loading />;
+  }
   return (
     <div className="flex flex-col  ">
-      <TitleByPath paths={paths} />
+      {/* <TitleByPath paths={paths} /> */}
       <div className="md:flex py-4 px-10 w-full mt-10 ">
         <div className="md:w-1/2  mb-10">
-          <FeaturedImageGallery images={data} />{" "}
+          <FeaturedImageGallery images={componentDetails.images_url} />{" "}
         </div>
         <div className="flex flex-col md:ml-10 md:w-1/2  h-[460px]  justify-between ">
-          <Title>{title}</Title>
+          <Title>{componentDetails.name}</Title>
           <div className="flex flex-col">
             <span className=" text-md my-2 ">
               {" "}

@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
       <body className="relative">
         <CartModal />
         <Header /> <ToastContainer />
-        <main className="relative z-1 min-h-[100vh]"> {children}</main>
+        <main className="relative z-1"> {children}</main>
         <MainFooter />
         <MobileHeader />
       </body>

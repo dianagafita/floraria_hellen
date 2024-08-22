@@ -10,6 +10,28 @@ import { useCart } from "@/context/cart-context";
 import { redirect } from "next/navigation";
 
 export default function CheckoutPage() {
+  const [userId, setUserId] = useState(null);
+  useEffect(() => {
+    const fetchUserId = async () => {
+      const response = await fetch("/api/valid");
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log("User ID:", data.userId); // Successfully retrieved user ID
+
+        setUserId(data.userId); // Set userId in state
+      } else {
+        console.error("Failed to fetch user ID", data.error);
+      }
+    };
+
+    fetchUserId();
+  }, []);
+
+  if (!userId) {
+    redirect("/authentification");
+  }
+
   const { cartItems, cartTotal } = useCart();
   if (cartItems.length === 0) {
     redirect("/");
@@ -61,6 +83,7 @@ export default function CheckoutPage() {
           cartTotal={cartTotal}
         />
         <CheckoutForm
+          userId={userId}
           address={address}
           cartTotal={cartTotal}
           cartItems={cartItems}
@@ -71,7 +94,7 @@ export default function CheckoutPage() {
         />
       </div>
       <div className="hidden lg:flex lg:w-1/2 lg:sticky top-0 py-20 px-10 justify-center bg-[#f5f5f5]">
-        <div className="w-full h-auto">
+        <div className="w-full h-[100vh] overflow-auto ">
           <OrderSummary
             shippingFee={shippingFee}
             cartItems={cartItems}

@@ -933,7 +933,7 @@ export default function ProductPage({ params }) {
   ];
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col ">
       <TitleByPath paths={paths} />
       <div className="md:flex py-5 px-5 w-full mt-5 ">
         <div className="md:w-1/2 md:max-w-[700px] md:min-w-[450px] w-full mb-10">
@@ -1042,7 +1042,7 @@ export default function ProductPage({ params }) {
               </div>
             </div>
             <Button
-              moreStyle=" !bg-black text-white hover:!bg-white hover:!text-black  active:bg-white active:text-black"
+              moreStyle="w-[80%] m-auto !bg-black text-white hover:!bg-white hover:!text-black  active:bg-white active:text-black"
               type="submit"
               onClick={handleAddToCart}
             >

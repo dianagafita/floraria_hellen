@@ -253,9 +253,9 @@ export const variants_nested_sub_menu_item = {
     y: 0,
     transition: {
       type: "spring",
-      stiffness: 50,
-      damping: 20,
-      staggerChildren: 0.1,
+      stiffness: 500,
+      damping: 150,
+      staggerChildren: 0.05,
     },
   },
   closed: {
@@ -263,9 +263,9 @@ export const variants_nested_sub_menu_item = {
     y: -10,
     transition: {
       type: "spring",
-      stiffness: 50,
-      damping: 20,
-      staggerChildren: 0.1,
+      stiffness: 500,
+      damping: 150,
+      staggerChildren: 0.05,
     },
   },
 };

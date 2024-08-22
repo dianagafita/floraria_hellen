@@ -13,6 +13,7 @@ export default function PaymentForm({
   amount,
   cartItems,
   senderInfo,
+  userId,
   recipientInfo,
   shippingFee,
   cartTotal,
@@ -36,6 +37,8 @@ export default function PaymentForm({
       .then((data) => setClientSecret(data.clientSecret));
   }, [amount]);
 
+  console.log("DDDDDDD", userId);
+
   const createOrder = async () => {
     const products = cartItems.map((item) => ({
       productId: item.product.id,
@@ -50,9 +53,8 @@ export default function PaymentForm({
       extras: item.product.extras || [], // Ensure extras is always defined
     }));
 
-    console.log("FORM", products);
     const orderData = {
-      userId: 12,
+      userId: userId,
       products: products,
       shippingFee: parseInt(shippingFee),
       cartTotal: parseFloat(cartTotal),
@@ -76,6 +78,8 @@ export default function PaymentForm({
     } else {
       console.log("Order created successfully:", data);
       setOrderId(data.id);
+      localStorage.removeItem("cart");
+
       return data.id; // Return the orderId
     }
   };
@@ -115,11 +119,16 @@ export default function PaymentForm({
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="text-center">
       {clientSecret && <PaymentElement />}
       {errorMessage && <div>{errorMessage}</div>}
-      {(stripe || !loading) && (
-        <Button moreStyle="w-full mt-10" type="submit">
+      {!stripe && loading ? (
+        <Loading />
+      ) : (
+        <Button
+          moreStyle="w-[75vw] md:w-[35vw] mt-10 mb-2 whitespace-nowrap py-[0.4rem] text-[15px]"
+          type="submit"
+        >
           {!loading ? `Plateste ${amount} lei` : "Procesare..."}
         </Button>
       )}

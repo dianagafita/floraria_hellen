@@ -6,8 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 const paths = [
-  { href: "/events", title: "EVENIMENTE", style: "text-black-300/75" },
-  { href: "/events/christening", title: "BOTEZ", style: "text-black" },
+  { href: "/evenimente", title: "EVENIMENTE", style: "text-black-300/75" },
+  { href: "/evenimente/botez", title: "BOTEZ", style: "text-black" },
 ];
 
 export default function ChristeningPage() {
@@ -35,23 +35,38 @@ export default function ChristeningPage() {
       <section className={classes.section2}>
         <h1>CATEGORII</h1>
         <div className={classes.grid}>
-          <div className={`${classes.item} ${classes["item--large"]}`}>
+          <Link
+            href="/evenimente/botez/aranjamente-florale"
+            className={classes.item}
+          >
             <div className={classes["item__details"]}>ARANJAMENTE FLORALE</div>
-          </div>
-          <div className={`${classes.item} ${classes["item--medium"]}`}>
+          </Link>
+          <Link
+            href="/evenimente/botez/aranjamente-cristelnita"
+            className={classes.item}
+          >
             <div className={classes["item__details"]}>
               ARANJAMENTE CRISTELNITA
             </div>
-          </div>
-          <div className={`${classes.item} ${classes["item--large"]}`}>
+          </Link>
+          <Link
+            href="/evenimente/botez/lumanari-botez"
+            className={classes.item}
+          >
             <div className={classes["item__details"]}>LUMANARI BOTEZ</div>
-          </div>
-          <div className={`${classes.item} ${classes["item--large"]}`}>
+          </Link>
+          <Link
+            href="/evenimente/botez/decoratiuni-sala"
+            className={classes.item}
+          >
             <div className={classes["item__details"]}>SALI</div>
-          </div>
-          <div className={classes.item}>
+          </Link>
+          <Link
+            href="/evenimente/botez/fantana-ciocolata"
+            className={classes.item}
+          >
             <div className={classes["item__details"]}>FANTANA DE CIOCOLATA</div>
-          </div>
+          </Link>
         </div>
       </section>
     </div>

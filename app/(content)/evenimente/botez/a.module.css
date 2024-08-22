@@ -7,10 +7,10 @@
 
 .section2 {
   display: block;
-  padding: 2rem;
+  padding: 1rem;
 
   @media screen and (min-width: 768px) {
-    padding: 4rem;
+    padding: 2rem;
   }
 }
 

@@ -1,12 +1,12 @@
 import { getProductsByType } from "@/app/api/store/products";
-import ItemCard from "@/components/items/item-card";
 import Categories from "@/components/util/categories";
 import FlowerPageLayout from "@/components/util/customFlowersLayout";
 import { TitleByPath } from "@/components/util/getPathTitle";
-import SortItems from "@/components/util/sort-items";
 import img from "./flowers.jpeg";
 import Loading from "@/lib/loading";
 import { redirect } from "next/navigation";
+import SortableFlowerList from "@/components/sort";
+import { getTitleOfPath } from "@/components/path";
 
 const validFlowerTypes = [
   "buchete",
@@ -21,6 +21,8 @@ export default async function FlowerBouquetsPage({ params }) {
     redirect("/");
   }
 
+  const { title } = getTitleOfPath(`/${flowerType}`);
+  console.log("hhh", title);
   const flowerBouquets = await getProductsByType({
     type: `${flowerType}`,
   });
@@ -28,7 +30,7 @@ export default async function FlowerBouquetsPage({ params }) {
   const paths = [
     {
       href: `/${flowerType}`,
-      title: "BUCHETE FLORI",
+      title: title,
       style: "text-black-300/75",
     },
   ];
@@ -37,18 +39,12 @@ export default async function FlowerBouquetsPage({ params }) {
     <div className="flex flex-col">
       <FlowerPageLayout mainImage={img} />
       <TitleByPath paths={paths} />
-
       <Categories type={flowerType} />
-      <SortItems nrOfProducts={flowerBouquets.length} />
       {!flowerBouquets ? (
         <Loading />
       ) : (
-        <ItemCard
-          images={flowerBouquets}
-          type="flori"
-          flowerType={flowerType}
-        />
-      )}
+        <SortableFlowerList flowerType={flowerType} flowers={flowerBouquets} />
+      )}{" "}
     </div>
   );
 }

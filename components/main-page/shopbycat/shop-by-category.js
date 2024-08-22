@@ -10,6 +10,7 @@ import img3 from "@/components/items/HORTENSII.jpg";
 import { ChevronRight } from "lucide-react";
 import EmblaCarousel from "../sec-car";
 import Title from "@/components/util/title";
+import Link from "next/link";
 const SLIDE_COUNT = 5;
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
 
@@ -100,14 +101,17 @@ const ShopByCategory = () => {
                 >
                   <span className="absolute top-2 left-2 z-10 text-white px-2 py-1 font-[200]">
                     <span>{image.text}</span>
-                    <span className="mt-2 text-[12px] font-[100] flex items-center">
+                    <Link
+                      href={`/${image.text.toLowerCase()}`}
+                      className="mt-2 text-[12px] font-[100] flex items-center"
+                    >
                       CUMPARA{" "}
                       <ChevronRight
                         size={16}
                         strokeWidth={1.5}
                         className="ml-1"
                       />
-                    </span>
+                    </Link>
                   </span>
                   <Image
                     src={image.src}
@@ -139,8 +143,23 @@ const ShopByCategory = () => {
                   onMouseLeave={handleMouseLeave}
                   className="relative w-full h-96"
                 >
-                  <span className="absolute top-2 left-2 z-10 text-white px-2 py-1">
-                    {image.text}
+                  <span className="absolute top-2 left-2 z-10 text-white px-2 py-1 font-[200]">
+                    <span>{image.text}</span>
+                    <Link
+                      href={`/${
+                        image.text.toLowerCase() === "plante"
+                          ? "speciale/plante"
+                          : image.text.toLowerCase()
+                      }`}
+                      className="mt-2 text-[12px] font-[100] flex items-center"
+                    >
+                      CUMPARA{" "}
+                      <ChevronRight
+                        size={16}
+                        strokeWidth={1.5}
+                        className="ml-1"
+                      />
+                    </Link>
                   </span>
                   <Image
                     src={image.src}

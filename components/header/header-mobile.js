@@ -163,7 +163,9 @@ function MenuItemWithNestedSubMenu({ item, isOpen, toggleOpen, pathname }) {
                   pathname.includes(item.path) ? "font-[400]" : ""
                 }`}
               >
-                {item.title}
+                <Link onClick={toggleOpen} href={item.path}>
+                  {item.title}
+                </Link>
               </span>
               <div
                 style={{

@@ -22,14 +22,12 @@ export default function RootLayout({ children }) {
       </head>
       <body className="relative">
         <div className="flex flex-col min-h-screen">
-          {/* <AuthProvider> */}
           <CartProvider>
             <CartModal />
             <Header />{" "}
             <main className="relative z-1 min-h-[400px]">{children}</main>
           </CartProvider>
           <MainFooter />
-          {/* </AuthProvider> */}
         </div>
         <MobileHeader />
       </body>

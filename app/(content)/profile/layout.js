@@ -1,10 +1,14 @@
+"use client";
 import ProfileMenuDrawer from "@/components/profile/profile-menu-drawer";
 import Image from "next/image";
 import React from "react";
 import imgs from "./flowers.jpeg";
-export default async function ProfileLayout({ children }) {
+import { useValidUser } from "@/context/auth-context";
+
+export default function ProfileLayout({ children }) {
+  const { user } = useValidUser();
+  console.log(user);
   return (
-    // <div className="md:flex  md:items-start p-5 m-5">
     <>
       <div className="relative">
         <div className={`relative h-[160px] w-[100vw]  ${"order-last"}`}>
@@ -15,7 +19,7 @@ export default async function ProfileLayout({ children }) {
           </span>
         </div>
       </div>
-      <ProfileMenuDrawer />
+      {user ? <ProfileMenuDrawer userId={user} /> : ""}
       {children}
     </>
 

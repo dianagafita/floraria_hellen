@@ -1,11 +1,11 @@
 import { CartProvider } from "@/context/cart-context";
 import "./globals.css";
-import { PaymentProvider } from "@/context/payment-context";
+import { AuthProvider } from "@/context/auth-context";
 
 export default function RootLayout({ children }) {
   return (
-    // <PaymentProvider>
-    <CartProvider>{children}</CartProvider>
-    // </PaymentProvider>
+    <AuthProvider>
+      <CartProvider>{children}</CartProvider>
+    </AuthProvider>
   );
 }

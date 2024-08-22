@@ -24,7 +24,7 @@ const ChangePasswordForm = ({ resetPasswordToken }) => {
 
   return (
     <form
-      className="flex flex-col w-[90%] md:w-[70%] lg:w-[50%] mx-auto my-20"
+      className="min-h-[50vh] flex flex-col w-[90%] md:w-[70%] lg:w-[50%] mx-auto my-20"
       onSubmit={handleSubmit}
     >
       {!message ? (

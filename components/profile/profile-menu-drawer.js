@@ -13,20 +13,16 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function ProfileMenuDrawer() {
+export default function ProfileMenuDrawer({ userId }) {
   const pathname = usePathname();
   const [user, setUser] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const fetchAuthStatus = async () => {
-      const response = await fetch("/api/valid");
-      const data = await response.json();
-      if (data.user) {
-        const userResponse = await fetch(`/api/user/${data.user.id}`);
-        const userData = await userResponse.json();
-        setUser(userData);
-      }
+      const userResponse = await fetch(`/api/user/${userId}`);
+      const userData = await userResponse.json();
+      setUser(userData);
     };
 
     fetchAuthStatus();

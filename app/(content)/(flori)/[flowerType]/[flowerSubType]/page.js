@@ -3,6 +3,8 @@ import {
   getProductsByType,
 } from "@/app/api/store/products";
 import ItemCard from "@/components/items/item-card";
+import { getTitleOfPath } from "@/components/path";
+import SortableFlowerList from "@/components/sort";
 import Categories from "@/components/util/categories";
 import FlowerPageLayout from "@/components/util/customFlowersLayout";
 import { TitleByPath } from "@/components/util/getPathTitle";
@@ -10,26 +12,49 @@ import SortItems from "@/components/util/sort-items";
 import Loading from "@/lib/loading";
 import { redirect } from "next/navigation";
 
-const paths = [
-  {
-    href: "/flower-bouquets",
-    title: "BUCHETE FLORI",
-    style: "text-black-300/75",
-  },
-  {
-    href: "/flower-bouquets",
-    title: "BUCHETE FLORI",
-    style: "text-black-300/75",
-  },
+const validFlowerTypes = [
+  "buchete-flori-uscate",
+  "buchete-trandafiri",
+  "buchete-flori-primavara",
+  "buchete-flori-vara",
+  "buchete-flori-toamna",
+  "aranjamente-nou-nascut",
+  "aranjamente-flori-uscate",
+  "aranjamente-trandafiri",
+  "aranjamente-flori-primavara",
+  "aranjamente-flori-vara",
+  "aranjamente-flori-toamna",
+  "craciun",
+  "paste",
+  "martie",
+  "sf-valentin",
 ];
-const validFlowerTypes = ["trandafiri", "tulips", "lilies"];
 
 export default async function RosesBouquetsPage({ params }) {
   const { flowerSubType, flowerType } = params;
-  console.log(flowerSubType);
+
+  const { title, subTitle } = getTitleOfPath(
+    `/${flowerType}`,
+    `/${flowerType}/${flowerSubType}`
+  );
+
+  const paths = [
+    {
+      href: `/${flowerType}`,
+      title: title,
+      style: "text-black-300/75",
+    },
+    {
+      href: `/${flowerType}/${flowerSubType}`,
+      title: subTitle,
+      style: "text-black-300/75",
+    },
+  ];
+
   if (flowerSubType && !validFlowerTypes.includes(flowerSubType)) {
     redirect("/");
   }
+
   let flowerBouquets;
   if (flowerSubType) {
     flowerBouquets = await getProductsBySubType({
@@ -51,12 +76,11 @@ export default async function RosesBouquetsPage({ params }) {
       <TitleByPath paths={paths} />
 
       <Categories />
-      <SortItems />
       {!flowerBouquets ? (
         <Loading />
       ) : (
-        <ItemCard
-          images={flowerBouquets}
+        <SortableFlowerList
+          flowers={flowerBouquets}
           type="flori"
           flowerType={flowerType}
           subtype={flowerSubType}

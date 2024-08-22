@@ -23,6 +23,7 @@ export default function CheckoutForm({
   handleCalculateDistance,
   setAddress,
   address,
+  userId,
   isCalculating,
   shippingFee,
   cartTotal,
@@ -109,7 +110,7 @@ export default function CheckoutForm({
   const amount = cartTotal + shippingFee;
   console.log("CHECK", cartItems);
   return (
-    <div className="flex flex-col w-full h-[600px] overflow-auto">
+    <div className="flex flex-col w-full h-[100vh] overflow-auto ">
       <form className="w-full" onSubmit={handleSubmit}>
         <div className="h-full w-full">
           <PersonSendingForm
@@ -149,6 +150,7 @@ export default function CheckoutForm({
             }}
           >
             <PaymentForm
+              userId={userId}
               amount={amount}
               cartItems={cartItems}
               recipientInfo={recipientInfo}

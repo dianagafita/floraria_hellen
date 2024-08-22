@@ -19,7 +19,7 @@ const ResetPasswordForm = () => {
     <>
       <form
         action={send}
-        className="flex flex-col w-[90%] md:w-[70%] lg:w-[50%] mx-auto my-20"
+        className="min-h-[50vh] flex flex-col w-[90%] md:w-[80%] lg:w-[70%] mx-auto my-20"
       >
         {!message ? (
           <>
@@ -41,7 +41,7 @@ const ResetPasswordForm = () => {
             <button
               onClick={() => router.push("/authentification/reset-password")}
               href="/authentification/reset-password"
-              className="text-center font-[100] underline underline-offset-4 my-4"
+              className="text-[#707070] hover:text-black text-center font-[100] underline underline-offset-4 my-4 decoration-gray-500 hover:decoration-black"
             >
               Retrimiteti link-ul de resetare!
             </button>
