@@ -1,10 +1,8 @@
 import React from "react";
 import Title from "@/components/util/title";
 import { FeaturedImageGallery } from "@/components/pages/photoGallery";
-
-import { TitleByPath } from "@/components/util/getPathTitle";
 import Link from "next/link";
-import { getComponentById } from "@/app/api/evenimente/products";
+import { getComponentById } from "@/app/api/events/products";
 import Loading from "@/lib/loading";
 
 export default async function ComponentPage({ params }) {

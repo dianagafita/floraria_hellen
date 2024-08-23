@@ -49,7 +49,7 @@ export default function OrderDetailsPage({ params }) {
           <div className="mt-6 sm:mt-8 lg:flex lg:gap-8">
             <div class="w-full divide-y divide-gray-200 overflow-hidden rounded-sm border border-gray-200 :divide-gray-700 :border-gray-700 lg:max-w-xl xl:max-w-2xl">
               {order?.order_items.map((item, index) => (
-                <div class="space-y-4 p-6">
+                <div class="space-y-4 p-6" key={index}>
                   <div class="flex items-center gap-6">
                     <Link href="#" class="h-14 w-14 shrink-0">
                       <Image

@@ -45,11 +45,10 @@ const ScrollComponentReverse = () => {
           <div className={styles.content}>
             <h2 className="mb-10 text-[20px]">POFTITI DE VA IUBITI</h2>
             <p className="mb-10 text-sm md:text-md">
-              În cadrul emisiunii "Poftiți de vă iubiti", alături de
-              inegalabilul Nea Marin, am avut onoarea de a participa cu flori și
-              aranjamente florale pentru o nuntă de neuitat. Fiecare detaliu a
-              fost creat cu pasiune, astfel încât să reflecte dragostea și
-              bucuria momentului.
+              În cadrul emisiunii Poftiți de vă iubiti, alături de inegalabilul
+              Nea Marin, am avut onoarea de a participa cu flori și aranjamente
+              florale pentru o nuntă de neuitat. Fiecare detaliu a fost creat cu
+              pasiune, astfel încât să reflecte dragostea și bucuria momentului.
             </p>
             <Link
               className="tracking-wider text-[#404040] text-[15px] font-[100] underline underline-offset-[4px] underline decoration-1 underline-[#404040] hover:text-black"

@@ -1,5 +1,8 @@
 "use client";
 import { updatePassword } from "@/actions/user-actions";
+import Button from "@/components/util/button";
+import Input from "@/components/util/input";
+import Title from "@/components/util/title";
 import { useEffect } from "react";
 import { useFormState } from "react-dom";
 

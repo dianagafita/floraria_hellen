@@ -26,8 +26,13 @@ export default function CartWithExtras({ items, productId }) {
 
       {/* Extra Items */}
       {items.product.extras &&
-        items.product.extras.map((extraItem) => (
-          <CartPageItems productId={productId} items={extraItem} type="extra" />
+        items.product.extras.map((extraItem, index) => (
+          <CartPageItems
+            key={index}
+            productId={productId}
+            items={extraItem}
+            type="extra"
+          />
         ))}
     </>
   );

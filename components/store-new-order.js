@@ -241,7 +241,7 @@ export default function NewOrderReceiptEmail({ order }) {
                       }}
                     >
                       {item.product.flowers.map((item) => (
-                        <p>
+                        <p key={item.flower}>
                           x{item.quantity} {item.flower}
                         </p>
                       ))}

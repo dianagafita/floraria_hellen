@@ -95,7 +95,7 @@ const ScrollComponent = () => {
             <h2>A glorious nature shot.</h2>
             <p>
               Wow. What a wonderful image. And look! There are even more images
-              on the right side. Amazing. If you click below, I bet you'll get
+              on the right side. Amazing. If you click below, I bet youll get
               teleported to a magical land.
             </p>
             <button
