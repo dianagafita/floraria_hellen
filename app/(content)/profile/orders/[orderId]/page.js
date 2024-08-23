@@ -66,7 +66,7 @@ export default function OrderDetailsPage({ params }) {
                       href="#"
                       class="min-w-0 flex-1 font-medium  hover:underline "
                     >
-                      {item.product.name} ({item.product.flowers.join(", ")})
+                      {item.product.name} ({item.product.flowers?.join(", ")})
                     </Link>
                   </div>
                   <div className="flex items-center justify-end gap-4">
@@ -87,14 +87,14 @@ export default function OrderDetailsPage({ params }) {
                   <dl className="flex items-center justify-between gap-4">
                     <dt className="font-normal text-gray-500">Produse</dt>
                     <dd className="font-medium text-gray-900">
-                      {order.total_price} lei
+                      {order.cart_total} lei
                     </dd>
                   </dl>
 
                   <dl className="flex items-center justify-between gap-4">
                     <dt className="font-normal text-gray-500">Livrare</dt>
                     <dd className="text-base font-medium text-gray-900">
-                      299 lei
+                      {order.shipping_fee} lei
                     </dd>
                   </dl>
                 </div>
@@ -136,13 +136,8 @@ export default function OrderDetailsPage({ params }) {
                           Plata acceptata
                         </h4>
                         <p className="text-sm font-normal text-gray-500">
-                          {new Date(
-                            order.payment_accepted_at
-                          ).toLocaleDateString()}
-                          ,{" "}
-                          {new Date(
-                            order.payment_accepted_at
-                          ).toLocaleTimeString()}
+                          {new Date(order.updated_at).toLocaleDateString()},{" "}
+                          {new Date(order.updated_at).toLocaleTimeString()}
                         </p>
                       </li>
                       <li className="mb-10 ms-6 text-primary-700">

@@ -18,7 +18,7 @@ export default function CartPage() {
           </div>
         ) : (
           <div className="flex flex-col lg:flex-row justify-between w-full h-full mt-10">
-            <div className="w-full">
+            <div className="w-full lg:mr-60">
               {cartItems.map((item) => (
                 // <CartPageItems key={item.product.id} items={item} />
 
@@ -33,7 +33,7 @@ export default function CartPage() {
               <span className="text-xs mb-2">
                 Taxele de transport sunt calculate la pasul urmator
               </span>
-              <Link href="/checkout" className="text-center">
+              <Link href="/checkout" className="">
                 <Button
                   type="button"
                   moreStyle="w-[50vh] md:w-full my-5 py-2 border-[0.6px]"

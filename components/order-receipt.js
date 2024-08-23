@@ -440,8 +440,7 @@ export default function OrderReceiptEmail({ firstName, order }) {
           <table
             style={{
               marginTop: "1rem",
-
-              color: "#333333",
+              color: "#606060",
               width: "100%",
               borderCollapse: "collapse",
               borderSpacing: "0",
@@ -460,16 +459,7 @@ export default function OrderReceiptEmail({ firstName, order }) {
                 >
                   Produs
                 </th>
-                <th
-                  style={{
-                    border: "1px solid #dddddd",
-                    padding: "8px",
-                    textAlign: "left",
-                    backgroundColor: "#f0f0f0",
-                  }}
-                >
-                  Detalii
-                </th>
+
                 <th
                   style={{
                     border: "1px solid #dddddd",
@@ -571,15 +561,25 @@ export default function OrderReceiptEmail({ firstName, order }) {
                         whiteSpace: "nowrap",
                       }}
                     >
-                      {(item.productDeliveryInfo || []).map((it, index) => (
-                        <p key={index}>
-                          {it === "true"
-                            ? "ANONIM"
-                            : it === "false"
-                            ? "Anonim: NU"
-                            : it}
-                        </p>
-                      ))}
+                      {item.productDeliveryInfo.map((info, index) => {
+                        if (index === 1) {
+                          return <p key={index}>{formatDate(info)}</p>;
+                        } else if (index === 4) {
+                          return (
+                            <p key={index} colSpan="1">
+                              {info === "true" ? "ANONIM" : "NON-ANONIM"}
+                            </p>
+                          );
+                        } else if (index === 3) {
+                          return;
+                        } else {
+                          return (
+                            <p key={index} colSpan="1">
+                              {info}
+                            </p>
+                          );
+                        }
+                      })}
                     </td>
                   </tr>
                   {(item.extras || []).map((extra) => (
@@ -630,6 +630,7 @@ export default function OrderReceiptEmail({ firstName, order }) {
                         {extra.quantity}
                       </td>
                       <td
+                        colSpan="2"
                         style={{
                           border: "1px solid #D0D0D0",
                           padding: "10px 8px",
@@ -641,6 +642,47 @@ export default function OrderReceiptEmail({ firstName, order }) {
                       </td>
                     </tr>
                   ))}
+                  <tr>
+                    <td
+                      colSpan="1"
+                      style={{
+                        border: "1px solid #D0D0D0",
+                        padding: "10px 8px",
+                        fontSize: "11px",
+                        verticalAlign: "middle",
+                        backgroundColor: "#f0f0f0",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Mesaj felicitare
+                    </td>
+                    <td
+                      colSpan="3"
+                      style={{
+                        border: "1px solid #D0D0D0",
+                        padding: "10px 8px",
+                        fontSize: "11px",
+                        textAlign: "center",
+                      }}
+                    >
+                      {item.productDeliveryInfo.map((info, index) => {
+                        if (index === 3) {
+                          return (
+                            <p key={index}>
+                              {info === "" ? "FARA MESAJ" : info}
+                            </p>
+                          );
+                        }
+                      })}
+                    </td>
+                  </tr>
+                  <td
+                    colSpan="4"
+                    style={{
+                      padding: "0.5px",
+                      backgroundColor: "#D0D0D0",
+                    }}
+                  />
                 </>
               ))}
               <tr>
@@ -773,6 +815,16 @@ export default function OrderReceiptEmail({ firstName, order }) {
             </div>
           </div>
           <p style={{ color: "black" }}>Vă mulțumim pentru cumpărături!</p>
+          <div
+            style={{
+              margin: "4rem 0",
+              borderTop: "0.5px solid gray",
+              paddingTop: "2rem",
+            }}
+          >
+            Daca ai orice fel de nelamuriri, ne poti contacta prin raspuns la
+            acest email sau la proparty@gmail.ro .
+          </div>
         </div>
       </body>
     </html>

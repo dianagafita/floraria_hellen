@@ -24,8 +24,7 @@ export default function RootLayout({ children }) {
         <div className="flex flex-col min-h-screen">
           <CartProvider>
             <CartModal />
-            <Header />{" "}
-            <main className="relative z-1 min-h-[400px]">{children}</main>
+            <Header /> <main className="relative z-1 ">{children}</main>
           </CartProvider>
           <MainFooter />
         </div>

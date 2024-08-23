@@ -3,13 +3,13 @@ import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Thumb } from "./butt";
 import Image from "next/image";
-import img from "./o.jpeg";
+import img from "./po.jpeg";
 import img2 from "./r.jpeg";
-import img3 from "./i.jpeg";
+import img3 from "./p.jpeg";
 
 import Autoplay from "embla-carousel-autoplay";
 import Link from "next/link";
-const images = [img, img2];
+const images = [img, img2, img3];
 const EmblaCarousel = (props) => {
   const { slides, options } = props;
   const [selectedIndex, setSelectedIndex] = useState(0);

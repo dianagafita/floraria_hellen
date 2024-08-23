@@ -3,30 +3,14 @@
 import Link from "next/link";
 import { PROFILE_MENU } from "@/constants";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { logout } from "@/actions/auth-actions";
-import {
-  ChevronDown,
-  ChevronRight,
-  ChevronUp,
-  CircleUserRound,
-} from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function ProfileMenuDrawer({ userId }) {
+export default function ProfileMenuDrawer({ user }) {
   const pathname = usePathname();
-  const [user, setUser] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    const fetchAuthStatus = async () => {
-      const userResponse = await fetch(`/api/user/${userId}`);
-      const userData = await userResponse.json();
-      setUser(userData);
-    };
-
-    fetchAuthStatus();
-  }, []);
 
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
@@ -69,12 +53,11 @@ export default function ProfileMenuDrawer({ userId }) {
               </Link>
             ))}
             <div className="py-3 mt-3 border-t ">
-              <button
-                className="flex justify-between font-[300]"
-                onClick={logout}
-              >
-                DELOGARE
-              </button>
+              <form action={logout}>
+                <button className="flex justify-between font-[300]">
+                  DECONECTARE
+                </button>
+              </form>
             </div>
           </div>
         </motion.div>

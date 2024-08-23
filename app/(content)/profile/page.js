@@ -1,6 +1,6 @@
 import { getUserById } from "@/app/api/store/user";
 import OrderItem from "@/components/orders/order-item";
-import ProfileMenuDrawer from "@/components/profile/link";
+import ProfileMenuDrawer from "@/components/profile/profile-menu-drawer";
 import Button from "@/components/util/button";
 import { verifyAuth } from "@/lib/auth";
 import Link from "next/link";
@@ -16,15 +16,16 @@ export default async function ProfilePage() {
     <>
       {user ? (
         <>
-          <div className="flex flex-col md:flex-row p-5 mt-5 w-full min-h-[400px]">
+          <ProfileMenuDrawer user={userdata} />
+          <div className="flex flex-col md:flex-row p-5 my-5 w-full min-h-[400px]">
             <div className="mb-9 md:mb-0 flex flex-col w-full  text-center">
               <span className="font-[400] text-4xl mb-10 text-transform: uppercase">
                 BUNA, {userdata.second_name}
               </span>
-              <div className="lg:flex lg:flex-row">
-                <div className="flex flex-col  p-2 sm:mb-10 md:mb-0  w-full lg:w-1/2">
+              <div className="lg:mx-5 lg:flex lg:flex-row">
+                <div className="flex flex-col  sm:mb-10 md:mb-0  w-full lg:w-1/2">
                   <div className="flex items-center  w-full">
-                    <span className="mr-2">COMENZI RECENTE</span>
+                    <span className="mr-2 ml-4">COMENZI RECENTE</span>
                     <span className="mx-2 text-lg text-[rgb(0,0,0,0.4)] font-[100]">
                       |
                     </span>
@@ -38,7 +39,7 @@ export default async function ProfilePage() {
                   <OrderItem userId={user.id} mode="first" />
                 </div>
 
-                <div className="flex flex-col mt-[rem]  border rounded-sm h-fit p-5 lg:w-1/2">
+                <div className="flex flex-col mt-[3rem]  border rounded-sm h-fit  py-5 px-4 lg:mx-5 lg:w-1/2">
                   <span className="text-start mb-[1.4rem]">
                     INFORMATIILE MELE
                   </span>

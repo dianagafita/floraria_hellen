@@ -24,6 +24,7 @@ export default async function ComponentPage({ params }) {
       style: "text-black",
     },
   ];
+
   if (!componentDetails) {
     return <Loading />;
   }

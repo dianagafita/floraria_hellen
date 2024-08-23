@@ -4,6 +4,7 @@ import imgs from "./3.jpeg";
 
 import Image from "next/image";
 import Link from "next/link";
+import { SIDENAV_ITEMS } from "@/constants";
 
 const paths = [
   { href: "/evenimente", title: "EVENIMENTE", style: "text-black-300/75" },
@@ -11,6 +12,12 @@ const paths = [
 ];
 
 export default function ChristeningPage() {
+  const chriteningSubMenuItems =
+    SIDENAV_ITEMS.find(
+      (menu) => menu.title === "EVENIMENTE"
+    )?.subMenuItems.find((submenu) => submenu.title === "NUNTA")
+      ?.subMenuItemsMenu || [];
+
   return (
     <div>
       <div className="relative h-[335px] w-full">
@@ -35,38 +42,20 @@ export default function ChristeningPage() {
       <section className={classes.section2}>
         <h1>CATEGORII</h1>
         <div className={classes.grid}>
-          <Link
-            href="/evenimente/botez/aranjamente-florale"
-            className={classes.item}
-          >
-            <div className={classes["item__details"]}>ARANJAMENTE FLORALE</div>
-          </Link>
-          <Link
-            href="/evenimente/botez/aranjamente-cristelnita"
-            className={classes.item}
-          >
-            <div className={classes["item__details"]}>
-              ARANJAMENTE CRISTELNITA
-            </div>
-          </Link>
-          <Link
-            href="/evenimente/botez/lumanari-botez"
-            className={classes.item}
-          >
-            <div className={classes["item__details"]}>LUMANARI BOTEZ</div>
-          </Link>
-          <Link
-            href="/evenimente/botez/decoratiuni-sala"
-            className={classes.item}
-          >
-            <div className={classes["item__details"]}>SALI</div>
-          </Link>
-          <Link
-            href="/evenimente/botez/fantana-ciocolata"
-            className={classes.item}
-          >
-            <div className={classes["item__details"]}>FANTANA DE CIOCOLATA</div>
-          </Link>
+          {chriteningSubMenuItems.map((item) => (
+            <Link
+              key={item.title}
+              href={item.path}
+              className={`${classes.item} ${classes["item--large"]}`}
+            >
+              <div
+                className={classes["item__details"]}
+                style={{ paddingLeft: "1rem" }}
+              >
+                <span className={classes["padding"]}>{item.title}</span>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
     </div>

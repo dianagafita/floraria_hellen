@@ -5,8 +5,6 @@ import { usePathname } from "next/navigation";
 import { motion, useCycle } from "framer-motion";
 import { ChevronDown, X } from "lucide-react";
 import MobileHeaderFooter from "../footer/mobile-header-footer";
-import classes from "./backdrop.module.css";
-import MenuToggle from "./menu-toogle";
 import { SIDENAV_ITEMS } from "@/constants";
 import {
   menuItemVariants,
@@ -16,7 +14,6 @@ import {
 
 export default function MobileHeader({ isOpen, toggleOpen }) {
   const pathname = usePathname();
-  // const [isOpen, toggleOpen] = useCycle(false, true);
 
   return (
     <>
@@ -49,7 +46,6 @@ export default function MobileHeader({ isOpen, toggleOpen }) {
   );
 }
 
-// MenuItemWithSubMenu Component
 function MenuItemWithSubMenu({ item, isOpen, toggleOpen, pathname }) {
   const [subMenuOpen, setSubMenuOpen] = useState(false);
 
@@ -68,17 +64,19 @@ function MenuItemWithSubMenu({ item, isOpen, toggleOpen, pathname }) {
       <motion.li variants={menuItemVariants} className="mb-2 text-sm px-2">
         {item.submenu && (
           <button
-            className="flex w-full font-light md:text-xl py-2"
+            className="cursor-pointer flex w-full font-light md:text-xl py-2"
             onClick={toggleSubMenu}
           >
-            <div className="flex flex-row justify-between w-full items-center ">
-              <span
-                className={`${
+            <div className=" flex flex-row justify-between w-full items-center ">
+              <Link
+                href={item.path}
+                onClick={toggleOpen}
+                className={` ${
                   pathname.includes(item.path) ? "font-[400] " : ""
                 }`}
               >
                 {item.title}
-              </span>
+              </Link>
               <div
                 style={{
                   fontWeight: "100",

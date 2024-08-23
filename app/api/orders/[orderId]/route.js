@@ -6,6 +6,8 @@ import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 export async function GET(req, { params }) {
   const { orderId } = params;
 
@@ -75,12 +77,13 @@ export async function PUT(req, { params }) {
 
     console.log("Sending user confirmation email...");
     const userEmailResponse = await resendClient.emails.send({
-      from: "Floraria Hellen <gafita.diana12@gmail.com>",
+      from: "Floraria Hellen <onboading@resend.dev>",
       to: ["gafita.diana12@gmail.com"],
       subject: "Comanda plasata cu succes",
       react: OrderReceiptEmail({ order: orderReceipt, firstName: "Jhon" }),
     });
     console.log("User email response:", userEmailResponse);
+    await delay(2000); // Delay for 1 second
 
     const storeEmailResponse = await resendClient.emails.send({
       from: "Floraria Hellen <onboading@resend.dev>",

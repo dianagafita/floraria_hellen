@@ -4,6 +4,7 @@ export const ResetPasswordTemplate = ({ email, resetPasswordToken }) => (
       fontFamily: "Arial, sans-serif",
       textAlign: "center",
       color: "black",
+      marginTop: "1rem",
       marginBottom: "20px",
     }}
   >
@@ -34,6 +35,16 @@ export const ResetPasswordTemplate = ({ email, resetPasswordToken }) => (
       >
         Reseteaza Parola
       </a>
+    </div>
+    <div
+      style={{
+        margin: "4rem 0",
+        borderTop: "0.5px solid gray",
+        paddingTop: "2rem",
+      }}
+    >
+      Daca ai orice fel de nelamuriri, ne poti contacta prin raspuns la acest
+      email sau la proparty@gmail.ro .
     </div>
   </div>
 );

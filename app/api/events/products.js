@@ -19,6 +19,7 @@ export async function getComponentById(id) {
     },
     include: { flowers: true },
   });
+  console.log(products);
   return products;
 }
 

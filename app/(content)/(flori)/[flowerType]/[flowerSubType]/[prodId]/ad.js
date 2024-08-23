@@ -1,17 +1,9 @@
-import React from "react";
 import Input from "@/components/util/input";
 import { FeaturedImageGallery } from "@/components/pages/photoGallery";
-import img from "./IMG_6947.jpeg";
-import img1 from "./IMG_6957.jpeg";
-import img2 from "./IMG_6991.jpeg";
-import img3 from "./IMG_6944.jpeg";
 import { TitleByPath } from "@/components/util/getPathTitle";
 import { getProductById } from "@/app/api/store/products";
-import { useCart } from "@/context/cart-context";
 
-const data = [img, img1, img2, img3];
 export default async function Ad({ para, addToCart }) {
-  // const { addToCart } = useCart();
   const flowers = await getProductById(parseInt(para.prodId));
   console.log(para.prodId);
   console.log(flowers);
@@ -69,8 +61,6 @@ export default async function Ad({ para, addToCart }) {
                     { value: "Capu Campului", label: "Capu Campului" },
                     { value: "Capu Codrului", label: "Capu Codrului" },
                     { value: "Vama", label: "Vama" },
-
-                    // Add more cities as needed
                   ]}
                 />
                 <Input name="deliveryDate" label="Data livrarii:" type="date" />
@@ -87,8 +77,6 @@ export default async function Ad({ para, addToCart }) {
                     { value: "14:00-16:00", label: "14:00 - 16:00" },
                     { value: "16:00-18:00", label: "16:00 - 18:00" },
                     { value: "18:00-20:00", label: "18:00 - 20:00" },
-
-                    // Add more intervals as needed
                   ]}
                 />
                 <Input

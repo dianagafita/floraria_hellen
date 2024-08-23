@@ -90,13 +90,13 @@ export default async function WeddingPage({ params }) {
       <h2 className="text-[1rem] mx-[1.5rem] font-[100] ">
         ALEGETI DIN MODELE DE MAI JOS
       </h2>
-      {flowerBouquets.lenght === 0 ? (
+      {!flowerBouquets ? (
         <Loading />
       ) : (
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4 m-5">
           {flowerBouquets.map((image, index) => (
             <Link
-              href={`/evenimente/wedding/${weddingComponent}/${image.id}`}
+              href={`/evenimente/nunta/${weddingComponent}/${image.id}`}
               key={index}
               className="relative group overflow-hidden"
             >

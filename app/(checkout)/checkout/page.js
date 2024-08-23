@@ -8,27 +8,11 @@ import CheckoutForm from "@/components/checkout-page/checkout-form";
 import OrderSummary from "../../../components/orders/orderSummary";
 import { useCart } from "@/context/cart-context";
 import { redirect } from "next/navigation";
+import { useValidUser } from "@/context/auth-context";
 
 export default function CheckoutPage() {
-  const [userId, setUserId] = useState(null);
-  useEffect(() => {
-    const fetchUserId = async () => {
-      const response = await fetch("/api/valid");
-      const data = await response.json();
-
-      if (response.ok) {
-        console.log("User ID:", data.userId); // Successfully retrieved user ID
-
-        setUserId(data.userId); // Set userId in state
-      } else {
-        console.error("Failed to fetch user ID", data.error);
-      }
-    };
-
-    fetchUserId();
-  }, []);
-
-  if (!userId) {
+  const { user } = useValidUser();
+  if (!user) {
     redirect("/authentification");
   }
 
@@ -83,7 +67,7 @@ export default function CheckoutPage() {
           cartTotal={cartTotal}
         />
         <CheckoutForm
-          userId={userId}
+          userId={user}
           address={address}
           cartTotal={cartTotal}
           cartItems={cartItems}
@@ -105,87 +89,3 @@ export default function CheckoutPage() {
     </div>
   );
 }
-// // pages/checkout.js
-// "use client";
-// import { useRouter } from "next/navigation";
-// import { useEffect } from "react";
-
-// export default function Checkout() {
-//   // const { cart } = useCart();
-//   const router = useRouter();
-
-//   const [verify, setVerify] = useState("1");
-
-//   useEffect(() => {
-//     const fetchAuthStatus = async () => {
-//       const response = await fetch("/api/valid");
-//       const data = await response.json();
-
-//       setVerify(data);
-//     };
-
-//     fetchAuthStatus();
-//     if (!data.loading && !data.user) {
-//       router.push("/login");
-//     }
-//   }, [verify.user, verify.loading, verify.router]);
-
-//   if (verify.loading) return <p>Loading...</p>;
-//   if (!verify.user) return null;
-
-//   return (
-//     <div>
-//       <h1>Checkout</h1>
-//       {cart.map((item) => (
-//         <div key={item.id}>
-//           <p>{item.name}</p>
-//           <p>{item.price}</p>
-//         </div>
-//       ))}
-//       {/* Implement the payment and order submission logic here */}
-//     </div>
-//   );
-// }
-// "use client";
-// import { useState, useEffect } from "react";
-// import { useCart } from "@/context/cart-context";
-// import { useRouter } from "next/navigation";
-
-// export default function Checkout() {
-//   const { cartItems } = useCart();
-//   const router = useRouter();
-
-//   const [verify, setVerify] = useState({ user: null, loading: true });
-
-//   useEffect(() => {
-//     const fetchAuthStatus = async () => {
-//       const response = await fetch("/api/valid");
-//       const data = await response.json();
-//       setVerify({ user: data.user, loading: false });
-//     };
-
-//     fetchAuthStatus();
-//   }, []);
-
-//   useEffect(() => {
-//     if (!verify.loading && !verify.user) {
-//       router.push("/login");
-//     }
-//   }, [verify, router]);
-
-//   if (verify.loading) return <p>Loading...</p>;
-//   if (!verify.user) return null;
-
-//   return (
-//     <div>
-//       <h1>Checkout</h1>
-//       {cartItems.map((item) => (
-//         <div key={item.id}>
-//           <p>{item.name}</p>
-//           <p>{item.price}</p>
-//         </div>
-//       ))}
-//       {/* Implement the payment and order submission logic here */}
-//     </div>
-//   );
-// }

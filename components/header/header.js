@@ -41,7 +41,7 @@ export default function Header() {
             </span>
             <span
               onClick={openSearchMobile}
-              className="hidden md:flex cursor-pointer items-center"
+              className="hidden md:flex  items-center cursor-pointer"
             >
               <Search strokeWidth={0.7} size={27} />
             </span>{" "}
