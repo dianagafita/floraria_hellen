@@ -7,11 +7,10 @@ import { auth } from "@/actions/auth-actions";
 
 export default function AuthForm({ mode }) {
   const [formState, formAction] = useFormState(auth.bind(null, mode), {});
-  const { isSubmitting } = formState;
-  console.log(isSubmitting);
+  console.log(formState);
   console.log(mode);
   return (
-    <div className=" min-h-[80vh] flex flex-col pt-10 pb-5  mx-5 md:mx-20 mt-5 items-center  bg-white   shaow-lg">
+    <div className="flex flex-col pt-10 pb-5  mx-5 md:mx-20 mt-5 items-center  bg-white   shaow-lg">
       <span className="text-2xl font-[200]">
         {mode === "login" ? "LOGARE" : "CREEAZA CONT"}
       </span>
@@ -38,13 +37,9 @@ export default function AuthForm({ mode }) {
             </div>
           </div>
         )}
-        <Button moreStyle="w-[200px] my-3" disabled={isSubmitting}>
-          {isSubmitting
-            ? "Se creează..."
-            : mode === "login"
-            ? "Intra in cont"
-            : "Crează cont"}
-        </Button>{" "}
+        <Button type="submit" moreStyle="w-[200px] my-3 ">
+          {mode === "login" ? "Intra in cont" : "Creaza cont"}
+        </Button>
         <p className="text-[13px] font-[100] underline underline-offset-2 text-[#707070] hover:text-[#404040]">
           {mode === "login" ? (
             <Link href="/authentification/?mode=signup">

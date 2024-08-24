@@ -57,7 +57,7 @@ export const VerEmailTemp = ({ email, emailVerificationToken }) => (
         linistit email-ul.
       </p>
       <a
-        href={`http://localhost:3000/authentification/reset-password?token=${emailVerificationToken}`}
+        href={`http://localhost:3000/authentification/verify-email?token=${emailVerificationToken}`}
         style={{
           display: "inline-block",
           padding: "10px 20px",
